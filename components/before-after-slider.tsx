@@ -115,98 +115,29 @@ The Takeaway: AI is no longer just advancing technology—it's reshaping industr
 
   return (
     <div className="prose prose-sm max-w-none relative">
-      {/* Controls */}
-      <div className="flex justify-end mb-2 gap-2">
-        {isTyping && (
-          <>
-            <button
-              onClick={togglePause}
-              className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 transition-colors text-gray-700 flex items-center gap-1"
-              aria-label={isPaused ? "Resume typing" : "Pause typing"}
-            >
-              {isPaused ? (
-                <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                  Resume
-                </>
-              ) : (
-                <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="6" y="4" width="4" height="16"></rect>
-                    <rect x="14" y="4" width="4" height="16"></rect>
-                  </svg>
-                  Pause
-                </>
-              )}
-            </button>
-            {showSkipButton && (
-              <button
-                onClick={handleSkip}
-                className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 transition-colors text-gray-700 flex items-center gap-1"
-                aria-label="Skip animation"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                  <line x1="19" y1="5" x2="19" y2="19"></line>
-                </svg>
-                Skip
-              </button>
-            )}
-          </>
-        )}
-      </div>
+      {/* Controls removed */}
 
       <div
         ref={contentRef}
         className="whitespace-pre-line text-[#0F172A] max-h-[550px] overflow-y-auto pr-2 scrollbar-hide"
         style={{ scrollBehavior: "smooth" }}
       >
-        <h2 className="text-xl font-bold text-[#3B82F6] mb-3 sticky top-0 bg-white py-2 z-10">{title}</h2>
+        <h2 className="text-xl font-bold text-[#3B82F6] mb-2 sticky top-0 bg-white py-1 z-10">{title}</h2>
 
         {contentLines.map((line, index) => {
           // Check if line is a section header
-          if (
-            line.includes("What's a Good Read Today?") ||
-            line.includes("Hidden Factors to Think About") ||
-            line.includes("The Takeaway:")
-          ) {
+          if (line.includes("Hidden Factors to Think About") || line.includes("The Takeaway:")) {
             return (
               <h3
                 key={index}
                 className="text-base font-semibold text-[#0F172A] mt-4 mb-2 sticky top-12 bg-white py-1 z-10"
               >
+                {line}
+              </h3>
+            )
+          } else if (line.includes("What's a Good Read Today?")) {
+            return (
+              <h3 key={index} className="text-base font-semibold text-[#0F172A] mt-4 mb-2">
                 {line}
               </h3>
             )
@@ -764,7 +695,7 @@ export function BeforeAfterSlider() {
                   // Chamath's newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3">
                         <Image
                           src={newsletterLogos.chamath || "/placeholder.svg"}
                           alt="Chamath Palihapitiya"
@@ -795,7 +726,7 @@ export function BeforeAfterSlider() {
                   // AI Valley Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#FFDE03]">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-[#FFDE03]">
                         <Image
                           src={newsletterLogos.ai_valley || "/placeholder.svg"}
                           alt="AI Valley Logo"
@@ -826,7 +757,7 @@ export function BeforeAfterSlider() {
                   // The Weekly Kaitchup Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-white">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-white">
                         <Image
                           src={newsletterLogos.kaitchup || "/placeholder.svg"}
                           alt="The Weekly Kaitchup Logo"
@@ -857,10 +788,7 @@ export function BeforeAfterSlider() {
                   // Mindstream Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div
-                        className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0"
-                        style={{ backgroundColor: "#3A2A7E" }}
-                      >
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3" style={{ backgroundColor: "#3A2A7E" }}>
                         <Image
                           src={newsletterLogos.mindstream || "/placeholder.svg"}
                           alt="Mindstream Logo"
@@ -891,7 +819,7 @@ export function BeforeAfterSlider() {
                   // Tomasz Tunguz - Venture Capitalist
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-white">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-white">
                         <Image
                           src={newsletterLogos.tomasz || "/placeholder.svg"}
                           alt="Tomasz Tunguz"
@@ -922,7 +850,7 @@ export function BeforeAfterSlider() {
                   // TAAFT - There's An AI For That
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#1E293B]">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-[#1E293B]">
                         <Image
                           src={newsletterLogos.taaft || "/placeholder.svg"}
                           alt="TAAFT Logo"
@@ -953,7 +881,7 @@ export function BeforeAfterSlider() {
                   // Department of Product Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-black">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-black">
                         <Image
                           src={newsletterLogos.department_of_product || "/placeholder.svg"}
                           alt="Department of Product Logo"
@@ -984,7 +912,7 @@ export function BeforeAfterSlider() {
                   // Matt from FutureTools Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-black">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-black">
                         <Image
                           src={newsletterLogos.futuretools || "/placeholder.svg"}
                           alt="FutureTools Logo"
@@ -1015,7 +943,7 @@ export function BeforeAfterSlider() {
                   // Lenny's Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#FF9500]">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-[#FF9500]">
                         <Image
                           src={newsletterLogos.lennys || "/placeholder.svg"}
                           alt="Lenny's Newsletter Logo"
@@ -1049,7 +977,7 @@ export function BeforeAfterSlider() {
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
                       {newsletterType === 0 ? (
                         // AI Breakfast with custom logo
-                        <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0">
+                        <div className="w-6 h-6 rounded-full overflow-hidden mr-3">
                           <Image
                             src="/newsletter-logos/ai-breakfast.png"
                             alt="AI Breakfast Logo"
@@ -1063,7 +991,7 @@ export function BeforeAfterSlider() {
                         <div
                           className={`w-6 h-6 rounded-full ${
                             ["", "bg-[#8B5CF6]", "bg-[#EC4899]", "bg-[#F59E0B]"][newsletterType]
-                          } flex items-center justify-center text-white text-xs mr-3 flex-shrink-0`}
+                          } flex items-center justify-center text-white text-xs mr-3`}
                         >
                           {["", "T", "P", "R"][newsletterType]}
                         </div>
@@ -1111,16 +1039,16 @@ export function BeforeAfterSlider() {
                 disabled={isAnimating}
                 className={`
                   pointer-events-auto
-                  bg-[#4338CA] text-white hover:bg-[#4F46E5]
-                  px-8 py-3 rounded-full shadow-xl hover:shadow-2xl font-medium text-lg
+                  bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] hover:from-[#2563EB] hover:to-[#7C3AED]
+                  px-8 py-4 rounded-full shadow-xl hover:shadow-2xl font-medium text-lg
                   border-2 border-white
-                  z-20
+                  z-20 transform hover:-translate-y-1 transition-all duration-300
                 `}
               >
                 <ArrowLeftRight
                   className={`mr-2 h-5 w-5 inline-block transition-transform duration-300 ${isAnimating ? "rotate-180" : ""}`}
                 />
-                <span>See With Gistify</span>
+                <span>Unlock Hours in Your Day</span>
                 <Sparkles className="ml-2 h-5 w-5 inline-block" />
               </Button>
             </div>
@@ -1138,23 +1066,35 @@ export function BeforeAfterSlider() {
         >
           <div className="p-3 sm:p-5 h-full flex flex-col">
             {/* Updated header with AI Summary information */}
-            <div className="bg-[#0F172A]/90 backdrop-blur-sm p-4 sm:p-5 mb-4 rounded-t-lg mt-0">
+            <div className="bg-[#0F172A]/90 backdrop-blur-sm p-3 sm:p-5 mb-4 rounded-t-lg mt-0 relative">
+              {/* Example label at the top center */}
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#3B82F6] text-white px-4 py-1 text-xs font-medium rounded-md">
+                Example
+              </div>
               <div className="text-white text-center">
-                <h4 className="font-bold text-xl sm:text-2xl mb-2 text-[#60A5FA]">
-                  Example: Daily AI Summary – AI-Driven Intelligence
+                <h4 className="font-bold text-lg sm:text-2xl mb-1 sm:mb-2 text-[#60A5FA]">
+                  Daily AI Summary – AI-Driven Intelligence
                 </h4>
-                <div className="text-sm text-white/80 mb-3">March 19, 2025 | Est. Read Time: 3 Minutes</div>
-                <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-white/90">
-                  <span className="bg-[#1E293B] px-2 py-1 rounded">30 Newsletters Processed</span>
-                  <span className="bg-[#1E293B] px-2 py-1 rounded">247 Individual Items Analyzed</span>
-                  <span className="bg-[#1E293B] px-2 py-1 rounded">85% Noise Reduction</span>
-                  <span className="bg-[#1E293B] px-2 py-1 rounded">Personalized Intelligence Report</span>
+                <div className="text-xs sm:text-sm text-white/80 mb-2 sm:mb-3">March 19, 2025 | 3 Min Read</div>
+                <div className="grid grid-cols-2 gap-1.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-3 text-[10px] sm:text-xs text-white/90">
+                  <span className="bg-[#1E293B] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded flex items-center justify-center">
+                    <span className="font-semibold text-[#60A5FA]">30</span>&nbsp;Newsletters
+                  </span>
+                  <span className="bg-[#1E293B] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded flex items-center justify-center">
+                    <span className="font-semibold text-[#60A5FA]">85%</span>&nbsp;Filtered
+                  </span>
+                  <span className="bg-[#1E293B] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded flex items-center justify-center">
+                    <span className="font-semibold text-[#60A5FA]">247</span>&nbsp;Items
+                  </span>
+                  <span className="bg-[#1E293B] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded flex items-center justify-center">
+                    Personalized Report
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Add the typewriter animation for the analysis */}
-            <div className="flex-1 overflow-y-auto bg-white rounded-lg border border-slate-200 p-4 sm:p-6">
+            <div className="flex-1 overflow-y-auto bg-white rounded-lg border border-slate-200 p-2 pt-1 sm:p-4 sm:pt-2">
               <TypewriterAnalysis resetAnimation={resetAnimation} />
             </div>
           </div>

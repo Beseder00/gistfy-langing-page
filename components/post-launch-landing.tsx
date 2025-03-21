@@ -14,42 +14,31 @@ export default function PostLaunchLanding() {
     <div className="bg-[#F0ECE3]">
       {/* Header */}
       <header className="bg-[#0A6E6C] text-white p-4 flex justify-between items-center">
-        <Logo />
-        <nav className="hidden md:flex items-center">
-          <a href="#features" className="ml-6 hover:text-[#FF6F61] transition-colors">
+        <div className="flex-1">
+          <Logo />
+        </div>
+        <nav className="flex items-center justify-end flex-1">
+          <a href="#features" className="ml-3 md:ml-6 text-sm md:text-base hover:text-[#FF6F61] transition-colors">
             Features
           </a>
-          <a href="#pricing" className="ml-6 hover:text-[#FF6F61] transition-colors">
+          <a href="#pricing" className="ml-3 md:ml-6 text-sm md:text-base hover:text-[#FF6F61] transition-colors">
             Pricing
           </a>
-          <a href="#testimonials" className="ml-6 hover:text-[#FF6F61] transition-colors">
+          <a href="#testimonials" className="hidden md:block ml-6 hover:text-[#FF6F61] transition-colors">
             Testimonials
           </a>
-          <a href="#contact" className="ml-6 hover:text-[#FF6F61] transition-colors">
+          <a href="#contact" className="hidden md:block ml-6 hover:text-[#FF6F61] transition-colors">
             Contact
           </a>
-          <Button className="ml-6 bg-[#FF6F61] hover:bg-[#FF6F61]/90" onClick={() => setShowLoginModal(true)}>
+        </nav>
+        <div className="flex-1 flex justify-end">
+          <Button
+            className="ml-3 md:ml-6 bg-[#FF6F61] hover:bg-[#FF6F61]/90 text-sm md:text-base px-2 md:px-4"
+            onClick={() => setShowLoginModal(true)}
+          >
             Login
           </Button>
-        </nav>
-        <button className="md:hidden text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-[#FF6F61]"
-          >
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
-          </svg>
-        </button>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -66,8 +55,8 @@ export default function PostLaunchLanding() {
             Reclaim Your Mornings. <span className="text-[#FF6F61]">Stop Drowning in Newsletters</span>
           </h2>
           <p className="text-[#0A6E6C] text-lg mb-8 max-w-2xl mx-auto">
-            For high-performing professionals who demand efficiency. Our AI scans 30+ newsletters across AI, Product,
-            and Robotics, saving you 5+ hours weekly while keeping you ahead of the curve.
+            Our AI analyzes 30+ AI, Product, and Robotics Newsletters in your Inbox,{" "}
+            <span className="font-semibold">Delivering You The Gist in Seconds!</span>
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">

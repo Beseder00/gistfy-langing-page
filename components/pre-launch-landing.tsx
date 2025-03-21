@@ -122,36 +122,29 @@ export default function PreLaunchLanding() {
           }`}
         >
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
-            <Logo />
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#examples" className="hover:text-[#60A5FA] transition-colors text-sm font-medium text-white/90">
+            <div className="flex-1">
+              <Logo />
+            </div>
+            <nav className="flex items-center justify-end flex-1">
+              <a
+                href="#examples"
+                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+              >
                 Examples
               </a>
-              <a href="#features" className="hover:text-[#60A5FA] transition-colors text-sm font-medium text-white/90">
+              <a
+                href="#features"
+                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+              >
                 Features
               </a>
-              <a href="#contact" className="hover:text-[#60A5FA] transition-colors text-sm font-medium text-white/90">
+              <a
+                href="#contact"
+                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+              >
                 Contact
               </a>
             </nav>
-            <button className="md:hidden text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-[#60A5FA]"
-              >
-                <line x1="4" x2="20" y1="12" y2="12" />
-                <line x1="4" x2="20" y1="6" y2="6" />
-                <line x1="4" x2="20" y1="18" y2="18" />
-              </svg>
-            </button>
           </div>
         </header>
 
@@ -189,8 +182,12 @@ export default function PreLaunchLanding() {
               <span className="text-[#6366F1]"> Your Mornings.</span>
             </h1>
             <p className="text-[#334155] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-white/70 backdrop-blur-sm rounded-lg px-4 py-2">
-              Our AI analyzes 30+ AI, Product, and Robotics newsletters in your inbox, delivering a personalized Daily
-              AI Summary in minutes—saving you hours every day.
+              Our AI analyzes 30+ AI, Product, and Robotics Newsletters in your Inbox, Delivering You{" "}
+              <span className="font-semibold text-[#3B82F6] animate-pulse-subtle relative">
+                <span className="relative z-10">The Gist</span>
+                <span className="absolute inset-0 bg-blue-100/50 rounded blur-sm -z-10"></span>
+              </span>{" "}
+              in Seconds!
             </p>
 
             {/* Countdown Timer - Moved Above */}
@@ -260,15 +257,10 @@ export default function PreLaunchLanding() {
         <section className="pt-8 md:pt-12 pb-16 px-4 bg-white" id="examples">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1E3A8A] mt-2 mb-12 max-w-3xl mx-auto leading-tight">
-              Inbox Filling up Fast!{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">
-                Delegate
-              </span>{" "}
-              Reading your Newsletters to Our{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">
-                Game-Changing Ai
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
+                Increase Your Productivity <span className="font-extrabold text-[#F43F5E]">10x</span> by Delegating Your
+                Newsletter Reading
               </span>
-              !
             </h2>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
@@ -413,8 +405,8 @@ export default function PreLaunchLanding() {
                       <div className="flex items-center mb-6">
                         <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
                           <Image
-                            src="/placeholder.svg?height=56&width=56"
-                            alt="David Rodriguez"
+                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%281%29.jpg-BWlPVbWiMOSwyNwcNtUpUW7FcJVaUh.jpeg"
+                            alt="Tal Shapira"
                             width={56}
                             height={56}
                             className="w-full h-full object-cover"

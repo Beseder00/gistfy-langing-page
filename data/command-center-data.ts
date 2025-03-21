@@ -13,7 +13,8 @@ export const commandCenterData = {
   },
   dashboard: {
     url: "app.gistify.ai/dashboard",
-    imageSrc: "https://gistfy.vercel.app/images/dashboardmockup.png",
+    imageSrc:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-21%20at%2020.01.33-PpJeMAxEurqCq18tJySyqKqaIC40p5.png",
     imageAlt: "Gistify AI Dashboard",
   },
   ctaButton: {
