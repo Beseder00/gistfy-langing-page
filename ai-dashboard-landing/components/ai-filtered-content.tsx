@@ -5,16 +5,23 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 
-// Sample logos for newsletters
 const newsletterLogos = {
-  futuretools: "/images/Matt from FutureTools.jpg",
-  mindstream: "/images/Mindstream.jpg",
-  neuron: "/images/theneurondaily_logo.jpeg",
-  aibreakfast: "/images/bagel bots logo.jpeg",
-  kaitchup: "/images/the Kaitchup.png",
-  aivalley: "/images/Ai Valley.jpg",
-  rundown: "/images/the_rundown_ai_logo.jpeg",
-  storm: "/images/Digital Storm.png",
+  futuretools: "https://gistfy.vercel.app/images/Matt from FutureTools.jpg",
+  mindstream: "https://gistfy.vercel.app/images/Mindstream.jpg",
+  openai: "https://gistfy.vercel.app/images/image (2).png", // AI logo
+  neuron: "https://gistfy.vercel.app/images/Digital Storm.png", // Using Digital Storm as a replacement
+  aibreakfast: "https://gistfy.vercel.app/images/bagel bots logo.jpeg",
+  tldr: "https://gistfy.vercel.app/images/images.jpeg",
+  bens_bytes: "https://gistfy.vercel.app/images/Bens Bytes.jpeg",
+  kaitchup: "https://gistfy.vercel.app/images/the Kaitchup.png",
+  taaft: "https://gistfy.vercel.app/images/taaft_logo.jpeg",
+  lennys: "https://gistfy.vercel.app/images/lennys_newsletter_logo.jpeg",
+  tomasz: "https://gistfy.vercel.app/images/Tomasz Tunguz.jpg",
+  chamath: "https://gistfy.vercel.app/images/Chamath Palihapitiya.png",
+  department_of_product: "https://gistfy.vercel.app/images/Department of Product.jpeg",
+  ai_valley: "https://gistfy.vercel.app/images/Ai Valley.jpg",
+  exponential: "https://gistfy.vercel.app/images/Exponential.png",
+  ethan_mollick: "https://gistfy.vercel.app/images/Ethan-Mollick.png",
 }
 
 interface FilteredContentItem {
@@ -51,8 +58,8 @@ export function AIFilteredContent() {
       id: "3",
       time: "11:15 AM",
       title: "ChatGPT's Comeback – 400M Weekly Users",
-      source: "neuron",
-      sourceLogo: newsletterLogos.neuron,
+      source: "openai",
+      sourceLogo: newsletterLogos.openai,
       neutral: true,
       free: true,
     },
@@ -60,8 +67,8 @@ export function AIFilteredContent() {
       id: "4",
       time: "12:15 PM",
       title: "🧠 The age of reason(ing models)",
-      source: "aibreakfast",
-      sourceLogo: newsletterLogos.aibreakfast,
+      source: "neuron",
+      sourceLogo: newsletterLogos.neuron,
       neutral: true,
       free: true,
     },
@@ -69,8 +76,8 @@ export function AIFilteredContent() {
       id: "5",
       time: "01:30 PM",
       title: "The AI Job Boom: 1 in 4 Tech Jobs Now AI-Focused",
-      source: "kaitchup",
-      sourceLogo: newsletterLogos.kaitchup,
+      source: "aibreakfast",
+      sourceLogo: newsletterLogos.aibreakfast,
       neutral: true,
       free: true,
     },

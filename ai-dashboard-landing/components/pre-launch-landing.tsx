@@ -160,7 +160,7 @@ export default function PreLaunchLanding() {
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/DALL·E 2025-03-19 15.22.50 - A digital illustration of an overwhelming email inbox scene. A stressed-out person sits at a cluttered desk, surrounded by stacks of unread emails, no.webp"
+              src="https://p7lrpwrygsvtwfmu.public.blob.vercel-storage.com/DALL%C2%B7E%202025-03-19%2015.22.50%20-%20A%20digital%20illustration%20of%20an%20overwhelming%20email%20inbox%20scene.%20A%20stressed-out%20person%20sits%20at%20a%20cluttered%20desk%2C%20surrounded%20by%20stacks%20of%20unread%20emails%2C%20no-RwzG2XeF571lisqK6GH05Asa0Lq5rW.webp"
               alt="Overwhelming email inbox"
               fill
               className="object-cover"
@@ -182,12 +182,15 @@ export default function PreLaunchLanding() {
               Coming Soon — Join the Waitlist
             </span>
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
-              <span className="text-[#1E3A8A]">Reclaim Your Mornings.</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#2563EB]">Stop</span>
-              <span className="text-[#6366F1]"> Drowning in Newsletters</span>
+              <span className="text-[#1E3A8A]">Drowning in Newsletters?</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#2563EB]">
+                Reclaim
+              </span>
+              <span className="text-[#6366F1]"> Your Mornings.</span>
             </h1>
             <p className="text-[#334155] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-white/70 backdrop-blur-sm rounded-lg px-4 py-2">
-              Our AI scans 30+ newsletters in your inbox across AI, Product, and Robotics, saving you HOURS daily.
+              Our AI analyzes 30+ AI, Product, and Robotics newsletters in your inbox, delivering a personalized Daily
+              AI Summary in minutes—saving you hours every day.
             </p>
 
             {/* Countdown Timer - Moved Above */}
@@ -257,15 +260,15 @@ export default function PreLaunchLanding() {
         <section className="pt-8 md:pt-12 pb-16 px-4 bg-white" id="examples">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1E3A8A] mt-2 mb-12 max-w-3xl mx-auto leading-tight">
-              Newsletters Piling Up? You're{" "}
+              Inbox Filling up Fast!{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">
-                Not Reading
+                Delegate
               </span>{" "}
-              Them—And You're{" "}
+              Reading your Newsletters to Our{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">
-                Missing Out
+                Game-Changing Ai
               </span>
-              .
+              !
             </h2>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
@@ -306,7 +309,7 @@ export default function PreLaunchLanding() {
                       <div className="flex items-center mb-6">
                         <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
                           <Image
-                            src="/images/Chamath Palihapitiya (2).png"
+                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2854%29.jpg-bX6WYUsbXqlDa9orpEa1kBP5Rx7Pla.jpeg"
                             alt="Noa Levi"
                             width={56}
                             height={56}
@@ -358,7 +361,7 @@ export default function PreLaunchLanding() {
                       <div className="flex items-center mb-6">
                         <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
                           <Image
-                            src="/images/Chamath Palihapitiya (1).png"
+                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2853%29.jpg-fxhapua2NOaUxbr3Dhh4pxG4nyWBD5.jpeg"
                             alt="Avi Cohen"
                             width={56}
                             height={56}
@@ -410,8 +413,8 @@ export default function PreLaunchLanding() {
                       <div className="flex items-center mb-6">
                         <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
                           <Image
-                            src="/images/Chamath Palihapitiya.png"
-                            alt="Tal Shapira"
+                            src="/placeholder.svg?height=56&width=56"
+                            alt="David Rodriguez"
                             width={56}
                             height={56}
                             className="w-full h-full object-cover"

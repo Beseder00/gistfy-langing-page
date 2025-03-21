@@ -117,7 +117,7 @@ export default function PostLaunchLanding() {
           <div className="bg-[#0A6E6C]/5 rounded-xl p-4 md:p-8 mb-8 hover:shadow-lg transition-shadow">
             <div className="aspect-[16/9] bg-[#0A6E6C]/10 rounded-lg flex items-center justify-center overflow-hidden">
               <img
-                src="/images/Group 5 (4).png"
+                src="/placeholder.svg?height=600&width=1200"
                 alt="AI Content Dashboard"
                 className="w-full h-auto hover:scale-105 transition-transform duration-500"
               />
@@ -169,7 +169,7 @@ export default function PostLaunchLanding() {
                 <div className="bg-[#0A6E6C]/5 p-4 rounded-xl">
                   <div className="aspect-[4/3] bg-[#0A6E6C]/10 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
-                      src="/images/Group 5 (4).png"
+                      src="/placeholder.svg?height=400&width=600"
                       alt="Desktop Dashboard"
                       className="w-full h-auto hover:scale-105 transition-transform duration-500"
                     />
@@ -183,7 +183,7 @@ export default function PostLaunchLanding() {
                 <div className="order-2 md:order-1 bg-[#0A6E6C]/5 p-4 rounded-xl">
                   <div className="aspect-[3/4] bg-[#0A6E6C]/10 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
-                      src="/images/Group 5 (4).png"
+                      src="/placeholder.svg?height=600&width=450"
                       alt="Tablet Dashboard"
                       className="w-full h-auto hover:scale-105 transition-transform duration-500"
                     />
@@ -235,7 +235,7 @@ export default function PostLaunchLanding() {
                 <div className="flex justify-center bg-[#0A6E6C]/5 p-4 rounded-xl">
                   <div className="w-64 aspect-[9/16] bg-[#0A6E6C]/10 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
-                      src="/images/Group 5 (4).png"
+                      src="/placeholder.svg?height=600&width=300"
                       alt="Mobile Dashboard"
                       className="w-full h-auto hover:scale-105 transition-transform duration-500"
                     />
@@ -443,25 +443,25 @@ export default function PostLaunchLanding() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                name: "Sarah Johnson",
-                role: "Marketing Director",
                 quote:
-                  "Gist Engine has completely transformed how I stay informed. I used to spend hours scanning newsletters, now I get the same insights in minutes.",
-                image: "/images/Chamath Palihapitiya (2).png",
+                  "Saves me 5 hours weekly—amazing! I can finally keep up with all my industry newsletters without feeling overwhelmed.",
+                name: "Alex P.",
+                title: "Researcher",
+                image: "/placeholder.svg?height=100&width=100",
               },
               {
-                name: "Michael Chen",
-                role: "Product Manager",
                 quote:
-                  "The AI curation is incredibly accurate. It's like having a research assistant who knows exactly what matters to me.",
-                image: "/images/Chamath Palihapitiya (1).png",
+                  "Finally, I can keep up with industry news without drowning in emails. The AI summaries are surprisingly accurate and helpful.",
+                name: "Sarah K.",
+                title: "Marketing Director",
+                image: "/placeholder.svg?height=100&width=100",
               },
               {
-                name: "Emma Rodriguez",
-                role: "Tech Entrepreneur",
                 quote:
-                  "As someone who follows 30+ newsletters, this tool is a game-changer. I'm more informed while spending less time reading.",
-                image: "/images/Chamath Palihapitiya.png",
+                  "As a team leader, I love how we can all access the same curated content. It's improved our knowledge sharing tremendously.",
+                name: "Michael T.",
+                title: "Product Manager",
+                image: "/placeholder.svg?height=100&width=100",
               },
             ].map((item, index) => (
               <div
@@ -478,7 +478,7 @@ export default function PostLaunchLanding() {
                   </div>
                   <div>
                     <p className="font-bold text-[#0A6E6C]">{item.name}</p>
-                    <p className="text-sm text-[#0A6E6C]/70">{item.role}</p>
+                    <p className="text-sm text-[#0A6E6C]/70">{item.title}</p>
                   </div>
                 </div>
                 <p className="text-[#0A6E6C] italic mb-4">"{item.quote}"</p>

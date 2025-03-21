@@ -1,16 +1,13 @@
-import Image from "next/image";
+import Image from "next/image"
 
 export function DashboardMockupSection() {
   return (
     <section className="py-20 px-4 bg-[#F0F4F8]" id="command-center">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#1E293B] mb-4">
-            Meet Your New Content Command Center
-          </h2>
+          <h2 className="text-4xl font-bold text-[#1E293B] mb-4">Meet Your New Content Command Center</h2>
           <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-            Gistify's intuitive dashboard puts powerful AI tools at your
-            fingertips
+            Gistify's intuitive dashboard puts powerful AI tools at your fingertips
           </p>
         </div>
 
@@ -31,7 +28,7 @@ export function DashboardMockupSection() {
           {/* Dashboard Image - Improved fit */}
           <div className="w-full">
             <Image
-              src="/images/dashboardmockup.png"
+              src="/dashboard-mockup.png"
               alt="Gistify AI Dashboard"
               width={1200}
               height={675}
@@ -42,5 +39,6 @@ export function DashboardMockupSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
+

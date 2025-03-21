@@ -1,7 +1,6 @@
 import { CalendarIcon } from "lucide-react"
 import { TimelineItem } from "./timeline-item"
 import Image from "next/image"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 export default function TimelineControlPanel() {
   return (
@@ -21,13 +20,13 @@ export default function TimelineControlPanel() {
           time="09:45 AM"
           title='AI Agents Form Their Own "Trade Union"'
           icon={
-            <Avatar>
-              <AvatarImage
-                src="/images/Matt from FutureTools.jpg"
-                alt="@mattfuturetools"
-              />
-              <AvatarFallback>MFT</AvatarFallback>
-            </Avatar>
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/th82Xru3_400x400.jpg-57aqMxvgwrGOUBO2OykswON5gNxXQr.jpeg"
+              alt="FutureTools Logo"
+              width={24}
+              height={24}
+              className="w-5 h-5 object-contain"
+            />
           }
           iconBg="bg-[#0F172A]"
           expanded={true}
