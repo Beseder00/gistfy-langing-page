@@ -23,6 +23,7 @@ export function BeforeAfterSlider() {
   const [showFilterAnimation, setShowFilterAnimation] = useState(false)
   const [showCardFormation, setShowCardFormation] = useState(false)
   const [cardStage, setCardStage] = useState(0)
+  const [showButton, setShowButton] = useState(true)
   const animationRef = useRef(null)
 
   // Card data based on the provided images
@@ -72,6 +73,7 @@ export function BeforeAfterSlider() {
   const toggleView = () => {
     setHasInteracted(true)
     setIsAnimating(true)
+    setShowButton(false)
     console.log("Toggle view clicked, current showAfter:", showAfter)
 
     // If transitioning to "after" view, show the filter animation
@@ -82,13 +84,36 @@ export function BeforeAfterSlider() {
       // After filter animation, show card formation
       setTimeout(() => {
         setShowFilterAnimation(false)
-        setShowCardFormation(false) // Changed to false so we skip card formation
-        setCardStage(5) // Set to final stage
-
-        // Skip the card formation animation and show TypewriterAnalysis directly
-        setIsAnimating(false)
-        setShowAfter(true) // Mark that we're in the "after" view
-        console.log("Showing after view with TypewriterAnalysis")
+        
+        // Add a flash effect during transition for high contrast
+        const flashElement = document.createElement('div');
+        flashElement.className = 'absolute inset-0 bg-white z-50';
+        flashElement.style.animation = 'flashTransition 0.5s forwards';
+        document.querySelector('.max-w-5xl')?.appendChild(flashElement);
+        
+        // Add flash transition keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes flashTransition {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Remove flash after animation completes
+        setTimeout(() => {
+          flashElement.remove();
+          style.remove();
+          
+          // Skip card formation and show TypewriterAnalysis directly
+          setShowCardFormation(false)
+          setCardStage(5)
+          setIsAnimating(false)
+          setShowAfter(true)
+          console.log("Showing after view with TypewriterAnalysis")
+        }, 500);
 
       }, 2000)
     } else {
@@ -139,7 +164,7 @@ export function BeforeAfterSlider() {
         </div>
 
         {/* Center Button - Always visible */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 flex items-center justify-center">
+        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 flex items-center justify-center ${showButton ? '' : 'hidden'}`}>
           <Button
             onClick={toggleView}
             disabled={isAnimating}
@@ -215,29 +240,16 @@ export function BeforeAfterSlider() {
                 opacity: 1;
               }
             }
-            
-            @keyframes glow {
-              0%, 100% {
-                box-shadow: 0 0 20px 10px rgba(16, 185, 129, 0.3);
-              }
-              50% {
-                box-shadow: 0 0 40px 15px rgba(16, 185, 129, 0.5);
-              }
-            }
-            
-            .glow-effect {
-              animation: glow 2s ease-in-out infinite;
-            }
           `}</style>
         </div>
 
         {/* Content Filtering Animation Overlay */}
         {showFilterAnimation && (
-          <div className="absolute inset-0 z-30 bg-[#0F172A]/95 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-30 bg-[#0F172A]/80 flex items-center justify-center overflow-hidden">
             <div className="relative w-full max-w-md h-80">
               {/* Filter graphic in the middle */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full border-8 border-[#10B981] flex items-center justify-center z-20 glow-effect">
-                <Filter className="h-20 w-20 text-[#10B981] animate-pulse" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-8 border-[#10B981] flex items-center justify-center z-20">
+                <Filter className="h-16 w-16 text-[#10B981] animate-pulse" />
               </div>
 
               {/* Document icons flowing from top */}
@@ -263,7 +275,7 @@ export function BeforeAfterSlider() {
                     >
                       <FileText
                         style={{ width: size, height: size }}
-                        className={isFiltered ? "text-red-500" : "text-green-400"}
+                        className={isFiltered ? "text-red-400" : "text-green-400"}
                       />
                     </div>
                   )
@@ -272,8 +284,8 @@ export function BeforeAfterSlider() {
 
               {/* Stats counter */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center text-white">
-                <div className="text-3xl font-bold text-[#10B981] animate-pulse">Save Hours each Day</div>
-                <div className="text-sm text-white font-medium mt-2">AI-Powered Newsletter Summarization</div>
+                <div className="text-3xl font-bold text-[#10B981]">Save Hours</div>
+                <div className="text-xl font-medium">Each Day!</div>
               </div>
             </div>
           </div>
@@ -809,13 +821,13 @@ export function BeforeAfterSlider() {
                   // Superhuman - Zain Kahn Newsletter
                   return (
                     <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#0F172A]">
+                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#0055CC]">
                         <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Chamath%20Palihapitiya%281%29-FBvjpWt3AJ4shBcypc2GuyWPdAIsWH.png"
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/superman-logo-dWPDpw5HkZ1GxwgpGpF8MGAO7vXFfn.png"
                           alt="Superhuman Logo"
                           width={24}
                           height={24}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <div className="flex-1">

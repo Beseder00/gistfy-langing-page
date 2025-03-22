@@ -48,79 +48,137 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
   useEffect(() => {
     if (!isTyping) return
 
-    // Find the starting point at the "Think Different" section
-    const thinkDifferentIndex = fullText.indexOf("**Think Different:**")
-    const startIndex = thinkDifferentIndex > 0 ? thinkDifferentIndex : 0
+    // Find the "Think Different" section in the text
+    const thinkDifferentIndex = fullText.indexOf("**Think Different:**");
     
-    // Initial chunk to display immediately (from beginning to the "Think Different" section)
-    const initialChunk = fullText.substring(0, startIndex)
-    setDisplayedText(initialChunk)
-
-    // Remaining text to type out character by character
-    const remaining = fullText.substring(startIndex)
-    let index = 0
-
-    // Function to simulate typing with variable speed
-    const typeNextCharacter = () => {
-      if (index < remaining.length) {
-        setDisplayedText(prev => prev + remaining.charAt(index))
-        index++
-
-        // Vary typing speed based on character
-        let delay = 10 // Base speed
-        const currentChar = remaining.charAt(index)
-        
-        // Slow down at punctuation
-        if (['.', '!', '?', '\n'].includes(currentChar)) {
-          delay = 100
-        } else if ([',', ';', ':'].includes(currentChar)) {
-          delay = 50
-        }
-        
-        // Add random variation
-        delay += Math.random() * 20
-
-        // Schedule next character
-        setTimeout(typeNextCharacter, delay)
-
-        // Auto-scroll as new content appears
+    // If found, start from that section, otherwise use default behavior
+    if (thinkDifferentIndex > 0) {
+      // Include everything up to and including the "Think Different" section title
+      const initialChunk = fullText.substring(0, thinkDifferentIndex + 20); // +20 to include the title
+      setDisplayedText(initialChunk);
+      
+      // Auto-scroll to position the "Think Different" section at the top
+      setTimeout(() => {
         if (containerRef.current) {
-          // Scroll to the Think Different section
-          if (index === 0) {
-            const thinkDifferentElement = document.getElementById('think-different-section')
-            if (thinkDifferentElement) {
-              thinkDifferentElement.scrollIntoView({ behavior: 'smooth' })
-            }
+          // Find where to scroll to show the Think Different section
+          const thinkDifferentElement = containerRef.current.querySelector(':contains("Think Different")');
+          if (thinkDifferentElement) {
+            containerRef.current.scrollTop = Math.max(0, (thinkDifferentElement as HTMLElement).offsetTop - 100);
           }
-          // Continue auto-scrolling as typing progresses
-          containerRef.current.scrollTop = containerRef.current.scrollHeight
         }
-      } else {
-        // Typing complete
-        setIsTyping(false)
-        setIsComplete(true)
-      }
-    }
+      }, 100);
+      
+      // Remaining text to type out character by character
+      const remaining = fullText.substring(thinkDifferentIndex + 20);
+      let index = 0;
 
-    // Start typing after a short delay
-    const timeout = setTimeout(typeNextCharacter, 800)
-    
-    return () => clearTimeout(timeout)
+      // Function to simulate typing with variable speed
+      const typeNextCharacter = () => {
+        if (index < remaining.length) {
+          setDisplayedText(prev => prev + remaining.charAt(index))
+          index++
+
+          // Vary typing speed based on character
+          let delay = 5 // Slightly faster base speed
+          const currentChar = remaining.charAt(index)
+          
+          // Slow down at punctuation
+          if (['.', '!', '?', '\n'].includes(currentChar)) {
+            delay = 80
+          } else if ([',', ';', ':'].includes(currentChar)) {
+            delay = 40
+          }
+          
+          // Add random variation
+          delay += Math.random() * 15
+
+          // Schedule next character
+          setTimeout(typeNextCharacter, delay)
+
+          // Auto-scroll as new content appears
+          if (containerRef.current) {
+            containerRef.current.scrollTop = containerRef.current.scrollHeight - containerRef.current.clientHeight - 100;
+          }
+        } else {
+          // Typing complete
+          setIsTyping(false)
+          setIsComplete(true)
+        }
+      }
+
+      // Start typing after a short delay
+      const timeout = setTimeout(typeNextCharacter, 800)
+      
+      return () => clearTimeout(timeout)
+    } else {
+      // Original behavior if Think Different section not found
+      const initialChunk = fullText.substring(0, 150)
+      setDisplayedText(initialChunk)
+
+      // Remaining text to type out character by character
+      const remaining = fullText.substring(150)
+      let index = 0
+
+      // Function to simulate typing with variable speed
+      const typeNextCharacter = () => {
+        if (index < remaining.length) {
+          setDisplayedText(prev => prev + remaining.charAt(index))
+          index++
+
+          // Vary typing speed based on character
+          let delay = 10 // Base speed
+          const currentChar = remaining.charAt(index)
+          
+          // Slow down at punctuation
+          if (['.', '!', '?', '\n'].includes(currentChar)) {
+            delay = 100
+          } else if ([',', ';', ':'].includes(currentChar)) {
+            delay = 50
+          }
+          
+          // Add random variation
+          delay += Math.random() * 20
+
+          // Schedule next character
+          setTimeout(typeNextCharacter, delay)
+
+          // Auto-scroll as new content appears
+          if (containerRef.current) {
+            containerRef.current.scrollTop = containerRef.current.scrollHeight
+          }
+        } else {
+          // Typing complete
+          setIsTyping(false)
+          setIsComplete(true)
+        }
+      }
+
+      // Start typing after a short delay
+      const timeout = setTimeout(typeNextCharacter, 800)
+      
+      return () => clearTimeout(timeout)
+    }
   }, [isTyping, fullText])
 
   // Process displayed text to include formatting
   const formatText = (text: string) => {
-    // Track if we're in the "Hidden Factors" section
+    // Track if we're in specific sections
     let inHiddenFactorsSection = false;
+    let inGoodReadSection = false;
     
     // Split by lines
     return text.split('\n').map((line, i) => {
       // Check if we're entering the Hidden Factors section
       if (line.startsWith('## Hidden Factors')) {
         inHiddenFactorsSection = true;
-      } else if (line.startsWith('## ') && inHiddenFactorsSection) {
-        // If we encounter another main heading after Hidden Factors, we're out of that section
+        inGoodReadSection = false;
+      } else if (line.startsWith("## What's a Good Read Today?")) {
+        inGoodReadSection = true;
         inHiddenFactorsSection = false;
+      } else if (line.startsWith('## ') && (inHiddenFactorsSection || inGoodReadSection)) {
+        // If we encounter another main heading after those sections, we're out of them
+        inHiddenFactorsSection = false;
+        inGoodReadSection = false;
       }
       
       // Headers (## and ###)
@@ -145,21 +203,6 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           </h3>
         )
       } 
-      // Bold text with ":" (for sections like "Think Different:")
-      else if (line.startsWith('**') && line.includes(':**')) {
-        // Check if this is the "Think Different" section
-        const isThinkDifferent = line.includes('Think Different:');
-        
-        return (
-          <div 
-            key={i} 
-            id={isThinkDifferent ? 'think-different-section' : undefined}
-            className="text-lg font-bold text-gray-800 mt-4 mb-2"
-          >
-            {line.replace(/^\*\*|\*\*$/g, '')}
-          </div>
-        );
-      }
       // Numbered list items
       else if (/^\d+\.\s/.test(line)) {
         return (
@@ -189,8 +232,8 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
                 {afterColon.split('**').map((part, j) => 
                   j % 2 === 1 ? <span key={j} className="text-gray-800 font-semibold">{part}</span> : part
                 )}
-                {/* Only add 'the Gist' link for Hidden Factors section */}
-                {inHiddenFactorsSection && (
+                {/* Add 'the Gist' link for Good Read section only */}
+                {inGoodReadSection && (
                   <>
                     {' '}
                     <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium ml-1">
@@ -213,8 +256,8 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
                 {line.replace('• ', '').split('**').map((part, j) => 
                   j % 2 === 1 ? <span key={j} className="text-gray-800 font-semibold">{part}</span> : part
                 )}
-                {/* Only add 'the Gist' link for Hidden Factors section */}
-                {inHiddenFactorsSection && (
+                {/* Add 'the Gist' link for Good Read section only */}
+                {inGoodReadSection && (
                   <>
                     {' '}
                     <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium ml-1">
@@ -285,18 +328,19 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           {/* Typing cursor */}
           {isTyping && (
             <span 
-              className="absolute inline-block w-2 h-4 bg-blue-500 ml-1"
+              className="absolute inline-block w-2 h-5 bg-blue-600 ml-1"
               style={{ 
                 animation: 'blink 0.7s step-end infinite',
+                boxShadow: '0 0 8px rgba(59, 130, 246, 0.8)'
               }}
             ></span>
           )}
           
           {/* Completion indicator */}
           {isComplete && (
-            <div className="flex items-center justify-center mt-4 pt-2 border-t border-gray-200">
+            <div className="flex items-center justify-center mt-4 pt-2 border-t border-gray-200 animate-fade-in">
               <span className="text-sm text-gray-500">Analysis complete</span>
-              <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
+              <div className="w-2 h-2 bg-green-500 rounded-full ml-2 animate-pulse"></div>
             </div>
           )}
         </div>
@@ -307,6 +351,15 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
+        }
+        
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-in-out;
         }
         
         .custom-scrollbar::-webkit-scrollbar {
