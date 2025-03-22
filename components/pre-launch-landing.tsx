@@ -23,7 +23,7 @@ const scrollbarHideStyles = `
   }
 `
 
-export default function PreLaunchLanding() {
+export function PreLaunchLanding() {
   // Existing code remains the same
   const [email, setEmail] = useState("")
   const [scrolled, setScrolled] = useState(false)
