@@ -1,36 +1,48 @@
 export function PreLaunchLanding() {
   return (
-    <div className="w-full">
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Reclaim Your Mornings.
-                <span className="text-red-500"> Stop Drowning in Newsletters</span>
-              </h1>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Our AI analyzes 30+ AI, Product, and Robotics Newsletters in your Inbox, Delivering You The Gist in Seconds!
-              </p>
-            </div>
-            <div className="space-x-4">
-              <button className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300">
-                Sign Up
-              </button>
-              <button className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300">
-                Login
-              </button>
-            </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <p className="text-xs text-gray-500 dark:text-gray-400">No credit card required</p>
-              <span className="hidden min-[400px]:inline text-xs text-gray-500 dark:text-gray-400">·</span>
-              <p className="text-xs text-gray-500 dark:text-gray-400">14-day free trial</p>
-              <span className="hidden min-[400px]:inline text-xs text-gray-500 dark:text-gray-400">·</span>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Cancel anytime</p>
-            </div>
+    <div className="w-full min-h-screen bg-white">
+      <nav className="fixed top-0 w-full bg-[#006D77] p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-white font-bold">Gistify</div>
+          <div className="flex space-x-6">
+            <a href="#features" className="text-white hover:text-gray-200">Features</a>
+            <a href="#pricing" className="text-white hover:text-gray-200">Pricing</a>
+            <a href="#testimonials" className="text-white hover:text-gray-200">Testimonials</a>
+            <a href="#contact" className="text-white hover:text-gray-200">Contact</a>
           </div>
         </div>
-      </section>
+      </nav>
+
+      <main className="pt-24">
+        <section className="container mx-auto px-4 py-20 text-center">
+          <h1 className="text-[4rem] font-bold leading-tight mb-6">
+            <span className="text-black">Reclaim Your Mornings.</span>{" "}
+            <span className="text-[#FF595E] block md:inline">Stop Drowning in Newsletters</span>
+          </h1>
+          
+          <p className="text-gray-600 text-xl max-w-3xl mx-auto mb-12">
+            Our AI analyzes 30+ AI, Product, and Robotics Newsletters in your Inbox,
+            Delivering You The Gist in Seconds!
+          </p>
+
+          <div className="flex justify-center gap-4 mb-8">
+            <button className="px-8 py-3 bg-[#006D77] text-white font-semibold rounded-md hover:bg-[#005a63] transition-colors">
+              Sign Up
+            </button>
+            <button className="px-8 py-3 bg-white text-[#006D77] font-semibold rounded-md border-2 border-[#006D77] hover:bg-gray-50 transition-colors">
+              Login
+            </button>
+          </div>
+
+          <div className="flex justify-center items-center gap-4 text-gray-500">
+            <span>No credit card required</span>
+            <span>•</span>
+            <span>14-day free trial</span>
+            <span>•</span>
+            <span>Cancel anytime</span>
+          </div>
+        </section>
+      </main>
     </div>
-  )
+  );
 } 
