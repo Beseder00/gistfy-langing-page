@@ -3,20 +3,20 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
+import { Analytics } from "./analytics"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Gist Engine - AI Newsletter Curation",
-  description: "Save hours weekly with AI-powered newsletter curation",
-    generator: 'v0.dev'
+  title: "Gistify - Your AI-Powered Newsletter Command Center",
+  description: "Transform how you consume newsletter content with AI-powered insights and summaries.",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
@@ -46,6 +46,7 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        <Analytics />
       </body>
     </html>
   )

@@ -267,8 +267,10 @@ export default function PreLaunchLanding() {
           </div>
         </section>
 
-        {/* Interactive Dashboard Mockup Section */}
-        <InteractiveDashboardMockup />
+        {/* Command Center Section */}
+        <section className="pt-12 md:pt-16">
+          <InteractiveDashboardMockup />
+        </section>
 
         {/* Improved Testimonials Section - Carousel */}
         <section className="py-20 px-4 bg-gradient-to-b from-white to-[#F8FAFC]" id="testimonials">
@@ -529,7 +531,7 @@ export default function PreLaunchLanding() {
             <div className="text-center mb-12">
               <span className="inline-block bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 text-[#6366F1] px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
                 FAQ
-              </span>
+                </span>
               <h2 className="text-4xl md:text-4xl font-bold text-[#1E3A8A] mb-4">Frequently Asked Questions</h2>
               <p className="text-[#334155] text-lg max-w-2xl mx-auto">
                 Everything you need to know about our upcoming platform.

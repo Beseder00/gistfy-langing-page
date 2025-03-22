@@ -4,12 +4,12 @@ export const commandCenterData = {
   sectionTitle: "Command Center",
   heading: {
     firstPart: "Meet Your New",
-    highlightedPart: "Command Center",
+    highlightedPart: " Command Center",
   },
   subtitle: {
     text: "For",
     highlight: "High-Productivity",
-    suffix: "Individuals",
+    suffix: " Individuals",
   },
   dashboard: {
     url: "app.gistify.ai/dashboard",
@@ -64,7 +64,8 @@ export const commandCenterData = {
       iconBgColor: "bg-[#E6FFFA]",
       iconColor: "#0CA5E9",
       title: "Deep Linking",
-      description: "Jump straight to key sources, references, and insights—no manual searching required.",
+      description:
+        "Jump straight to key sources, references, and insights—no manual searching required.",
       progressColor: "bg-cyan-500",
     },
     {
@@ -73,7 +74,8 @@ export const commandCenterData = {
       iconBgColor: "bg-[#FFEFEF]",
       iconColor: "#FF5630",
       title: "Ultra-Concise AI Summaries",
-      description: "AI condenses newsletters into short, punchy insights—so you get the gist instantly.",
+      description:
+        "AI condenses newsletters into short, punchy insights—so you get the gist instantly.",
       progressColor: "bg-red-500",
     },
     {
@@ -84,7 +86,7 @@ export const commandCenterData = {
       title: "AI-Driven Arguments",
       description:
         "Instant AI-generated perspectives—uncover key arguments, counterpoints, and insights on major topics.",
-      progressColor: "bg-indigo-500",
+      progressColor: "bg-blue-500",
     },
   ],
 }

@@ -2,13 +2,15 @@
 
 import type React from "react"
 import { useState } from "react"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 import { commandCenterData } from "@/data/command-center-data"
 import { styles } from "@/styles/command-center-styles"
 import { SectionHeader } from "./section-header"
 import { DashboardMockup } from "./dashboard-mockup"
 import { FeatureCard } from "./feature-card"
 import { EmailPopup } from "./email-popup"
+import { CommandCenter as CommandCenterType } from "@/types"
+import { Button } from "@/components/ui/button"
 
 export function CommandCenter() {
   const [showEmailPopup, setShowEmailPopup] = useState(false)
@@ -34,73 +36,57 @@ export function CommandCenter() {
   }
 
   return (
-    <section className={styles.section} id="command-center">
-      {/* Background elements - kept in main component for simplicity */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "8s" }}
-        ></div>
-        <div
-          className="absolute bottom-0 right-1/4 w-72 h-72 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "10s" }}
-        ></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-20 right-[15%] w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-[15%] w-16 h-16 bg-indigo-500/10 rounded-full blur-xl"></div>
-        <div
-          className="absolute top-[30%] right-[20%] w-8 h-8 bg-blue-400/20 rounded-full blur-sm animate-float"
-          style={{ animationDuration: "15s", animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute bottom-[30%] left-[20%] w-6 h-6 bg-indigo-400/20 rounded-full blur-sm animate-float"
-          style={{ animationDuration: "12s", animationDelay: "2s" }}
-        ></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMwQTZFNkMiIGZpbGwtb3BhY2l0eT0iMC4wMiIgZD0iTTAgMGg2MHY2MEgweiIvPjxwYXRoIGQ9Ik02MCAwdjYwSDBWMGg2MHpNMCB2NjB2MEgzMHYzMHpNMCA2MGgzMFYzMEgwdjMwek0wIHY2MGgzMFYzMEgwdjMwek0zMCA2MGgzMFYzMEgzMHYzMHoiIGZpbGw9IiMwQTZFNkMiIGZpbGwtb3BhY2l0eT0iMC4wNCIvPjwvZz48L3N2Zz4=')]"></div>
-      </div>
-
-      <div className={styles.container}>
-        <div className={styles.contentWrapper}>
-          {/* Section Header Component */}
-          <SectionHeader
-            sectionTitle={commandCenterData.sectionTitle}
-            heading={commandCenterData.heading}
-            subtitle={commandCenterData.subtitle}
-          />
-
-          {/* Dashboard Mockup and Features */}
-          <div className={styles.mockupAndFeaturesContainer}>
-            {/* Dashboard Mockup Component */}
-            <DashboardMockup
-              url={commandCenterData.dashboard.url}
-              imageSrc={commandCenterData.dashboard.imageSrc}
-              imageAlt={commandCenterData.dashboard.imageAlt}
+    <section className="relative">
+      <div className="py-8 md:py-12 px-4 bg-gradient-to-b from-[#F8FAFC] to-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-8">
+            <SectionHeader
+              sectionTitle={commandCenterData.sectionTitle}
+              heading={commandCenterData.heading}
+              subtitle={commandCenterData.subtitle}
             />
+          </div>
+
+          {/* Dashboard Mockup and Features Container */}
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-8">
+            {/* Dashboard Mockup */}
+            <div className="w-full lg:w-[55%] xl:w-[60%]">
+              <DashboardMockup
+                url={commandCenterData.dashboard.url}
+                imageSrc={commandCenterData.dashboard.imageSrc}
+                imageAlt={commandCenterData.dashboard.imageAlt}
+              />
+            </div>
 
             {/* Feature Cards */}
-            <div className="lg:flex-1 w-full max-w-sm flex flex-col justify-between h-full">
-              <div className={styles.featureCardsContainer}>
-                {commandCenterData.featureCards.map((card) => (
-                  <FeatureCard
-                    key={card.id}
-                    icon={card.icon}
-                    iconBgColor={card.iconBgColor}
-                    iconColor={card.iconColor}
-                    title={card.title}
-                    description={card.description}
-                    progressColor={card.progressColor}
-                  />
-                ))}
-              </div>
+            <div className="w-full lg:w-[40%] space-y-3">
+              {commandCenterData.featureCards.map((card) => (
+                <FeatureCard
+                  key={card.id}
+                  icon={card.icon}
+                  iconBgColor={card.iconBgColor}
+                  iconColor={card.iconColor}
+                  title={card.title}
+                  description={card.description}
+                  progressColor={card.progressColor}
+                />
+              ))}
             </div>
           </div>
 
           {/* CTA Button */}
-          <div className={styles.ctaContainer}>
-            <button onClick={() => setShowEmailPopup(true)} className={styles.ctaButton}>
-              <span>{commandCenterData.ctaButton.text}</span>
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </button>
+          <div className="mt-16 flex justify-center">
+            <Button
+              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#4F46E5] hover:from-[#1D4ED8] hover:via-[#2563EB] hover:to-[#4338CA] text-white font-semibold px-8 py-4 rounded-xl text-lg tracking-wide shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:shadow-[0_8px_30px_rgba(37,99,235,0.65)] transition-all duration-300 ease-out transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 active:scale-[0.98] border border-white/10"
+              aria-label="Try Gistify Dashboard - Click to explore our time-saving features"
+            >
+              <Sparkles className="w-5 h-5 text-blue-100 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
+              <span className="relative">
+                Try Gistify Dashboard
+                <span className="absolute inset-x-0 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-blue-100 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              </span>
+              <ArrowRight className="w-5 h-5 text-blue-100 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
           </div>
         </div>
       </div>
