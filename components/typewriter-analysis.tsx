@@ -48,18 +48,16 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
   useEffect(() => {
     if (!isTyping) return
 
-    // For debugging, display the full text immediately
-    setDisplayedText(fullText)
-    setIsTyping(false)
-    setIsComplete(true)
+    // Find the starting point at the "Think Different" section
+    const thinkDifferentIndex = fullText.indexOf("**Think Different:**")
+    const startIndex = thinkDifferentIndex > 0 ? thinkDifferentIndex : 0
     
-    /* Normal animation code is commented out for debugging
-    // Initial chunk to display immediately (first 150 characters)
-    const initialChunk = fullText.substring(0, 150)
+    // Initial chunk to display immediately (from beginning to the "Think Different" section)
+    const initialChunk = fullText.substring(0, startIndex)
     setDisplayedText(initialChunk)
 
     // Remaining text to type out character by character
-    const remaining = fullText.substring(150)
+    const remaining = fullText.substring(startIndex)
     let index = 0
 
     // Function to simulate typing with variable speed
@@ -87,6 +85,14 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
 
         // Auto-scroll as new content appears
         if (containerRef.current) {
+          // Scroll to the Think Different section
+          if (index === 0) {
+            const thinkDifferentElement = document.getElementById('think-different-section')
+            if (thinkDifferentElement) {
+              thinkDifferentElement.scrollIntoView({ behavior: 'smooth' })
+            }
+          }
+          // Continue auto-scrolling as typing progresses
           containerRef.current.scrollTop = containerRef.current.scrollHeight
         }
       } else {
@@ -100,8 +106,7 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
     const timeout = setTimeout(typeNextCharacter, 800)
     
     return () => clearTimeout(timeout)
-    */
-  }, [isTyping])
+  }, [isTyping, fullText])
 
   // Process displayed text to include formatting
   const formatText = (text: string) => {
@@ -140,6 +145,21 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           </h3>
         )
       } 
+      // Bold text with ":" (for sections like "Think Different:")
+      else if (line.startsWith('**') && line.includes(':**')) {
+        // Check if this is the "Think Different" section
+        const isThinkDifferent = line.includes('Think Different:');
+        
+        return (
+          <div 
+            key={i} 
+            id={isThinkDifferent ? 'think-different-section' : undefined}
+            className="text-lg font-bold text-gray-800 mt-4 mb-2"
+          >
+            {line.replace(/^\*\*|\*\*$/g, '')}
+          </div>
+        );
+      }
       // Numbered list items
       else if (/^\d+\.\s/.test(line)) {
         return (

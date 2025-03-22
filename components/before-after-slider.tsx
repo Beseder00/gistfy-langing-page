@@ -215,16 +215,29 @@ export function BeforeAfterSlider() {
                 opacity: 1;
               }
             }
+            
+            @keyframes glow {
+              0%, 100% {
+                box-shadow: 0 0 20px 10px rgba(16, 185, 129, 0.3);
+              }
+              50% {
+                box-shadow: 0 0 40px 15px rgba(16, 185, 129, 0.5);
+              }
+            }
+            
+            .glow-effect {
+              animation: glow 2s ease-in-out infinite;
+            }
           `}</style>
         </div>
 
         {/* Content Filtering Animation Overlay */}
         {showFilterAnimation && (
-          <div className="absolute inset-0 z-30 bg-[#0F172A]/80 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-30 bg-[#0F172A]/95 flex items-center justify-center overflow-hidden">
             <div className="relative w-full max-w-md h-80">
               {/* Filter graphic in the middle */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-8 border-[#10B981] flex items-center justify-center z-20">
-                <Filter className="h-16 w-16 text-[#10B981] animate-pulse" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full border-8 border-[#10B981] flex items-center justify-center z-20 glow-effect">
+                <Filter className="h-20 w-20 text-[#10B981] animate-pulse" />
               </div>
 
               {/* Document icons flowing from top */}
@@ -250,7 +263,7 @@ export function BeforeAfterSlider() {
                     >
                       <FileText
                         style={{ width: size, height: size }}
-                        className={isFiltered ? "text-red-400" : "text-green-400"}
+                        className={isFiltered ? "text-red-500" : "text-green-400"}
                       />
                     </div>
                   )
@@ -259,8 +272,8 @@ export function BeforeAfterSlider() {
 
               {/* Stats counter */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center text-white">
-                <div className="text-2xl font-bold text-[#10B981]">80%</div>
-                <div className="text-sm">Noise Reduction</div>
+                <div className="text-3xl font-bold text-[#10B981] animate-pulse">Save Hours each Day</div>
+                <div className="text-sm text-white font-medium mt-2">AI-Powered Newsletter Summarization</div>
               </div>
             </div>
           </div>
