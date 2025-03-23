@@ -5,10 +5,14 @@ const MAILER_LITE_API_KEY = process.env.MAILER_LITE_API_KEY || "YOUR_API_KEY_HER
 
 export async function POST(request: Request) {
   try {
+    console.log("API Route called, API Key available:", !!MAILER_LITE_API_KEY);
+    console.log("API Key starts with:", MAILER_LITE_API_KEY.substring(0, 10) + "...");
+    
     const { email } = await request.json();
     
     // Validate email
     if (!email || typeof email !== 'string' || !email.includes('@')) {
+      console.error("Invalid email format:", email);
       return NextResponse.json(
         { message: 'Invalid email address' },
         { status: 400 }
@@ -20,6 +24,7 @@ export async function POST(request: Request) {
     
     try {
       // Add subscriber to MailerLite
+      console.log("Attempting to call MailerLite API...");
       const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
         method: "POST",
         headers: {
@@ -29,7 +34,6 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           email: email,
-          groups: ["gistify-waitlist"], // Replace with your actual group ID
           status: "active"
         })
       });
@@ -37,21 +41,24 @@ export async function POST(request: Request) {
       const result = await response.json();
       
       if (!response.ok) {
-        console.error("MailerLite API error:", result);
+        console.error("MailerLite API error status:", response.status);
+        console.error("MailerLite API error details:", result);
         throw new Error(result.message || "Error adding subscriber to MailerLite");
       }
       
       console.log("MailerLite API success:", result);
+      return NextResponse.json(
+        { message: 'Subscription successful', email },
+        { status: 200 }
+      );
     } catch (apiError) {
       console.error("Error calling MailerLite API:", apiError);
-      // We'll still return success to the user
+      // Return a more specific error for API issues
+      return NextResponse.json(
+        { message: 'Error connecting to email service. Your subscription was not processed.' },
+        { status: 500 }
+      );
     }
-    
-    // Return success
-    return NextResponse.json(
-      { message: 'Subscription successful', email },
-      { status: 200 }
-    );
   } catch (error) {
     console.error('Error processing subscription:', error);
     

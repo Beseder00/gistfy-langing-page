@@ -84,7 +84,7 @@ export default function PreLaunchLanding() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     // Basic validation
@@ -92,25 +92,66 @@ export default function PreLaunchLanding() {
       alert("Please enter a valid email address")
       return
     }
+
+    try {
+      console.log("Submitting email:", email)
+      
+      // Use the new API endpoint
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+      
+      console.log("Response status:", response.status)
+      const data = await response.json()
+      console.log("Response data:", data)
+      
+      if (!response.ok) {
+        throw new Error(data.message || "Error submitting email")
+      }
+      
+      alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
+      setEmail("")
+      setShowEmailPopup(false)
+    } catch (error) {
+      console.error("Error submitting email:", error)
+      alert("There was an error submitting your email. Please try again.")
+    }
+  }
+
+  const handleSubmitTest = async (e: React.FormEvent) => {
+    e.preventDefault()
     
-    // Use the new API endpoint
-    fetch("/api/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
-        setEmail("")
-        setShowEmailPopup(false)
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address")
+      return
+    }
+
+    try {
+      console.log("Submitting test email:", email)
+      
+      const response = await fetch("/api/subscribe-test", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
       })
-      .catch((error) => {
-        console.error("Error submitting email:", error)
-        alert("There was an error submitting your email. Please try again.")
-      })
+      
+      console.log("Test response status:", response.status)
+      const data = await response.json()
+      console.log("Test response data:", data)
+      
+      alert(`Test subscription successful with ${email}!`)
+      setEmail("")
+      setShowEmailPopup(false)
+    } catch (error) {
+      console.error("Error in test submission:", error)
+      alert("There was an error in the test. Please check the console.")
+    }
   }
 
   // Modify the CTA section button to open the popup
@@ -248,8 +289,9 @@ export default function PreLaunchLanding() {
                   />
                 </div>
                 <Button
-                  type="submit"
-                  className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
+                  type="button"
+                  onClick={openEmailPopup}
+                  className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Early Access
                 </Button>
@@ -719,37 +761,45 @@ export default function PreLaunchLanding() {
               </div>
               <h3 className="text-2xl font-bold text-white text-center mb-5">Get 60% Off at Launch</h3>
 
-              <form onSubmit={handleSubmit} className="mb-4">
-                <div className="relative mb-3">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white" />
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-white/30 bg-white/15 text-white rounded-lg w-full focus:border-white/70 placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50"
+                    className="pl-10 h-12 border-gray-300 rounded-lg w-full placeholder:text-gray-500 shadow-md hover:shadow-blue-300/30 focus:shadow-blue-300/60 focus:shadow-lg transition-all duration-1000 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 border-blue-200 hover:border-blue-300 animate-pulse-subtle"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
+
                 <Button
-                  type="button"
-                  onClick={openEmailPopup}
-                  className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
+                  type="submit"
+                  className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
                 >
                   Get Early Access
                 </Button>
-              </form>
 
-              <div className="flex justify-center gap-x-6 text-xs text-white/80">
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
-                  <span>Cancel anytime</span>
+                <Button
+                  type="button"
+                  onClick={handleSubmitTest}
+                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12"
+                >
+                  Test Submission
+                </Button>
+
+                <div className="flex justify-center gap-x-6 text-xs text-gray-500 mt-4">
+                  <div className="flex items-center">
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <span>Cancel anytime</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <span>No credit card needed</span>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
-                  <span>No credit card needed</span>
-                </div>
-              </div>
+              </form>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-white/90 mt-8">
               <div className="flex items-center">
@@ -804,6 +854,14 @@ export default function PreLaunchLanding() {
                   className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
                 >
                   Get Early Access
+                </Button>
+
+                <Button
+                  type="button"
+                  onClick={handleSubmitTest}
+                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12"
+                >
+                  Test Submission
                 </Button>
 
                 <div className="flex justify-center gap-x-6 text-xs text-gray-500 mt-4">
