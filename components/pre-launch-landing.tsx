@@ -289,8 +289,7 @@ export default function PreLaunchLanding() {
                   />
                 </div>
                 <Button
-                  type="button"
-                  onClick={openEmailPopup}
+                  type="submit"
                   className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Early Access
@@ -781,14 +780,6 @@ export default function PreLaunchLanding() {
                   Get Early Access
                 </Button>
 
-                <Button
-                  type="button"
-                  onClick={handleSubmitTest}
-                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Test Submission
-                </Button>
-
                 <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
@@ -854,14 +845,6 @@ export default function PreLaunchLanding() {
                   className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Early Access
-                </Button>
-
-                <Button
-                  type="button"
-                  onClick={handleSubmitTest}
-                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Test Submission
                 </Button>
 
                 <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
