@@ -30,8 +30,8 @@ export function FeatureCard({
           <p className="text-slate-600 text-xs mb-3">{description}</p>
           <div className="w-full max-w-[200px] mx-auto sm:mx-0 bg-slate-100 rounded-full h-1.5 overflow-hidden">
             <div 
-              className={`${progressColor} h-1.5 rounded-full`} 
-              style={{ width: '100%', minWidth: '100%', display: 'block' }}
+              className="h-1.5 rounded-full" 
+              style={{ width: '100%', minWidth: '100%', display: 'block', backgroundColor: iconColor }}
             ></div>
           </div>
         </div>

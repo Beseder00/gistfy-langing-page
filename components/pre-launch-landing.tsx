@@ -127,6 +127,12 @@ export default function PreLaunchLanding() {
             </div>
             <nav className="flex items-center justify-end flex-1">
               <a
+                href="/blog"
+                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+              >
+                Blog
+              </a>
+              <a
                 href="#examples"
                 className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
               >
@@ -267,8 +273,98 @@ export default function PreLaunchLanding() {
           </div>
         </section>
 
-        {/* Command Center Section */}
-        <section className="pt-12 md:pt-16">
+        {/* How to Get Started Section */}
+        <section className="py-24 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white overflow-hidden relative">
+          {/* Background decorative elements */}
+          <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-indigo-100/30 blur-3xl"></div>
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <span className="inline-block bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm">
+                Simple 3-Step Process
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-700">
+                How Gistify Works
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Getting started with Gistify is so fast—just link your inbox and let AI become your executive assistant.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
+              {/* Connection lines between steps (visible on desktop only) */}
+              <div className="hidden md:block absolute top-24 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-blue-400 to-indigo-400 z-0">
+                {/* Empty div for the connecting line */}
+              </div>
+              
+              {/* Step 1 */}
+              <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-100 relative z-10">
+                <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Connect Your Inbox</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Gistify instantly spots newsletters like <span className="font-semibold text-blue-700">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700">Ben's Bites (9:05 AM)</span>—no manual picking required.
+                </p>
+              </div>
+
+              {/* Step 2 */}
+              <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-emerald-100 relative z-10">
+                <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="4" y="7" width="16" height="12" rx="2" />
+                    <rect x="9" y="3" width="6" height="4" rx="1" />
+                    <circle cx="9" cy="13" r="1.5" fill="currentColor" />
+                    <circle cx="15" cy="13" r="1.5" fill="currentColor" />
+                    <path d="M9 18l3 1.5 3-1.5" />
+                  </svg>
+                </div>
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">AI-Powered Scanning</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Our Gist Engine dives in, scanning and parsing all items from every newsletter—from <span className="font-semibold text-emerald-700">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700">Superhuman's robotics update (11:30 AM)</span>.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-purple-100 relative z-10">
+                <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Get Your Daily Briefing</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Wake up to a sleek, AI-crafted summary with <span className="font-semibold text-purple-700">hidden insights</span>, <span className="font-semibold text-purple-700">trend analysis</span>, <span className="font-semibold text-purple-700">direct source links</span>, and easy bookmarking.
+                </p>
+              </div>
+            </div>
+            
+            {/* Call to action */}
+            <div className="mt-16 text-center">
+              <a href="#waitlist-form" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+                Start Saving Time
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20 bg-[#F8FAFC]">
           <InteractiveDashboardMockup />
         </section>
 

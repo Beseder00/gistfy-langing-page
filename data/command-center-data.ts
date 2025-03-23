@@ -1,4 +1,5 @@
-import { Settings, Users, Bookmark, Link, FileText, Star } from "lucide-react"
+import { Settings, Bookmark, Link, FileText, Star } from "lucide-react"
+import { Robot } from "@/components/custom-icons"
 
 export const commandCenterData = {
   sectionTitle: "Command Center",
@@ -40,7 +41,7 @@ export const commandCenterData = {
     },
     {
       id: "daily-ai",
-      icon: Users,
+      icon: Robot,
       iconBgColor: "bg-[#E3FCEF]",
       iconColor: "#36B37E",
       title: "Daily AI Summary – AI-Driven Intelligence",
@@ -83,7 +84,7 @@ export const commandCenterData = {
       icon: Star,
       iconBgColor: "bg-[#E6F9FF]",
       iconColor: "#00B8D9",
-      title: "AI-Driven Arguments",
+      title: "AI-Driven Perspectives",
       description:
         "Instant AI-generated perspectives—uncover key arguments, counterpoints, and insights on major topics.",
       progressColor: "bg-blue-500",
