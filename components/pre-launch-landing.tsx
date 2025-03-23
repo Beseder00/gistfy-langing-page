@@ -234,7 +234,7 @@ export default function PreLaunchLanding() {
                 <span className="relative z-10">Personalized Daily Brief</span>
                 <span className="absolute inset-0 bg-blue-100/50 rounded blur-sm -z-10"></span>
               </span>{" "}
-              and the gist of what you must know!
+              and More to Stay Ahead!
             </p>
 
             {/* Countdown Timer - Moved Above */}
