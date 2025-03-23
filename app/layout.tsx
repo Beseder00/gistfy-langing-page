@@ -8,9 +8,9 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Gist Engine - AI Newsletter Curation",
-  description: "Save hours weekly with AI-powered newsletter curation",
-    generator: 'v0.dev'
+  title: "AI-Powered Daily Briefing AI Robotics | Gistify",
+  description: "Transform your newsletter experience with Gistify. Our AI assistant scans your inbox, analyzes AI and robotics newsletters, and delivers concise, personalized daily briefings. Save time and stay informed with smart summaries from your favorite tech newsletters.",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
