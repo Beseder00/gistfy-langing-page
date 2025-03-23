@@ -205,20 +205,10 @@ export default function PreLaunchLanding() {
           </div>
         </header>
 
-        {/* Hero Section with Email Overload Background Image */}
+        {/* Hero Section without Background Image */}
         <section className="pt-24 pb-20 px-4 relative overflow-hidden">
-          {/* Background Image with Overlay */}
+          {/* Removed Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
-            <Image
-              src="https://p7lrpwrygsvtwfmu.public.blob.vercel-storage.com/DALL%C2%B7E%202025-03-19%2015.22.50%20-%20A%20digital%20illustration%20of%20an%20overwhelming%20email%20inbox%20scene.%20A%20stressed-out%20person%20sits%20at%20a%20cluttered%20desk%2C%20surrounded%20by%20stacks%20of%20unread%20emails%2C%20no-RwzG2XeF571lisqK6GH05Asa0Lq5rW.webp"
-              alt="Overwhelming email inbox"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Gradient overlay to mute the background image */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/85 to-[#F8FAFC]/95"></div>
-
             {/* Additional blur effects for depth */}
             <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#60A5FA]/20 blur-3xl animate-pulse"></div>
             <div
@@ -234,17 +224,17 @@ export default function PreLaunchLanding() {
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
               <span className="text-[#1E3A8A]">Drowning in Newsletters?</span>{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#2563EB]">
-                Reclaim
+                Be the First
               </span>
-              <span className="text-[#6366F1]"> Your Mornings.</span>
+              <span className="text-[#6366F1]"> to Gistify Your Inbox.</span>
             </h1>
             <p className="text-[#334155] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-white/70 backdrop-blur-sm rounded-lg px-4 py-2">
-              Our AI analyzes 30+ AI, Product, and Robotics Newsletters in your Inbox, Delivering You{" "}
+              Our AI scans 30+ AI, Product & Robotics newsletters—delivering a{" "}
               <span className="font-semibold text-[#3B82F6] animate-pulse-subtle relative">
-                <span className="relative z-10">The Gist</span>
+                <span className="relative z-10">Personalized Daily Brief</span>
                 <span className="absolute inset-0 bg-blue-100/50 rounded blur-sm -z-10"></span>
               </span>{" "}
-              in Seconds!
+              and the gist of what matters to YOU.
             </p>
 
             {/* Countdown Timer - Moved Above */}
