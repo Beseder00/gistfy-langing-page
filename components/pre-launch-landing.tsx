@@ -305,7 +305,7 @@ export default function PreLaunchLanding() {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1E3A8A] mt-2 mb-12 max-w-4xl mx-auto leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
-                Increase Your Productivity <span className="font-extrabold text-[#F43F5E]">10x</span> by Delegating Your
+                Boost Your Productivity <span className="font-extrabold text-[#F43F5E]">10x</span> by Automating Your
                 Newsletter Reading
               </span>
             </h2>

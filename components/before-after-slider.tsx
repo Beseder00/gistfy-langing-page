@@ -191,10 +191,7 @@ export function BeforeAfterSlider() {
             ) : (
               <>
                 <div className="flex items-center justify-center">
-                  <span className="relative z-10 font-bold text-lg whitespace-nowrap">See A Daily Summary</span>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="relative z-10 font-medium text-base whitespace-nowrap">With Gistify</span>
+                  <span className="relative z-10 font-bold text-lg whitespace-nowrap">See the Daily Brief with Gistify</span>
                   <Sparkles className="ml-2 h-4 w-4 inline-block animate-pulse" />
                 </div>
               </>

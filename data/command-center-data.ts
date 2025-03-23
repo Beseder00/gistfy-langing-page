@@ -44,7 +44,7 @@ export const commandCenterData = {
       icon: Robot,
       iconBgColor: "bg-[#E3FCEF]",
       iconColor: "#36B37E",
-      title: "Daily AI Summary – AI-Driven Intelligence",
+      title: "Daily AI Daily Brief",
       description:
         "A single AI-powered briefing that doesn't just summarize—it reads, analyzes, prioritizes insights from newsletters in real time.",
       progressColor: "bg-green-500",
