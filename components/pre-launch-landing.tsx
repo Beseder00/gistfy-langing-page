@@ -11,6 +11,7 @@ import { BeforeAfterSlider } from "./before-after-slider"
 import { useState, useEffect } from "react"
 import { InteractiveDashboardMockup } from "./interactive-dashboard-mockup"
 import Image from "next/image"
+import { ThemeToggle } from "./theme-toggle"
 
 // Add this after the imports
 const scrollbarHideStyles = `
@@ -165,11 +166,11 @@ export default function PreLaunchLanding() {
       <style jsx global>
         {scrollbarHideStyles}
       </style>
-      <div className="bg-gradient-to-b from-[#F8FAFC] via-white to-[#F1F5F9] min-h-screen">
+      <div className="bg-[var(--background)] min-h-screen">
         {/* Header */}
         <header
           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            scrolled ? "bg-[#0F172A]/95 backdrop-blur-md py-3" : "bg-gradient-to-r from-[#0F172A] to-[#1E293B] py-4"
+            scrolled ? "bg-[var(--header-gradient-start)] dark:bg-[#0F172A] py-3 shadow-md" : "bg-[var(--header-gradient-start)] dark:bg-[#0F172A] py-4"
           }`}
         >
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
@@ -179,66 +180,69 @@ export default function PreLaunchLanding() {
             <nav className="flex items-center justify-end flex-1">
               <a
                 href="/blog"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
               >
                 Blog
               </a>
               <a
                 href="#examples"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
               >
                 Examples
               </a>
               <a
                 href="#features"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
               >
                 Features
               </a>
               <a
                 href="#contact"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
               >
                 Contact
               </a>
+              <div className="ml-4 md:ml-6">
+                <ThemeToggle />
+              </div>
             </nav>
           </div>
         </header>
 
         {/* Hero Section without Background Image */}
-        <section className="pt-24 pb-20 px-4 relative overflow-hidden">
+        <section className="pt-24 pb-20 px-4 relative overflow-hidden bg-gradient-to-b from-[var(--background)] to-[var(--card-background)]">
           {/* Removed Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             {/* Additional blur effects for depth */}
-            <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#60A5FA]/20 blur-3xl animate-pulse"></div>
+            <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#60A5FA]/20 dark:bg-[#60A5FA]/10 blur-3xl animate-pulse"></div>
             <div
-              className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-[#818CF8]/20 blur-3xl animate-pulse"
+              className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-[#818CF8]/20 dark:bg-[#818CF8]/10 blur-3xl animate-pulse"
               style={{ animationDelay: "1s" }}
             ></div>
           </div>
 
           <div id="waitlist-form" className="relative text-center flex flex-col items-center z-10 max-w-4xl mx-auto">
-            <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 text-[#6366F1] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+            <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
               Coming Soon — Join the Waitlist
             </span>
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
-              <span className="text-[#1E3A8A]">Drowning in Newsletters?</span>{" "}
+              <span className="text-[#1E3A8A] dark:text-[#60A5FA]">Drowning in Newsletters?</span>{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#2563EB]">
                 Be the First
               </span>
-              <span className="text-[#6366F1]"> to Gistify Your Inbox.</span>
+              <span className="text-[#6366F1] dark:text-[#818CF8]"> to Gistify Your Inbox.</span>
             </h1>
-            <p className="text-[#334155] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-white/70 backdrop-blur-sm rounded-lg px-4 py-2">
+            <p className="text-[#334155] dark:text-[#E2E8F0] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm rounded-lg px-4 py-2">
               Our AI scans 30+ AI, Product & Robotics newsletters—delivering a{" "}
-              <span className="font-semibold text-[#3B82F6] animate-pulse-subtle relative">
+              <span className="font-semibold text-[#3B82F6] dark:text-[#60A5FA] animate-pulse-subtle relative">
                 <span className="relative z-10">Personalized Daily Brief</span>
-                <span className="absolute inset-0 bg-blue-100/50 rounded blur-sm -z-10"></span>
+                <span className="absolute inset-0 bg-blue-100/50 dark:bg-blue-500/20 rounded blur-sm -z-10"></span>
               </span>{" "}
               and more to stay ahead!
             </p>
 
             {/* Countdown Timer - Moved Above */}
-            <div className="flex justify-center gap-4 mb-10">
+            <div className="flex justify-center space-x-4 md:space-x-6 mb-10">
               {[
                 { value: countdown.days, label: "Days" },
                 { value: countdown.hours, label: "Hours" },
@@ -246,13 +250,10 @@ export default function PreLaunchLanding() {
                 { value: countdown.seconds, label: "Seconds" },
               ].map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
-                  <div className="bg-[#0F172A] text-white text-2xl font-bold w-14 h-14 rounded-md flex items-center justify-center shadow-lg">
+                  <div className="bg-[var(--header-gradient-start)] text-[var(--header-text)] text-2xl font-bold w-14 h-14 rounded-md flex items-center justify-center shadow-lg">
                     {item.value < 10 ? `0${item.value}` : item.value}
                   </div>
-                  <span className="text-[#64748B] mt-2 text-sm bg-white/80 px-2 rounded">{item.label}</span>
-                  {index < 3 && (
-                    <span className="hidden md:block text-[#0F172A] text-2xl font-bold mx-1 -mt-14">:</span>
-                  )}
+                  <span className="text-[var(--muted-foreground)] mt-2 text-sm bg-[var(--card-background)]/80 dark:bg-[var(--card-background)]/30 px-2 rounded">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -301,9 +302,9 @@ export default function PreLaunchLanding() {
         </section>
 
         {/* Before & After Slider Section */}
-        <section className="pt-8 md:pt-12 pb-16 px-4 bg-white" id="examples">
+        <section className="pt-8 md:pt-12 pb-16 px-4 bg-[var(--card-background)]" id="examples">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1E3A8A] mt-2 mb-12 max-w-4xl mx-auto leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[var(--foreground)] mt-2 mb-12 max-w-4xl mx-auto leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
                 Boost Your Productivity <span className="font-extrabold text-[#F43F5E]">10x</span> by Automating Your
                 Newsletter Reading
@@ -315,32 +316,32 @@ export default function PreLaunchLanding() {
         </section>
 
         {/* How to Get Started Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white overflow-hidden relative">
+        <section className="py-24 px-4 bg-gradient-to-b from-[var(--card-background)] via-blue-50/30 dark:via-blue-900/10 to-[var(--card-background)] overflow-hidden relative">
           {/* Background decorative elements */}
-          <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-indigo-100/30 blur-3xl"></div>
+          <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-blue-100/30 dark:bg-blue-900/20 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-indigo-100/30 dark:bg-indigo-900/20 blur-3xl"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
-              <span className="inline-block bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm">
+              <span className="inline-block bg-gradient-to-r from-blue-500/20 to-indigo-500/20 dark:from-blue-500/10 dark:to-indigo-500/10 text-blue-700 dark:text-blue-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm">
                 Simple 3-Step Process
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-700">
+              <h2 className="text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-400 dark:to-indigo-400">
                 How Gistify Works
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl text-[var(--muted-foreground)] max-w-2xl mx-auto">
                 Getting started with Gistify is so fast—just link your inbox and let AI become your executive assistant.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {/* Connection lines between steps (visible on desktop only) */}
-              <div className="hidden md:block absolute top-24 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-blue-400 to-indigo-400 z-0">
+              <div className="hidden md:block absolute top-24 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-blue-400 to-indigo-400 dark:from-blue-500 dark:to-indigo-500 z-0">
                 {/* Empty div for the connecting line */}
               </div>
               
               {/* Step 1 */}
-              <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-100 relative z-10">
+              <div className="bg-[var(--card-background)] rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-100 dark:border-blue-800/30 relative z-10">
                 <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -349,14 +350,14 @@ export default function PreLaunchLanding() {
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
                   1
                 </div>
-                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Connect Your Inbox</h3>
-                <p className="text-gray-600 text-center leading-relaxed">
-                  Gistify instantly spots newsletters like <span className="font-semibold text-blue-700">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700">Ben's Bites (9:05 AM)</span>—no manual picking required.
+                <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Connect Your Inbox</h3>
+                <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
+                  Gistify instantly spots newsletters like <span className="font-semibold text-blue-700 dark:text-blue-400">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700 dark:text-blue-400">Ben's Bites (9:05 AM)</span>—no manual picking required.
                 </p>
               </div>
 
               {/* Step 2 */}
-              <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-emerald-100 relative z-10">
+              <div className="bg-[var(--card-background)] rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-emerald-100 dark:border-emerald-800/30 relative z-10">
                 <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="4" y="7" width="16" height="12" rx="2" />
@@ -369,14 +370,14 @@ export default function PreLaunchLanding() {
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
                   2
                 </div>
-                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">AI-Powered Scanning</h3>
-                <p className="text-gray-600 text-center leading-relaxed">
-                  Our Gist Engine dives in, scanning and parsing all items from every newsletter—from <span className="font-semibold text-emerald-700">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700">Superhuman's robotics update (11:30 AM)</span>.
+                <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">AI-Powered Scanning</h3>
+                <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
+                  Our Gist Engine dives in, scanning and parsing all items from every newsletter—from <span className="font-semibold text-emerald-700 dark:text-emerald-400">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700 dark:text-emerald-400">Superhuman's robotics update (11:30 AM)</span>.
                 </p>
               </div>
 
               {/* Step 3 */}
-              <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-purple-100 relative z-10">
+              <div className="bg-[var(--card-background)] rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-purple-100 dark:border-purple-800/30 relative z-10">
                 <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -385,9 +386,9 @@ export default function PreLaunchLanding() {
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
                   3
                 </div>
-                <h3 className="text-xl font-bold text-center text-gray-900 mb-4">Get Your Daily Briefing</h3>
-                <p className="text-gray-600 text-center leading-relaxed">
-                  Wake up to a sleek, AI-crafted summary with <span className="font-semibold text-purple-700">hidden insights</span>, <span className="font-semibold text-purple-700">trend analysis</span>, <span className="font-semibold text-purple-700">direct source links</span>, and easy bookmarking.
+                <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Get Your Daily Briefing</h3>
+                <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
+                  Wake up to a sleek, AI-crafted summary with <span className="font-semibold text-purple-700 dark:text-purple-400">hidden insights</span>, <span className="font-semibold text-purple-700 dark:text-purple-400">trend analysis</span>, <span className="font-semibold text-purple-700 dark:text-purple-400">direct source links</span>, and easy bookmarking.
                 </p>
               </div>
             </div>
@@ -405,22 +406,18 @@ export default function PreLaunchLanding() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-[#F8FAFC]">
+        <section className="pt-20 pb-0 bg-[var(--muted-background)]">
           <InteractiveDashboardMockup />
         </section>
 
         {/* Improved Testimonials Section - Carousel */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-[#F8FAFC]" id="testimonials">
+        <section className="pt-0 pb-20 px-4 bg-gradient-to-b from-[var(--card-background)] to-[var(--muted-background)]" id="testimonials">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              {/* Section label */}
-              <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-blue-50 text-blue-600 text-sm font-medium">
-                <span>Real User Experiences</span>
-              </div>
+            <div className="text-center mb-12 pt-12">
+              {/* Section label removed */}
+              <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">What Our Users Say</h2>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-6">What Our Users Say</h2>
-
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+              <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto mb-8">
                 Join professionals who've transformed how they consume newsletter content
               </p>
             </div>
@@ -435,10 +432,10 @@ export default function PreLaunchLanding() {
                 >
                   {/* Testimonial 1 */}
                   <div className="w-full flex-shrink-0 px-4 pb-6 snap-center">
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-50 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-[var(--card-background)] rounded-xl shadow-lg p-8 border border-blue-50 dark:border-blue-900/20 hover:shadow-xl transition-shadow duration-300">
                       {/* User info at the top */}
                       <div className="flex items-center mb-6">
-                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100 dark:border-blue-800">
                           <Image
                             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2854%29.jpg-bX6WYUsbXqlDa9orpEa1kBP5Rx7Pla.jpeg"
                             alt="Noa Levi"
@@ -448,8 +445,8 @@ export default function PreLaunchLanding() {
                           />
                         </div>
                         <div>
-                          <p className="font-bold text-[#1E3A8A] text-lg">Noa Levi</p>
-                          <p className="text-blue-600">Marketing Director</p>
+                          <p className="font-bold text-[var(--foreground)] text-lg">Noa Levi</p>
+                          <p className="text-blue-600 dark:text-blue-400">Marketing Director</p>
                         </div>
                       </div>
 
@@ -470,14 +467,14 @@ export default function PreLaunchLanding() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                        "I used to spend <span className="font-semibold text-blue-600">2 hours every morning</span>{" "}
+                      <p className="text-[var(--muted-foreground)] text-lg leading-relaxed mb-6">
+                        "I used to spend <span className="font-semibold text-blue-600 dark:text-blue-400">2 hours every morning</span>{" "}
                         going through newsletters. With Gist Engine, I get all the key insights in just 15 minutes. It's
                         like having a personal research assistant that knows exactly what matters to me."
                       </p>
 
                       {/* Quote decoration */}
-                      <div className="absolute top-8 right-8 text-blue-100 opacity-30">
+                      <div className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/30 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -487,10 +484,10 @@ export default function PreLaunchLanding() {
 
                   {/* Testimonial 2 */}
                   <div className="w-full flex-shrink-0 px-4 pb-6 snap-center">
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-50 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-[var(--card-background)] rounded-xl shadow-lg p-8 border border-blue-50 dark:border-blue-900/20 hover:shadow-xl transition-shadow duration-300">
                       {/* User info at the top */}
                       <div className="flex items-center mb-6">
-                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100 dark:border-blue-800">
                           <Image
                             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2853%29.jpg-fxhapua2NOaUxbr3Dhh4pxG4nyWBD5.jpeg"
                             alt="Avi Cohen"
@@ -500,8 +497,8 @@ export default function PreLaunchLanding() {
                           />
                         </div>
                         <div>
-                          <p className="font-bold text-[#1E3A8A] text-lg">Avi Cohen</p>
-                          <p className="text-blue-600">Product Manager</p>
+                          <p className="font-bold text-[var(--foreground)] text-lg">Avi Cohen</p>
+                          <p className="text-blue-600 dark:text-blue-400">Product Manager</p>
                         </div>
                       </div>
 
@@ -522,14 +519,14 @@ export default function PreLaunchLanding() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                        "The Gist Engine is a <span className="font-semibold text-blue-600">game-changer</span> for
+                      <p className="text-[var(--muted-foreground)] text-lg leading-relaxed mb-6">
+                        "The Gist Engine is a <span className="font-semibold text-blue-600 dark:text-blue-400">game-changer</span> for
                         staying informed. I'm getting better insights in less time, and the AI summaries help me
                         understand complex topics quickly. It's like having a team of analysts working for me 24/7."
                       </p>
 
                       {/* Quote decoration */}
-                      <div className="absolute top-8 right-8 text-blue-100 opacity-30">
+                      <div className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/30 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -539,10 +536,10 @@ export default function PreLaunchLanding() {
 
                   {/* Testimonial 3 (New) */}
                   <div className="w-full flex-shrink-0 px-4 pb-6 snap-center">
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-50 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-[var(--card-background)] rounded-xl shadow-lg p-8 border border-blue-50 dark:border-blue-900/20 hover:shadow-xl transition-shadow duration-300">
                       {/* User info at the top */}
                       <div className="flex items-center mb-6">
-                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100 dark:border-blue-800">
                           <Image
                             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%281%29.jpg-BWlPVbWiMOSwyNwcNtUpUW7FcJVaUh.jpeg"
                             alt="Tal Shapira"
@@ -552,8 +549,8 @@ export default function PreLaunchLanding() {
                           />
                         </div>
                         <div>
-                          <p className="font-bold text-[#1E3A8A] text-lg">Tal Shapira</p>
-                          <p className="text-blue-600">Tech Entrepreneur</p>
+                          <p className="font-bold text-[var(--foreground)] text-lg">Tal Shapira</p>
+                          <p className="text-blue-600 dark:text-blue-400">Tech Entrepreneur</p>
                         </div>
                       </div>
 
@@ -574,15 +571,15 @@ export default function PreLaunchLanding() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-slate-700 text-lg leading-relaxed mb-6">
+                      <p className="text-[var(--muted-foreground)] text-lg leading-relaxed mb-6">
                         "As someone who subscribes to over{" "}
-                        <span className="font-semibold text-blue-600">30 newsletters</span>, Gist Engine has been
+                        <span className="font-semibold text-blue-600 dark:text-blue-400">30 newsletters</span>, Gist Engine has been
                         revolutionary. It extracts exactly what I need to know and presents it in a way that saves me
                         hours each week. The ROI is incredible."
                       </p>
 
                       {/* Quote decoration */}
-                      <div className="absolute top-8 right-8 text-blue-100 opacity-30">
+                      <div className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/30 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -595,7 +592,7 @@ export default function PreLaunchLanding() {
               {/* Enhanced navigation buttons */}
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev > 0 ? prev - 1 : 2))}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 md:-translate-x-5 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 group"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 md:-translate-x-5 bg-[var(--card-background)] rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 dark:border-blue-800 group"
                 aria-label="Previous testimonial"
               >
                 <svg
@@ -608,7 +605,7 @@ export default function PreLaunchLanding() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-blue-600 group-hover:text-blue-800 transition-colors"
+                  className="text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors"
                 >
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
@@ -616,7 +613,7 @@ export default function PreLaunchLanding() {
 
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev < 2 ? prev + 1 : 0))}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 md:translate-x-5 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 group"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 md:translate-x-5 bg-[var(--card-background)] rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 dark:border-blue-800 group"
                 aria-label="Next testimonial"
               >
                 <svg
@@ -629,7 +626,7 @@ export default function PreLaunchLanding() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-blue-600 group-hover:text-blue-800 transition-colors"
+                  className="text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors"
                 >
                   <path d="M9 18l6-6-6-6" />
                 </svg>
@@ -642,7 +639,7 @@ export default function PreLaunchLanding() {
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentTestimonial === index ? "bg-blue-600 w-8" : "bg-blue-200 hover:bg-blue-300"
+                      currentTestimonial === index ? "bg-blue-600 dark:bg-blue-500 w-8" : "bg-blue-200 dark:bg-blue-800 hover:bg-blue-300 dark:hover:bg-blue-700"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -650,12 +647,12 @@ export default function PreLaunchLanding() {
               </div>
 
               {/* Testimonial count indicator */}
-              <div className="text-center mt-4 mb-8 text-sm text-slate-500">
-                <span className="font-medium text-blue-600">{currentTestimonial + 1}</span> of <span>3</span>
+              <div className="text-center mt-4 mb-8 text-sm text-[var(--muted-foreground)]">
+                <span className="font-medium text-blue-600 dark:text-blue-400">{currentTestimonial + 1}</span> of <span>3</span>
               </div>
 
               {/* Mobile indicators */}
-              <div className="md:hidden text-xs text-blue-600/80 mt-2 text-center font-medium">Swipe to navigate</div>
+              <div className="md:hidden text-xs text-blue-600/80 dark:text-blue-400/80 mt-2 text-center font-medium">Swipe to navigate</div>
             </div>
 
             {/* Social proof - logos */}
@@ -663,14 +660,14 @@ export default function PreLaunchLanding() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 bg-white" id="faq">
+        <section className="py-20 px-4 bg-[var(--card-background)]" id="faq">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <span className="inline-block bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 text-[#6366F1] px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
+              <span className="inline-block bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
                 FAQ
                 </span>
-              <h2 className="text-4xl md:text-4xl font-bold text-[#1E3A8A] mb-4">Frequently Asked Questions</h2>
-              <p className="text-[#334155] text-lg max-w-2xl mx-auto">
+              <h2 className="text-4xl md:text-4xl font-bold text-[var(--foreground)] mb-4">Frequently Asked Questions</h2>
+              <p className="text-[var(--muted-foreground)] text-lg max-w-2xl mx-auto">
                 Everything you need to know about our upcoming platform.
               </p>
             </div>
@@ -721,12 +718,12 @@ export default function PreLaunchLanding() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border border-[#E2E8F0] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:border-[#3B82F6]/30"
+                  className="border border-[var(--border)] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:border-[#3B82F6]/30 bg-[var(--background)]"
                 >
-                  <AccordionTrigger className="px-6 py-4 hover:bg-[#F8FAFC]/50 text-[#1E3A8A] font-medium text-left">
+                  <AccordionTrigger className="px-6 py-4 hover:bg-[var(--muted-background)]/50 text-[var(--foreground)] font-medium text-left">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 py-4 text-[#334155] leading-relaxed">
+                  <AccordionContent className="px-6 py-4 text-[var(--muted-foreground)] leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
