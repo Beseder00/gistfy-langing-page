@@ -75,6 +75,13 @@ export function CommandCenter() {
           {/* CTA Button */}
           <div className="mt-16 flex justify-center">
             <Button
+              onClick={() => {
+                // Find the waitlist form element by ID and scroll to it
+                const waitlistForm = document.getElementById("waitlist-form");
+                if (waitlistForm) {
+                  waitlistForm.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
               className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#4F46E5] hover:from-[#1D4ED8] hover:via-[#2563EB] hover:to-[#4338CA] text-white font-semibold px-8 py-4 rounded-xl text-lg tracking-wide shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:shadow-[0_8px_30px_rgba(37,99,235,0.65)] transition-all duration-500 ease-out transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 active:scale-[0.98] border border-white/10"
               aria-label="Try Gistify Dashboard - Click to explore our time-saving features"
             >
