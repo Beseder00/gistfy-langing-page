@@ -763,11 +763,11 @@ export default function PreLaunchLanding() {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-gray-300 rounded-lg w-full placeholder:text-gray-500 shadow-md hover:shadow-blue-300/30 focus:shadow-blue-300/60 focus:shadow-lg transition-all duration-1000 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 border-blue-200 hover:border-blue-300 animate-pulse-subtle"
+                    className="pl-10 h-12 border-white/30 bg-white/15 text-white rounded-lg w-full placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50 focus:border-white/70"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -776,7 +776,7 @@ export default function PreLaunchLanding() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
+                  className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Early Access
                 </Button>
@@ -784,18 +784,18 @@ export default function PreLaunchLanding() {
                 <Button
                   type="button"
                   onClick={handleSubmitTest}
-                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12"
+                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Test Submission
                 </Button>
 
-                <div className="flex justify-center gap-x-6 text-xs text-gray-500 mt-4">
+                <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
                     <span>Cancel anytime</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
                     <span>No credit card needed</span>
                   </div>
                 </div>
@@ -838,11 +838,11 @@ export default function PreLaunchLanding() {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-gray-300 rounded-lg w-full placeholder:text-gray-500 shadow-md hover:shadow-blue-300/30 focus:shadow-blue-300/60 focus:shadow-lg transition-all duration-1000 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 border-blue-200 hover:border-blue-300 animate-pulse-subtle"
+                    className="pl-10 h-12 border-white/30 bg-white/15 text-white rounded-lg w-full placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50 focus:border-white/70"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -851,7 +851,7 @@ export default function PreLaunchLanding() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
+                  className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Early Access
                 </Button>
@@ -859,18 +859,18 @@ export default function PreLaunchLanding() {
                 <Button
                   type="button"
                   onClick={handleSubmitTest}
-                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12"
+                  className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Test Submission
                 </Button>
 
-                <div className="flex justify-center gap-x-6 text-xs text-gray-500 mt-4">
+                <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
                     <span>Cancel anytime</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
                     <span>No credit card needed</span>
                   </div>
                 </div>
