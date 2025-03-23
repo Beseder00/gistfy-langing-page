@@ -86,9 +86,19 @@ export default function PreLaunchLanding() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would submit to a waitlist API
+    
+    // Basic validation
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address")
+      return
+    }
+    
+    // Use the new API endpoint
     fetch("/api/subscribe", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email }),
     })
       .then((res) => res.json())
