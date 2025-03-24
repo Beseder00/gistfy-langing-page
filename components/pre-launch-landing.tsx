@@ -227,7 +227,7 @@ export default function PreLaunchLanding() {
               <span className="text-[#4F46E5] dark:text-[#E0E7FF]"> to Gistify Your Inbox.</span>
             </h1>
             <p className="text-[#334155] dark:text-[#E2E8F0] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm rounded-lg px-4 py-2">
-              Stay on top of 30+ AI, Product, and Robotics newsletters with a daily briefing to empower your decisions—all in one daily briefing.
+              Scan and stay on top of 30+ AI, Product, and Robotics newsletters to empower your decisions—all in one daily briefing.
             </p>
 
             {/* Countdown Timer - Moved Above */}
@@ -248,36 +248,24 @@ export default function PreLaunchLanding() {
             </div>
 
             {/* Email Subscription Form */}
-            <form onSubmit={handleSubmit} className="w-full max-w-xl mx-auto mb-10">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="relative flex-1 group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/10 to-[#6366F1]/10 dark:from-[#60A5FA]/5 dark:to-[#818CF8]/5 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <Input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="relative w-full h-12 px-4 text-base bg-white dark:bg-[#1E293B] border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-[#3B82F6] dark:focus:border-[#60A5FA] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-[#3B82F6] dark:group-hover:border-[#60A5FA]"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
-                  <Mail className="w-4 h-4 relative z-10" />
-                  <span className="relative z-10">Get Product Updates</span>
+            <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto" id="waitlist-form">
+              <div className="relative w-full">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full h-12 pl-12 pr-32 bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm border-2 border-[var(--border)] focus:border-blue-500 dark:focus:border-blue-400 rounded-lg shadow-sm"
+                />
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--muted-foreground)]" />
+                <Button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8">
+                  Join Waitlist
                 </Button>
               </div>
-              <div className="mt-3 flex items-center justify-center gap-4 text-sm">
-                <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
-                  <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
-                  <span>No spam</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
-                  <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
-                  <span>Unsubscribe anytime</span>
-                </div>
+              <div className="flex items-center gap-6">
+                <p className="text-[var(--muted-foreground)] text-sm">Early access</p>
+                <p className="text-[var(--muted-foreground)] text-sm">No spam, ever</p>
+                <p className="text-[var(--muted-foreground)] text-sm">Join 500+ early adopters</p>
               </div>
             </form>
           </div>
