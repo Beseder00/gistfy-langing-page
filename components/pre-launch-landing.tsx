@@ -217,7 +217,7 @@ export default function PreLaunchLanding() {
 
           <div id="waitlist-form" className="relative text-center flex flex-col items-center z-10 max-w-4xl mx-auto">
             <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
-              Coming Soon — Join the Waitlist
+              Coming Soon
             </span>
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
               <span className="text-[#1E3A8A] dark:text-[#60A5FA]">Drowning in Newsletters?</span>{" "}
@@ -252,46 +252,39 @@ export default function PreLaunchLanding() {
               ))}
             </div>
 
-            {/* Email Subscription - Larger Version */}
-            <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg p-6 max-w-md w-full mx-auto mb-6 border border-blue-100">
-              <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-[#3B82F6] text-sm font-medium">
-                  <span className="mr-1">🎁</span> One-Time Offer
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0F172A] text-center mb-5">Get 60% Off at Launch</h3>
-
-              <form onSubmit={handleSubmit} className="mb-4">
-                <div className="relative mb-3">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[#94A3B8]" />
+            {/* Email Subscription Form */}
+            <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto mb-10">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1 group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/20 to-[#6366F1]/20 dark:from-[#60A5FA]/10 dark:to-[#818CF8]/10 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                   <Input
                     type="email"
-                    placeholder="Enter your email"
-                    className="pl-10 h-12 border-[#E2E8F0] rounded-lg w-full bg-white shadow-md focus:shadow-blue-300/50 focus:shadow-lg transition-shadow duration-1000 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 animate-pulse-subtle border-blue-200 hover:border-blue-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
+                    placeholder="Enter your email"
+                    className="relative w-full h-12 px-4 text-base bg-white/80 dark:bg-[#1E293B]/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-lg focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-transparent dark:focus:border-transparent text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-[#3B82F6]/50 dark:group-hover:border-[#60A5FA]/50"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="h-12 px-6 bg-gradient-to-r from-[#3B82F6] to-[#6366F1] dark:from-[#60A5FA] dark:to-[#818CF8] hover:from-[#2563EB] hover:to-[#4F46E5] dark:hover:from-[#3B82F6] dark:hover:to-[#6366F1] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group"
                 >
-                  Get Early Access
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+                  <Mail className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">Join Waitlist</span>
                 </Button>
-              </form>
-
-              <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+              </div>
+              <div className="mt-3 flex items-center justify-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
+                  <span>No spam</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
                   <span>Cancel anytime</span>
                 </div>
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
-                  <span>No credit card needed</span>
-                </div>
               </div>
-            </div>
+            </form>
           </div>
         </section>
 
@@ -753,20 +746,13 @@ export default function PreLaunchLanding() {
             </p>
 
             <div className="bg-[var(--card-background)] border border-[var(--border)] rounded-xl p-6 max-w-md mx-auto mb-6 shadow-lg">
-              <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-[var(--foreground)] text-sm font-medium bg-gradient-to-r from-blue-500/10 to-indigo-500/10 px-3 py-1 rounded-full">
-                  <span className="mr-1">🎁</span> One-Time Offer
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)] text-center mb-5">Get 60% Off at Launch</h3>
-
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] rounded-lg w-full placeholder:text-[var(--muted-foreground)] shadow-sm hover:shadow-md focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-blue-500/30 hover:border-blue-300/50 dark:hover:border-blue-500/50 focus:border-blue-500"
+                    className="pl-10 h-12 border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] rounded-lg w-full placeholder:text-[var(--muted-foreground)] shadow-sm hover:shadow-md focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-blue-500/30 hover:border-blue-300/50 dark:hover:border-blue-500"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -781,15 +767,15 @@ export default function PreLaunchLanding() {
                 </Button>
 
                 <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
-                <div className="flex items-center">
+                  <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
-                  <span>Cancel anytime</span>
-                </div>
-                <div className="flex items-center">
+                    <span>Cancel anytime</span>
+                  </div>
+                  <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
-                  <span>No credit card needed</span>
+                    <span>No credit card needed</span>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-[var(--muted-foreground)] mt-8">
@@ -819,13 +805,6 @@ export default function PreLaunchLanding() {
               >
                 <X className="h-5 w-5" />
               </button>
-
-              <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-[#3B82F6] text-sm font-medium">
-                  <span className="mr-1">🎁</span> One-Time Offer
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0F172A] text-center mb-5">Get 60% Off at Launch</h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
