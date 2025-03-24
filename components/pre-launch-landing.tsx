@@ -227,9 +227,9 @@ export default function PreLaunchLanding() {
               <span className="text-[#6366F1] dark:text-[#818CF8]"> to Gistify Your Inbox.</span>
             </h1>
             <p className="text-[#334155] dark:text-[#E2E8F0] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm rounded-lg px-4 py-2">
-              Our AI scans 30+ AI, Product & Robotics newsletters—delivering a{" "}
+              Our AI scans 30+ AI, Product & Robotics newsletters—delivering{" "}
               <span className="font-semibold text-[#3B82F6] dark:text-[#60A5FA] animate-pulse-subtle relative">
-                <span className="relative z-10">Personalized Daily Brief</span>
+                <span className="relative z-10">the anti-loop newsletter feed</span>
                 <span className="absolute inset-0 bg-blue-100/50 dark:bg-blue-500/20 rounded blur-sm -z-10"></span>
               </span>{" "}
               and more to stay ahead!
@@ -256,30 +256,30 @@ export default function PreLaunchLanding() {
             <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto mb-10">
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1 group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/20 to-[#6366F1]/20 dark:from-[#60A5FA]/10 dark:to-[#818CF8]/10 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/10 to-[#6366F1]/10 dark:from-[#60A5FA]/5 dark:to-[#818CF8]/5 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                   <Input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="relative w-full h-12 px-4 text-base bg-white/80 dark:bg-[#1E293B]/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-lg focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-transparent dark:focus:border-transparent text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-[#3B82F6]/50 dark:group-hover:border-[#60A5FA]/50"
+                    className="relative w-full h-12 px-4 text-base bg-white dark:bg-[#1E293B] border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-[#3B82F6] dark:focus:border-[#60A5FA] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-[#3B82F6] dark:group-hover:border-[#60A5FA]"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="h-12 px-6 bg-gradient-to-r from-[#3B82F6] to-[#6366F1] dark:from-[#60A5FA] dark:to-[#818CF8] hover:from-[#2563EB] hover:to-[#4F46E5] dark:hover:from-[#3B82F6] dark:hover:to-[#6366F1] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group"
+                  className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
                   <Mail className="w-4 h-4 relative z-10" />
                   <span className="relative z-10">Join Waitlist</span>
                 </Button>
               </div>
-              <div className="mt-3 flex items-center justify-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                <div className="flex items-center gap-1.5">
+              <div className="mt-3 flex items-center justify-center gap-4 text-sm">
+                <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
                   <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
                   <span>No spam</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
                   <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
                   <span>Cancel anytime</span>
                 </div>
