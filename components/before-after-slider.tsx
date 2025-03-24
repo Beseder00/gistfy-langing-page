@@ -662,7 +662,7 @@ export function BeforeAfterSlider() {
 
         {/* Before side (messy inbox) */}
         <div
-          className={`absolute inset-0 bg-white transition-opacity duration-800 ${showAfter ? "opacity-0" : "opacity-100"}`}
+          className={`absolute inset-0 bg-white dark:bg-[#0F172A] transition-opacity duration-800 ${showAfter ? "opacity-0" : "opacity-100"}`}
           style={{
             transitionProperty: "opacity",
             transitionDuration: "800ms",
@@ -670,24 +670,17 @@ export function BeforeAfterSlider() {
           }}
         >
           <div className="p-3 sm:p-5 h-full flex flex-col">
-            {/* WITHOUT GISTIFY banner at the top */}
-            <div className="bg-[#F8FAFC] border-b-2 border-[#1E293B] mb-4 p-4 pt-6 sm:pt-8 rounded-t-2xl relative">
-              <div className="flex items-center">
-                <AlertCircle className="h-5 w-5 text-[#3B82F6] mr-2" />
-                <span className="font-bold text-[#3B82F6]">WITHOUT GISTIFY</span>
-              </div>
-            </div>
-
-            <div className="bg-[#F1F5F9] p-3 rounded-lg border-b border-[#E2E8F0] flex items-center">
+            {/* Browser-like controls */}
+            <div className="bg-[#F1F5F9] dark:bg-[#1E293B] p-3 rounded-t-lg border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
               <div className="w-3 h-3 rounded-full bg-[#EF4444] mr-2"></div>
               <div className="w-3 h-3 rounded-full bg-[#F59E0B] mr-2"></div>
               <div className="w-3 h-3 rounded-full bg-[#10B981]"></div>
-              <div className="ml-4 text-sm text-[#64748B] font-medium">Today's Inbox (75 Unread)</div>
+              <div className="ml-4 text-sm text-[#64748B] dark:text-[#94A3B8] font-medium">Today's Inbox (75 Unread)</div>
             </div>
 
-            <div className="flex-1 overflow-y-auto bg-white">
+            <div className="flex-1 overflow-y-auto bg-white dark:bg-[#0F172A]">
               {/* AI Breakfast Newsletter with custom logo */}
-              <div className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center bg-[#EFF6FF]">
+              <div className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center bg-[#EFF6FF] dark:bg-[#172554]">
                 <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0">
                   <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-73daIPkH7ItPnl1SLtNKfrHi41F0bv.png"
@@ -699,17 +692,17 @@ export function BeforeAfterSlider() {
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between">
-                    <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                    <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                       AI Breakfast Newsletter
                     </span>
                     <div className="flex items-center">
-                      <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                      <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                         (est. 10 to 15 items per email)
                       </span>
-                      <span className="text-xs text-[#64748B]">8:32 AM</span>
+                      <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">8:32 AM</span>
                     </div>
                   </div>
-                  <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                  <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                     DeepSeek claims 545% profit margin on AI models! Plus: Google's AGI push...
                   </div>
                 </div>
@@ -721,7 +714,7 @@ export function BeforeAfterSlider() {
                 if (i === 0) {
                   // TLDR AI Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-black">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images-AzzCfHLfZx8HyQFKxlBjwY4I7Bvkqy.jpeg"
@@ -733,17 +726,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             TLDR AI Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">10:15 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">10:15 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           Google AI Mode, Upgraded Anthropic Console, Larry Page's New AI Startup
                         </div>
                       </div>
@@ -752,7 +745,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 1) {
                   // Ben's Bites Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div
                         className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0"
                         style={{ backgroundColor: "#F03E3E" }}
@@ -767,17 +760,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             Ben's Bites Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">9:05 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">9:05 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           OpenAI's plan for 2025
                         </div>
                       </div>
@@ -786,7 +779,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 2) {
                   // The Rundown AI Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 bg-black flex-shrink-0">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the_rundown_ai_logo-Dob3vBX0lfTcXQLOMfjqUohJugo1dV.jpeg"
@@ -798,17 +791,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             The Rundown AI Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">9:45 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">9:45 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           Ilya's secret ASI roadmap
                         </div>
                       </div>
@@ -817,7 +810,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 3) {
                   // Superhuman - Zain Kahn Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#0055CC]">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/superman-logo-dWPDpw5HkZ1GxwgpGpF8MGAO7vXFfn.png"
@@ -829,17 +822,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             Superhuman Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">11:30 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">11:30 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           DeepMind drops new robotics model
                         </div>
                       </div>
@@ -848,7 +841,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 5) {
                   // The Neuron Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#FF6B35]">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/theneurondaily_logo-EMaT3iZ3SbcA04EkKA4tdtYANyguzg.jpeg"
@@ -860,17 +853,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             The Neuron Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">10:15 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">10:15 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           The AI agent invasion
                         </div>
                       </div>
@@ -879,7 +872,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 4) {
                   // Chamath's newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Chamath%20Palihapitiya-tMhl9MRFZxowiicTdGJEmJh1xIacm9.png"
@@ -891,17 +884,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             Chamath Weekly Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">12:45 PM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">12:45 PM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           Federal agencies begin the deregulation process,
                         </div>
                       </div>
@@ -910,7 +903,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 6) {
                   // AI Valley Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#FFDE03]">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/amRZmuSc_400x400.jpg-ZcWqI3OzAQOrHXOdztPmbccYIgSLB9.jpeg"
@@ -922,17 +915,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             AI Valley Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">10:15 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">10:15 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           OpenAI launches new tools for building AI agents
                         </div>
                       </div>
@@ -941,7 +934,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 8) {
                   // The Weekly Kaitchup Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-white">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/892a3b50-51e5-4552-8f5e-09689ea4e7a3_1024x1024-D6RRZuP8ETP9H1CNGTtQEKALwpEPzn.png"
@@ -953,17 +946,17 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             The Weekly Kaitchup Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">11:30 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">11:30 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           Gemma 3 - OLMo 2 32B - Q-Filters
                         </div>
                       </div>
@@ -972,7 +965,7 @@ export function BeforeAfterSlider() {
                 } else if (i === 7) {
                   // Mindstream Newsletter
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
                       <div
                         className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0"
                         style={{ backgroundColor: "#3A2A7E" }}
@@ -987,231 +980,43 @@ export function BeforeAfterSlider() {
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
                             Mindstream Newsletter
                           </span>
                           <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8] mr-2 hidden sm:inline">
                               (est. 10 to 15 items per email)
                             </span>
-                            <span className="text-xs text-[#64748B]">11:30 AM</span>
+                            <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">11:30 AM</span>
                           </div>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
                           The final frontier? Robotics
                         </div>
                       </div>
                     </div>
                   )
-                } else if (i === 9) {
-                  // Tomasz Tunguz - Venture Capitalist
-                  return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-white">
-                        <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-H7Cv4MIirEa7IdsvbgnKANVOJCal1E.png"
-                          alt="Tomasz Tunguz"
-                          width={24}
-                          height={24}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
-                            Tomasz Tunguz VC Newsletter
-                          </span>
-                          <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
-                              (est. 10 to 15 items per email)
-                            </span>
-                            <span className="text-xs text-[#64748B]">12:45 PM</span>
-                          </div>
-                        </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
-                          The Mirage in the Software Clouds
-                        </div>
-                      </div>
-                    </div>
-                  )
-                } else if (i === 10) {
-                  // TAAFT - There's An AI For That
-                  return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#1E293B]">
-                        <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qatvALjhMQN32rAWKO93kt48McvrSu.png"
-                          alt="TAAFT Logo"
-                          width={24}
-                          height={24}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
-                            TAAFT Newsletter
-                          </span>
-                          <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
-                              (est. 10 to 15 items per email)
-                            </span>
-                            <span className="text-xs text-[#64748B]">1:20 PM</span>
-                          </div>
-                        </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
-                          AI Espionage Threats Demand Action
-                        </div>
-                      </div>
-                    </div>
-                  )
-                } else if (i === 11) {
-                  // Department of Product Newsletter
-                  return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-black">
-                        <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-rm7Hncxu9pihHDix4b7PW64ybPXsk3.png"
-                          alt="Department of Product Logo"
-                          width={24}
-                          height={24}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
-                            Department of Product Newsletter
-                          </span>
-                          <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
-                              (est. 10 to 15 items per email)
-                            </span>
-                            <span className="text-xs text-[#64748B]">1:20 PM</span>
-                          </div>
-                        </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
-                          Gmail gets more Gemini powers, Sam Altman's creepy startup,
-                        </div>
-                      </div>
-                    </div>
-                  )
-                } else if (i === 12) {
-                  // Matt from FutureTools Newsletter
-                  return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-black">
-                        <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/th82Xru3_400x400.jpg-57aqMxvgwrGOUBO2OykswON5gNxXQr.jpeg"
-                          alt="FutureTools Logo"
-                          width={24}
-                          height={24}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
-                            FutureTools Newsletter
-                          </span>
-                          <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
-                              (est. 10 to 15 items per email)
-                            </span>
-                            <span className="text-xs text-[#64748B]">2:05 PM</span>
-                          </div>
-                        </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
-                          AI hardware: challenge accepted
-                        </div>
-                      </div>
-                    </div>
-                  )
-                } else if (i === 13) {
-                  // Lenny's Newsletter
-                  return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0 bg-[#FF9500]">
-                        <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Pw4zrjnk1SbV959xClfeaARw0M5BE4.png"
-                          alt="Lenny's Newsletter Logo"
-                          width={24}
-                          height={24}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
-                            Lenny's Newsletter
-                          </span>
-                          <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
-                              (est. 10 to 15 items per email)
-                            </span>
-                            <span className="text-xs text-[#64748B]">9:45 AM</span>
-                          </div>
-                        </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
-                          Inside Bolt: From near-death to ~$40m ARR in 5 months
-                        </div>
-                      </div>
-                    </div>
-                  )
                 } else {
-                  // Other newsletters
-                  const newsletterType = i % 4
+                  // Generic newsletter entries for the rest
                   return (
-                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] flex items-center">
-                      {newsletterType === 0 ? (
-                        // AI Breakfast with custom logo
-                        <div className="w-6 h-6 rounded-full overflow-hidden mr-3 flex-shrink-0">
-                          <Image
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-73daIPkH7ItPnl1SLtNKfrHi41F0bv.png"
-                            alt="AI Breakfast Logo"
-                            width={24}
-                            height={24}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        // Other newsletters with letter icons
-                        <div
-                          className={`w-6 h-6 rounded-full ${
-                            ["", "bg-[#8B5CF6]", "bg-[#EC4899]", "bg-[#F59E0B]"][newsletterType]
-                          } flex items-center justify-center text-white text-xs mr-3 flex-shrink-0`}
-                        >
-                          {["", "T", "P", "R"][newsletterType]}
-                        </div>
-                      )}
+                    <div key={i} className="p-2 sm:p-3 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center">
+                      <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 mr-3 flex-shrink-0 flex items-center justify-center text-xs font-bold text-gray-500 dark:text-gray-300">
+                        {i}
+                      </div>
                       <div className="flex-1">
                         <div className="flex justify-between">
-                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full">
-                            {
-                              ["AI Breakfast", "The Agentic Era", "Product Hunt Daily", "Robotics Weekly"][
-                                newsletterType
-                              ]
-                            }{" "}
-                            Newsletter
+                          <span className="font-medium text-sm truncate max-w-[120px] sm:max-w-full text-[#0F172A] dark:text-white">
+                            Newsletter #{i + 3}
                           </span>
-                          <div className="flex items-center">
-                            <span className="text-xs text-[#64748B] mr-2 hidden sm:inline">
-                              (est. 10 to 15 items per email)
-                            </span>
-                            <span className="text-xs text-[#64748B]">
-                              {i < 3 ? "8:30 AM" : i < 7 ? "10:15 AM" : i < 10 ? "11:45 AM" : "2:30 PM"}
-                            </span>
-                          </div>
+                          <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">
+                            {10 + Math.floor(Math.random() * 12)}:{Math.floor(Math.random() * 60)
+                              .toString()
+                              .padStart(2, "0")}{" "}
+                            AM
+                          </span>
                         </div>
-                        <div className="text-xs text-[#64748B] truncate max-w-[180px] sm:max-w-full">
-                          {
-                            [
-                              "Latest AI research breakthroughs and industry news...",
-                              "New agentic AI tools and frameworks to explore...",
-                              "Top product launches and maker stories this week...",
-                              "Robotics innovations and automation trends...",
-                            ][newsletterType]
-                          }
+                        <div className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate max-w-[180px] sm:max-w-full">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit...
                         </div>
                       </div>
                     </div>

@@ -231,8 +231,7 @@ export default function PreLaunchLanding() {
               <span className="font-semibold text-[#3B82F6] dark:text-[#60A5FA] animate-pulse-subtle relative">
                 <span className="relative z-10">the anti-loop newsletter feed</span>
                 <span className="absolute inset-0 bg-blue-100/50 dark:bg-blue-500/20 rounded blur-sm -z-10"></span>
-              </span>{" "}
-              and more to stay ahead!
+              </span>
             </p>
 
             {/* Countdown Timer - Moved Above */}
@@ -271,7 +270,7 @@ export default function PreLaunchLanding() {
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
                   <Mail className="w-4 h-4 relative z-10" />
-                  <span className="relative z-10">Join Waitlist</span>
+                  <span className="relative z-10">Get Product Updates</span>
                 </Button>
               </div>
               <div className="mt-3 flex items-center justify-center gap-4 text-sm">
@@ -281,7 +280,7 @@ export default function PreLaunchLanding() {
                 </div>
                 <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
                   <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
-                  <span>Cancel anytime</span>
+                  <span>Unsubscribe anytime</span>
                 </div>
               </div>
             </form>
@@ -294,14 +293,14 @@ export default function PreLaunchLanding() {
             <div className="text-center mb-12">
               <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
                 <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
-                Before & After
+                Before and After
               </h3>
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
-                <span className="text-[var(--foreground)]">Boost Your </span>
+                <span className="text-[var(--foreground)]">Escape the </span>
                 <span className="bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
-                  Productivity <span className="font-extrabold">10x</span>
-              </span>
-            </h2>
+                  Loop. Feed Your Curiosity.
+                </span>
+              </h2>
             </div>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
@@ -323,7 +322,7 @@ export default function PreLaunchLanding() {
                 How Gistify Works
               </h2>
               <p className="text-xl text-[var(--muted-foreground)] max-w-2xl mx-auto">
-                Getting started with Gistify is so fast—just link your inbox and let AI become your executive assistant.
+                Getting started is easy—just link your inbox and let AI become your executive assistant.
               </p>
             </div>
 
@@ -342,7 +341,7 @@ export default function PreLaunchLanding() {
                 </div>
                 <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Connect Your Inbox</h3>
                 <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
-                  Gistify instantly spots newsletters like <span className="font-semibold text-blue-700 dark:text-blue-400">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700 dark:text-blue-400">Ben's Bites (9:05 AM)</span>—no manual picking required.
+                  Gistify picks up the newsletters you already get—like <span className="font-semibold text-blue-700 dark:text-blue-400">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700 dark:text-blue-400">Ben's Bites (9:05 AM)</span>—and runs them through the Gist Engine. Just plug and play.
                 </p>
               </div>
 
@@ -359,7 +358,7 @@ export default function PreLaunchLanding() {
                 </div>
                 <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">AI-Powered Scanning</h3>
                 <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
-                  Our Gist Engine dives in, scanning and parsing all items from every newsletter—from <span className="font-semibold text-emerald-700 dark:text-emerald-400">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700 dark:text-emerald-400">Superhuman's robotics update (11:30 AM)</span>.
+                  Our engine scans every issue—from <span className="font-semibold text-emerald-700 dark:text-emerald-400">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700 dark:text-emerald-400">Superhuman's robotics update (11:30 AM)</span>—pulling out only what matters most.
                 </p>
               </div>
 
@@ -372,7 +371,7 @@ export default function PreLaunchLanding() {
                 </div>
                 <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Get Your Daily Briefing</h3>
                 <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
-                  Wake up to a sleek, AI-crafted summary with <span className="font-semibold text-purple-700 dark:text-purple-400">hidden insights</span>, <span className="font-semibold text-purple-700 dark:text-purple-400">trend analysis</span>, <span className="font-semibold text-purple-700 dark:text-purple-400">direct source links</span>, and easy bookmarking.
+                  Start your day with a <span className="font-semibold text-purple-700 dark:text-purple-400">personalized brief</span>—<span className="font-semibold text-purple-700 dark:text-purple-400">must-reads</span>, <span className="font-semibold text-purple-700 dark:text-purple-400">deep links</span>, and <span className="font-semibold text-purple-700 dark:text-purple-400">bookmarking</span>, only possible by using AI to read all your newsletters.
                 </p>
               </div>
             </div>
@@ -763,13 +762,13 @@ export default function PreLaunchLanding() {
                   type="submit"
                   className="w-full bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Get Early Access
+                  Get Product Updates
                 </Button>
 
                 <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
-                    <span>Cancel anytime</span>
+                    <span>Unsubscribe anytime</span>
                   </div>
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
@@ -823,13 +822,13 @@ export default function PreLaunchLanding() {
                   type="submit"
                   className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Get Early Access
+                  Get Product Updates
                 </Button>
 
                 <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
-                    <span>Cancel anytime</span>
+                    <span>Unsubscribe anytime</span>
                   </div>
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
