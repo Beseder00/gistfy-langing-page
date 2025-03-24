@@ -379,7 +379,7 @@ export default function PreLaunchLanding() {
             
             {/* Call to action */}
             <div className="mt-16 text-center">
-              <a href="#waitlist-form" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+              <a href="#waitlist-form" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-sm font-medium transition-all duration-300">
                 Try Gistify Dashboard
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -736,13 +736,13 @@ export default function PreLaunchLanding() {
               Get Started
             </h3>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
-              <span className="text-[var(--foreground)]">Ready to Reclaim </span>
+              <span className="text-[var(--foreground)]">Break </span>
               <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
-                Hours of Your Week?
+                Routines. Surface Only What Matters.
               </span>
             </h2>
             <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
-              Join our <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">waitlist today</span> and be among the first to experience Gistify
+              Join our <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">waitlist today</span> and be among the first to Gistify your Inbox
             </p>
 
             <div className="bg-[var(--card-background)] border border-[var(--border)] rounded-xl p-6 max-w-md mx-auto mb-6 shadow-lg">
