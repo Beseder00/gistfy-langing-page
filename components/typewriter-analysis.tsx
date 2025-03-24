@@ -2,6 +2,34 @@
 
 import React, { useState, useEffect, useRef } from "react"
 
+// Separate header component for better configurability
+function BriefingHeader() {
+  return (
+    <div className="bg-[#0F172A]/90 backdrop-blur-sm p-1 rounded-t-lg">
+      {/* Title with much smaller size */}
+      <h1 className="text-[4px] leading-none sm:text-base md:text-lg font-bold text-white mb-1 text-center sm:text-left">Daily Personalized Briefing</h1>
+      
+      {/* Metadata and badges - centered layout on mobile */}
+      <div className="flex flex-col items-center sm:items-start sm:flex-row sm:justify-between gap-0.5 sm:gap-0">
+        <div className="text-gray-300 text-xs sm:text-xs text-center sm:text-left">March 19, 2025 | 3 Min Read</div>
+        
+        {/* Tags with readable size - centered on mobile */}
+        <div className="flex flex-wrap justify-center sm:justify-start gap-1 sm:gap-1">
+          <span className="inline-flex items-center gap-0.5 bg-blue-900/80 text-blue-200 px-1.5 py-0.5 rounded-full text-xs sm:text-xs">
+            30 Newsletters
+          </span>
+          <span className="inline-flex items-center gap-0.5 bg-green-900/80 text-green-200 px-1.5 py-0.5 rounded-full text-xs sm:text-xs">
+            85% filtered
+          </span>
+          <span className="inline-flex items-center gap-0.5 bg-purple-900/80 text-purple-200 px-1.5 py-0.5 rounded-full text-xs sm:text-xs">
+            247 items
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function TypewriterAnalysis() {
   const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
@@ -290,32 +318,8 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header section - Improved for mobile responsiveness */}
-      <div className="bg-[#0F172A]/90 backdrop-blur-sm p-4 rounded-t-lg">
-        {/* Title with responsive text size */}
-        <h1 className="text-base leading-tight sm:text-lg md:text-xl font-bold text-white mb-2">Daily AI Briefing - Personalized to Your Needs</h1>
-        
-        {/* Responsive layout for metadata and badges */}
-        <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0">
-          <div className="text-gray-300 text-xs sm:text-sm">March 19, 2025 | 3 Min Read</div>
-          
-          {/* Tags that wrap nicely on small screens */}
-          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-            <span className="inline-flex items-center gap-1 bg-blue-900/80 text-blue-200 px-2 py-0.5 rounded-full text-xs">
-              30 Newsletters
-            </span>
-            <span className="inline-flex items-center gap-1 bg-green-900/80 text-green-200 px-2 py-0.5 rounded-full text-xs">
-              85% filtered
-            </span>
-            <span className="inline-flex items-center gap-1 bg-purple-900/80 text-purple-200 px-2 py-0.5 rounded-full text-xs">
-              247 items
-            </span>
-            <span className="inline-flex items-center gap-1 bg-orange-900/80 text-orange-200 px-2 py-0.5 rounded-full text-xs">
-              Personalized Report
-            </span>
-          </div>
-        </div>
-      </div>
+      {/* Using the new header component */}
+      <BriefingHeader />
       
       {/* Content area */}
       <div 

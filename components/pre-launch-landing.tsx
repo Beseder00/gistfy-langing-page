@@ -303,15 +303,12 @@ export default function PreLaunchLanding() {
                 <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
                 Before & After
               </h3>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
                 <span className="text-[var(--foreground)]">Boost Your </span>
                 <span className="bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
                   Productivity <span className="font-extrabold">10x</span>
                 </span>
               </h2>
-              <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
-                By <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">automating</span> your newsletter reading workflow
-              </p>
             </div>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
