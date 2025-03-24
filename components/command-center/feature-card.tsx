@@ -18,7 +18,7 @@ export function FeatureCard({
   progressColor,
 }: FeatureCardProps) {
   return (
-    <div className="group bg-[var(--card-background)] rounded-lg p-4 border border-[var(--border)] shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-100 dark:hover:border-blue-800/50">
+    <div className="group bg-[var(--card-background)] rounded-lg p-4 border border-[var(--border)] shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-500/30 dark:hover:border-blue-500/50">
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
         <div
           className={`w-10 h-10 rounded-lg ${iconBgColor} flex items-center justify-center mb-3 sm:mb-0 sm:mr-3 flex-shrink-0`}
