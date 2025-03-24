@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { ArrowRight, Sparkles } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 import { DashboardMockup } from "./dashboard-mockup"
 import { FeatureCard } from "./feature-card"
 import { styles } from "@/styles/command-center-styles"
@@ -82,26 +83,12 @@ export function CommandCenter() {
                   waitlistForm.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white font-bold px-10 py-5 rounded-2xl text-xl tracking-wide shadow-[0_8px_30px_rgba(59,130,246,0.5)] hover:shadow-[0_15px_60px_rgba(59,130,246,0.6)] transition-all duration-500 ease-out transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30 focus:ring-offset-2 active:scale-[0.98] border border-white/10 overflow-hidden"
-              aria-label="Try Gistify Dashboard - Click to explore our time-saving features"
+              className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20"
             >
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out -z-10"></div>
-              
-              {/* Moving light effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-blue-100/20 to-transparent skew-x-[-20deg] transform -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out -z-5"></div>
-              
-              {/* Icon with animation */}
-              <Sparkles className="w-6 h-6 text-blue-100 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12" />
-              
-              {/* Text with underline animation */}
-              <span className="relative font-extrabold">
-                Try Gistify Dashboard
-                <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-transparent via-blue-100 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out" />
-              </span>
-              
-              {/* Arrow with animation */}
-              <ArrowRight className="w-6 h-6 text-blue-100 transition-transform duration-500 ease-out group-hover:translate-x-2" />
+              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+              <Sparkles className="w-4 h-4 relative z-10" />
+              <span className="relative z-10">Try Gistify Dashboard</span>
+              <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </div>
         </div>

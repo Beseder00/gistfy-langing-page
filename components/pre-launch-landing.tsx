@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { CheckCircle2, Mail, ChevronRight, Users, Shield, Sparkles, X } from "lucide-react"
+import { CheckCircle2, Mail, ChevronRight, Users, Shield, Sparkles, X, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -220,18 +220,14 @@ export default function PreLaunchLanding() {
               Coming Soon
             </span>
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
-              <span className="text-[#1E3A8A] dark:text-[#60A5FA]">Drowning in Newsletters?</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#2563EB]">
+              <span className="text-[#1E40AF] dark:text-[#DBEAFE]">Drowning in Newsletters?</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#60A5FA] dark:from-[#93C5FD] dark:via-[#60A5FA] dark:to-[#3B82F6]">
                 Be the First
               </span>
-              <span className="text-[#6366F1] dark:text-[#818CF8]"> to Gistify Your Inbox.</span>
+              <span className="text-[#4F46E5] dark:text-[#E0E7FF]"> to Gistify Your Inbox.</span>
             </h1>
             <p className="text-[#334155] dark:text-[#E2E8F0] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm rounded-lg px-4 py-2">
-              Our AI scans 30+ AI, Product & Robotics newsletters—delivering{" "}
-              <span className="font-semibold text-[#3B82F6] dark:text-[#60A5FA] animate-pulse-subtle relative">
-                <span className="relative z-10">the anti-loop newsletter feed</span>
-                <span className="absolute inset-0 bg-blue-100/50 dark:bg-blue-500/20 rounded blur-sm -z-10"></span>
-              </span>
+              Stay on top of 30+ AI, Product, and Robotics newsletters with a daily briefing to empower your decisions—all in one daily briefing.
             </p>
 
             {/* Countdown Timer - Moved Above */}
@@ -379,11 +375,14 @@ export default function PreLaunchLanding() {
             
             {/* Call to action */}
             <div className="mt-16 text-center">
-              <a href="#waitlist-form" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-sm font-medium transition-all duration-300">
-                Try Gistify Dashboard
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+              <a
+                href="#waitlist-form"
+                className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20 inline-flex"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+                <Sparkles className="w-4 h-4 relative z-10" />
+                <span className="relative z-10">Try Gistify Dashboard</span>
+                <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </div>
           </div>
