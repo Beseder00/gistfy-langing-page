@@ -216,7 +216,7 @@ export default function PreLaunchLanding() {
           </div>
 
           <div id="waitlist-form" className="relative text-center flex flex-col items-center z-10 max-w-4xl mx-auto">
-            <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+            <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 mt-10 shadow-sm backdrop-blur-sm">
               Coming Soon
             </span>
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
@@ -252,7 +252,7 @@ export default function PreLaunchLanding() {
             </div>
 
             {/* Email Subscription Form */}
-            <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto mb-10">
+            <form onSubmit={handleSubmit} className="w-full max-w-xl mx-auto mb-10">
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1 group">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/10 to-[#6366F1]/10 dark:from-[#60A5FA]/5 dark:to-[#818CF8]/5 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-500"></div>
@@ -315,10 +315,11 @@ export default function PreLaunchLanding() {
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
-              <span className="inline-block bg-gradient-to-r from-blue-500/20 to-indigo-500/20 dark:from-blue-500/10 dark:to-indigo-500/10 text-blue-700 dark:text-blue-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm">
-                How It Works
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-400 dark:to-indigo-400">
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Plug and Play
+              </h3>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--foreground)] mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-300 dark:to-indigo-300">
                 How Gistify Works
               </h2>
               <p className="text-xl text-[var(--muted-foreground)] max-w-2xl mx-auto">
@@ -378,8 +379,8 @@ export default function PreLaunchLanding() {
             
             {/* Call to action */}
             <div className="mt-16 text-center">
-              <a href="#waitlist-form" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
-                Start Saving Time
+              <a href="#waitlist-form" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+                Try Gistify Dashboard
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
