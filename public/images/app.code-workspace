@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "../../../../gistfy-langing-page/app"
+		},
+		{
+			"path": "../../../../gistfy-langing-page/components"
+		},
+		{
+			"path": "../../../../gistfy-langing-page/data"
+		},
+		{
+			"path": "../../../../gistfy-langing-page/hooks"
+		},
+		{
+			"path": "../../../../gistfy-langing-page/lib"
+		},
+		{
+			"path": "../../../../gistfy-langing-page/public"
+		},
+		{
+			"path": "../../../../gistfy-langing-page/styles"
+		}
+	],
+	"settings": {}
+}
