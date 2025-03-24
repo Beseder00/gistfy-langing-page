@@ -99,12 +99,12 @@ export default function PreLaunchLanding() {
       
       // Use the new API endpoint
       const response = await fetch("/api/subscribe", {
-        method: "POST",
+      method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
-      })
+      body: JSON.stringify({ email }),
+    })
       
       console.log("Response status:", response.status)
       const data = await response.json()
@@ -114,12 +114,12 @@ export default function PreLaunchLanding() {
         throw new Error(data.message || "Error submitting email")
       }
       
-      alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
-      setEmail("")
-      setShowEmailPopup(false)
+        alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
+        setEmail("")
+        setShowEmailPopup(false)
     } catch (error) {
-      console.error("Error submitting email:", error)
-      alert("There was an error submitting your email. Please try again.")
+        console.error("Error submitting email:", error)
+        alert("There was an error submitting your email. Please try again.")
     }
   }
 
@@ -307,8 +307,8 @@ export default function PreLaunchLanding() {
                 <span className="text-[var(--foreground)]">Boost Your </span>
                 <span className="bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
                   Productivity <span className="font-extrabold">10x</span>
-                </span>
-              </h2>
+              </span>
+            </h2>
             </div>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
@@ -781,15 +781,15 @@ export default function PreLaunchLanding() {
                 </Button>
 
                 <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
-                  <div className="flex items-center">
+                <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
-                    <span>Cancel anytime</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
-                    <span>No credit card needed</span>
-                  </div>
+                  <span>Cancel anytime</span>
                 </div>
+                <div className="flex items-center">
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+                  <span>No credit card needed</span>
+                </div>
+              </div>
               </form>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-[var(--muted-foreground)] mt-8">

@@ -97,11 +97,11 @@ Today's summaries highlight AI evolving into an independent force, where its inf
 These insights reflect AI breaking free from human oversight, pushing automation into self-organizing systems. AI is now negotiating with itself, governing its own infrastructure, and building the next generation of AI.
 
 ## Hidden Factors to Think About
-• **Can AI-driven economies regulate themselves?** If AI sets prices, optimizes logistics, and automates entire industries, how do we govern AI-led markets?
+• Can AI-driven economies regulate themselves? If AI sets prices, optimizes logistics, and automates entire industries, how do we govern AI-led markets?
 
-• **How far can AI replace decision-making?** OpenAI, Anthropic, and Google are racing to define AI orchestration—but will human oversight become obsolete in key industries?
+• How far can AI replace decision-making? OpenAI, Anthropic, and Google are racing to define AI orchestration—but will human oversight become obsolete in key industries?
 
-• **Who benefits from an AI-driven price war?** As China pushes ultra-cheap AI alternatives, does this accelerate global AI adoption or undermine innovation at the top?
+• Who benefits from an AI-driven price war? As China pushes ultra-cheap AI alternatives, does this accelerate global AI adoption or undermine innovation at the top?
 
 ## The Takeaway
 AI is no longer just advancing technology—it's reshaping industries, governance, and economic control. Understanding these shifts now ensures you're prepared for what's next. Stay ahead. Think critically. Adapt fast.`
@@ -201,6 +201,24 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
       // Bullet points
       if (cleanLine.startsWith('• ')) {
         const colonIndex = cleanLine.indexOf(':');
+        const questionMarkIndex = cleanLine.indexOf('?');
+        
+        // Special handling for Hidden Factors section
+        if (inHiddenFactorsSection && questionMarkIndex > 0) {
+          const [beforeQuestion, ...afterQuestion] = cleanLine.substring(2).split('?');
+          return (
+            <div key={i} className="flex items-start py-1 px-2 my-1 rounded hover:bg-[var(--muted-background)]/50 transition-colors">
+              <span className="mr-2 text-[var(--muted-foreground)]">•</span>
+              <span className="text-[var(--muted-foreground)]">
+                <span className="font-semibold text-gray-800 dark:text-gray-300">{beforeQuestion.trim()}</span>
+                {'?'}
+                <span className="text-[var(--muted-foreground)]">{afterQuestion.join('?')}</span>
+              </span>
+            </div>
+          );
+        }
+        
+        // Regular bullet points with colons
         if (colonIndex > 0) {
           const beforeColon = cleanLine.substring(2, colonIndex + 1);
           const afterColon = cleanLine.substring(colonIndex + 1);
@@ -225,6 +243,7 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           );
         }
         
+        // Regular bullet points
         return (
           <div key={i} className="flex items-start py-1 px-2 my-1 rounded hover:bg-[var(--muted-background)]/50 transition-colors">
             <span className="mr-2 text-[var(--muted-foreground)]">•</span>
