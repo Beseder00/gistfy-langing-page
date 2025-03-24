@@ -35,7 +35,7 @@ export function CommandCenter() {
 
   return (
     <section className="relative">
-      <div className="py-8 md:py-12 px-4 bg-gradient-to-b from-[#F8FAFC] to-white relative overflow-hidden">
+      <div className="py-8 md:py-12 px-4 bg-gradient-to-b from-[var(--muted-background)] to-[var(--card-background)] relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8">
             <SectionHeader
@@ -82,16 +82,26 @@ export function CommandCenter() {
                   waitlistForm.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#4F46E5] hover:from-[#1D4ED8] hover:via-[#2563EB] hover:to-[#4338CA] text-white font-semibold px-8 py-4 rounded-xl text-lg tracking-wide shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:shadow-[0_8px_30px_rgba(37,99,235,0.65)] transition-all duration-500 ease-out transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 active:scale-[0.98] border border-white/10"
+              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white font-bold px-10 py-5 rounded-2xl text-xl tracking-wide shadow-[0_8px_30px_rgba(59,130,246,0.5)] hover:shadow-[0_15px_60px_rgba(59,130,246,0.6)] transition-all duration-500 ease-out transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30 focus:ring-offset-2 active:scale-[0.98] border border-white/10 overflow-hidden"
               aria-label="Try Gistify Dashboard - Click to explore our time-saving features"
             >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out -z-10"></div>
-              <Sparkles className="w-5 h-5 text-blue-100 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12" />
-              <span className="relative font-bold">
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out -z-10"></div>
+              
+              {/* Moving light effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-blue-100/20 to-transparent skew-x-[-20deg] transform -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out -z-5"></div>
+              
+              {/* Icon with animation */}
+              <Sparkles className="w-6 h-6 text-blue-100 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12" />
+              
+              {/* Text with underline animation */}
+              <span className="relative font-extrabold">
                 Try Gistify Dashboard
-                <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-transparent via-blue-100 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out" />
+                <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-transparent via-blue-100 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out" />
               </span>
-              <ArrowRight className="w-5 h-5 text-blue-100 transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+              
+              {/* Arrow with animation */}
+              <ArrowRight className="w-6 h-6 text-blue-100 transition-transform duration-500 ease-out group-hover:translate-x-2" />
             </Button>
           </div>
         </div>

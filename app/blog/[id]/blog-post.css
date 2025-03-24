@@ -6,6 +6,47 @@
   max-width: none;
 }
 
+/* Dark mode overrides */
+.dark .prose {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .prose h2 {
+  color: white;
+}
+
+.dark .prose h2::after {
+  background: linear-gradient(90deg, #60a5fa, rgba(96, 165, 250, 0.3));
+}
+
+.dark .prose h3 {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.dark .prose strong {
+  color: white;
+}
+
+.dark .prose blockquote {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(15, 23, 42, 0.6);
+  border-left: 4px solid #60a5fa;
+}
+
+.dark .prose figcaption {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark .prose code {
+  background-color: rgba(30, 41, 59, 0.5);
+  color: #f87171;
+}
+
+.dark .prose div[style*="background-color:#f3f4f6"] {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  border-left: 4px solid #60a5fa;
+}
+
 /* Improve figure and image spacing */
 .prose figure {
   margin: 2.5rem 0;

@@ -186,19 +186,19 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
         // Make "The Big Picture" heading larger than other section headings
         if (line.startsWith('## The Big Picture')) {
           return (
-            <h2 key={i} className="text-2xl font-bold text-gray-900 mt-6 mb-4">
+            <h2 key={i} className="text-2xl font-bold text-[var(--foreground)] mt-6 mb-4">
               {line.replace('## ', '')}
             </h2>
           )
         }
         return (
-          <h2 key={i} className="text-xl font-bold text-gray-900 mt-6 mb-3">
+          <h2 key={i} className="text-xl font-bold text-[var(--foreground)] mt-6 mb-3">
             {line.replace('## ', '')}
           </h2>
         )
       } else if (line.startsWith('### ')) {
         return (
-          <h3 key={i} className="text-lg font-bold text-gray-800 mt-4 mb-2">
+          <h3 key={i} className="text-lg font-bold text-[var(--foreground)] mt-4 mb-2">
             {line.replace('### ', '')}
           </h3>
         )
@@ -208,7 +208,7 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
         return (
           <div key={i} className="ml-4 my-2 font-medium">
             {line.split('**').map((part, j) => 
-              j % 2 === 1 ? <span key={j} className="text-gray-800 font-semibold">{part}</span> : part
+              j % 2 === 1 ? <span key={j} className="text-[var(--foreground)] font-semibold">{part}</span> : part
             )}
           </div>
         )
@@ -224,19 +224,19 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           return (
             <div 
               key={i} 
-              className="flex items-start py-1 px-2 my-1 rounded hover:bg-gray-50 transition-colors"
+              className="flex items-start py-1 px-2 my-1 rounded hover:bg-[var(--muted-background)]/50 transition-colors"
             >
-              <span className="mr-2 text-gray-600">•</span>
+              <span className="mr-2 text-[var(--muted-foreground)]">•</span>
               <span>
-                <span className="text-gray-800 font-semibold">{beforeColon}</span>
+                <span className="text-[var(--foreground)] font-semibold">{beforeColon}</span>
                 {afterColon.split('**').map((part, j) => 
-                  j % 2 === 1 ? <span key={j} className="text-gray-800 font-semibold">{part}</span> : part
+                  j % 2 === 1 ? <span key={j} className="text-[var(--foreground)] font-semibold">{part}</span> : part
                 )}
                 {/* Add 'the Gist' link for Good Read section only */}
                 {inGoodReadSection && (
                   <>
                     {' '}
-                    <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium ml-1">
+                    <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline text-sm font-medium ml-1">
                       the Gist →
                     </a>
                   </>
@@ -249,18 +249,18 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           return (
             <div 
               key={i} 
-              className="flex items-start py-1 px-2 my-1 rounded hover:bg-gray-50 transition-colors"
+              className="flex items-start py-1 px-2 my-1 rounded hover:bg-[var(--muted-background)]/50 transition-colors"
             >
-              <span className="mr-2 text-gray-600">•</span>
+              <span className="mr-2 text-[var(--muted-foreground)]">•</span>
               <span>
                 {line.replace('• ', '').split('**').map((part, j) => 
-                  j % 2 === 1 ? <span key={j} className="text-gray-800 font-semibold">{part}</span> : part
+                  j % 2 === 1 ? <span key={j} className="text-[var(--foreground)] font-semibold">{part}</span> : part
                 )}
                 {/* Add 'the Gist' link for Good Read section only */}
                 {inGoodReadSection && (
                   <>
                     {' '}
-                    <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium ml-1">
+                    <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline text-sm font-medium ml-1">
                       the Gist →
                     </a>
                   </>
@@ -273,9 +273,9 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
       // Regular paragraph
       else if (line.trim() !== '') {
         return (
-          <p key={i} className="my-2">
+          <p key={i} className="my-2 text-[var(--muted-foreground)]">
             {line.split('**').map((part, j) => 
-              j % 2 === 1 ? <span key={j} className="text-gray-800 font-semibold">{part}</span> : 
+              j % 2 === 1 ? <span key={j} className="text-[var(--foreground)] font-semibold">{part}</span> : 
               part.split('_').map((italicPart, k) => 
                 k % 2 === 1 ? <em key={k}>{italicPart}</em> : italicPart
               )
@@ -290,13 +290,17 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header section - Keep dark blue background but remove title */}
+      {/* Header section - Improved for mobile responsiveness */}
       <div className="bg-[#0F172A]/90 backdrop-blur-sm p-4 rounded-t-lg">
-        {/* Add back the title */}
-        <h1 className="text-xl font-bold text-white mb-2">Daily AI Summary – AI-Driven Intelligence</h1>
-        <div className="flex justify-between">
-          <div className="text-gray-300 text-sm">March 19, 2025 | 3 Min Read</div>
-          <div className="flex gap-2">
+        {/* Title with responsive text size */}
+        <h1 className="text-base leading-tight sm:text-lg md:text-xl font-bold text-white mb-2">Daily AI Briefing - Personalized to Your Needs</h1>
+        
+        {/* Responsive layout for metadata and badges */}
+        <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0">
+          <div className="text-gray-300 text-xs sm:text-sm">March 19, 2025 | 3 Min Read</div>
+          
+          {/* Tags that wrap nicely on small screens */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             <span className="inline-flex items-center gap-1 bg-blue-900/80 text-blue-200 px-2 py-0.5 rounded-full text-xs">
               30 Newsletters
             </span>
@@ -316,7 +320,7 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
       {/* Content area */}
       <div 
         ref={containerRef}
-        className="flex-1 bg-white p-4 px-6 sm:px-8 rounded-b-lg overflow-y-auto custom-scrollbar"
+        className="flex-1 bg-[var(--card-background)] p-4 px-6 sm:px-8 rounded-b-lg overflow-y-auto custom-scrollbar"
         style={{ 
           scrollBehavior: 'smooth',
           maxHeight: 'calc(100% - 90px)',
@@ -338,8 +342,8 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
           
           {/* Completion indicator */}
           {isComplete && (
-            <div className="flex items-center justify-center mt-4 pt-2 border-t border-gray-200 animate-fade-in">
-              <span className="text-sm text-gray-500">Analysis complete</span>
+            <div className="flex items-center justify-center mt-4 pt-2 border-t border-[var(--border)] animate-fade-in">
+              <span className="text-sm text-[var(--muted-foreground)]">Analysis complete</span>
               <div className="w-2 h-2 bg-green-500 rounded-full ml-2 animate-pulse"></div>
             </div>
           )}
@@ -367,17 +371,17 @@ AI is no longer just advancing technology—it's reshaping industries, governanc
         }
         
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f5f9;
+          background: var(--muted-background);
           border-radius: 4px;
         }
         
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
+          background: var(--muted-foreground);
           border-radius: 4px;
         }
         
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #94a3b8;
+          background: var(--foreground);
         }
       `}</style>
     </div>

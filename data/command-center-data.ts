@@ -2,7 +2,7 @@ import { Settings, Bookmark, Link, FileText, Star } from "lucide-react"
 import { Robot } from "@/components/custom-icons"
 
 export const commandCenterData = {
-  sectionTitle: "Command Center",
+  sectionTitle: "AI Command Center",
   heading: {
     firstPart: "Meet Your New",
     highlightedPart: " Command Center",

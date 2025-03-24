@@ -18,7 +18,7 @@ export function FeatureCard({
   progressColor,
 }: FeatureCardProps) {
   return (
-    <div className="group bg-white rounded-lg p-4 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-100">
+    <div className="group bg-[var(--card-background)] rounded-lg p-4 border border-[var(--border)] shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-100 dark:hover:border-blue-800/50">
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
         <div
           className={`w-10 h-10 rounded-lg ${iconBgColor} flex items-center justify-center mb-3 sm:mb-0 sm:mr-3 flex-shrink-0`}
@@ -26,9 +26,9 @@ export function FeatureCard({
           <Icon size={22} color={iconColor} strokeWidth={2} className="transform transition-transform duration-300 group-hover:scale-110" />
         </div>
         <div className="flex-1 text-center sm:text-left">
-          <h4 className="font-semibold text-slate-900 mb-1 text-base group-hover:text-blue-600 transition-colors duration-300">{title}</h4>
-          <p className="text-slate-600 text-xs mb-3">{description}</p>
-          <div className="w-full max-w-[200px] mx-auto sm:mx-0 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+          <h4 className="font-semibold text-[var(--foreground)] mb-1 text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{title}</h4>
+          <p className="text-[var(--muted-foreground)] text-xs mb-3">{description}</p>
+          <div className="w-full max-w-[200px] mx-auto sm:mx-0 bg-[var(--muted-background)] rounded-full h-1.5 overflow-hidden">
             <div 
               className="h-1.5 rounded-full" 
               style={{ width: '100%', minWidth: '100%', display: 'block', backgroundColor: iconColor }}

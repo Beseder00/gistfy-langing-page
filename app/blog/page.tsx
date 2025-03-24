@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search, Calendar, Clock, ArrowRight } from "lucide-react"
 import { Logo } from "@/components/logo"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 // Sample blog posts data
 const blogPosts = [
@@ -45,7 +46,7 @@ export default function BlogPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F8FAFC] to-white">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--muted-background)] to-[var(--card-background)]">
       {/* Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -77,12 +78,9 @@ export default function BlogPage() {
             >
               Features
             </a>
-            <a
-              href="/#contact"
-              className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
-            >
-              Contact
-            </a>
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </nav>
         </div>
       </header>
@@ -91,7 +89,7 @@ export default function BlogPage() {
       <div className="bg-gradient-to-r from-[#0F172A] to-[#1E293B] text-white py-20 pt-36">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Blog</h1>
-          <p className="text-xl text-gray-300 max-w-2xl">
+          <p className="text-xl text-[var(--header-text)] max-w-2xl">
             Discovering hidden patterns in AI and robotics that humans would miss—turning newsletter overwhelm into actionable intelligence that gives you an edge.
           </p>
         </div>
@@ -100,7 +98,7 @@ export default function BlogPage() {
       {/* Search and Filter Section */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="relative mb-8">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
           <Input
             type="text"
             placeholder="Search articles..."
@@ -114,7 +112,7 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post) => (
             <Link href={`/blog/${post.slug}`} key={post.id}>
-              <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <article className="bg-[var(--card-background)] rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border)]">
                 <div className="relative h-48">
                   <Image
                     src={post.image}
@@ -124,7 +122,7 @@ export default function BlogPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                  <div className="flex items-center gap-4 text-sm text-[var(--muted-foreground)] mb-3">
                     <span className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
                       {post.date}
@@ -137,10 +135,10 @@ export default function BlogPage() {
                   <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-4 shadow-sm hover:shadow-md transition-all duration-300">
                     {post.category}
                   </span>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+                  <h2 className="text-xl font-bold text-[var(--foreground)] mb-2 hover:text-blue-600 transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-[var(--muted-foreground)] mb-4">
                     {post.excerpt}
                   </p>
                   <div className="flex items-center text-blue-600 font-medium">

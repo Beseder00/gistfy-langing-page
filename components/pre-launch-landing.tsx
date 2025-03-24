@@ -196,12 +196,6 @@ export default function PreLaunchLanding() {
               >
                 Features
               </a>
-              <a
-                href="#contact"
-                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
-              >
-                Contact
-              </a>
               <div className="ml-4 md:ml-6">
                 <ThemeToggle />
               </div>
@@ -287,13 +281,13 @@ export default function PreLaunchLanding() {
                 </Button>
               </form>
 
-              <div className="flex justify-center gap-x-6 text-xs text-[#64748B]">
+              <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
                 <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
                   <span>Cancel anytime</span>
                 </div>
                 <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
                   <span>No credit card needed</span>
                 </div>
               </div>
@@ -304,12 +298,21 @@ export default function PreLaunchLanding() {
         {/* Before & After Slider Section */}
         <section className="pt-8 md:pt-12 pb-16 px-4 bg-[var(--card-background)]" id="examples">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[var(--foreground)] mt-2 mb-12 max-w-4xl mx-auto leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
-                Boost Your Productivity <span className="font-extrabold text-[#F43F5E]">10x</span> by Automating Your
-                Newsletter Reading
-              </span>
-            </h2>
+            <div className="text-center mb-12">
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Before & After
+              </h3>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+                <span className="text-[var(--foreground)]">Boost Your </span>
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
+                  Productivity <span className="font-extrabold">10x</span>
+                </span>
+              </h2>
+              <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
+                By <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">automating</span> your newsletter reading workflow
+              </p>
+            </div>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
           </div>
@@ -414,11 +417,20 @@ export default function PreLaunchLanding() {
         <section className="pt-0 pb-20 px-4 bg-gradient-to-b from-[var(--card-background)] to-[var(--muted-background)]" id="testimonials">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 pt-12">
-              {/* Section label removed */}
-              <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-6">What Our Users Say</h2>
+              {/* Enhanced section title with gradient styling */}
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Testimonials
+              </h3>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+                <span className="text-[var(--foreground)]">What Our </span>
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
+                  Users Say
+                </span>
+              </h2>
 
-              <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto mb-8">
-                Join professionals who've transformed how they consume newsletter content
+              <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
+                Join <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">professionals</span> who've transformed how they consume newsletter content
               </p>
             </div>
 
@@ -659,17 +671,20 @@ export default function PreLaunchLanding() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 px-4 bg-[var(--card-background)]" id="faq">
-          <div className="max-w-3xl mx-auto">
+        {/* FAQ Section - Updated with better styling */}
+        <section className="py-16 md:py-24 px-4 bg-[var(--muted-background)]" id="faq">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <span className="inline-block bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
-                FAQ
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Support
+              </h3>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+                <span className="text-[var(--foreground)]">Frequently Asked </span>
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
+                  Questions
                 </span>
-              <h2 className="text-4xl md:text-4xl font-bold text-[var(--foreground)] mb-4">Frequently Asked Questions</h2>
-              <p className="text-[var(--muted-foreground)] text-lg max-w-2xl mx-auto">
-                Everything you need to know about our upcoming platform.
-              </p>
+              </h2>
             </div>
 
             <Accordion type="single" collapsible className="space-y-4">
@@ -732,28 +747,38 @@ export default function PreLaunchLanding() {
           </div>
         </section>
 
-        {/* CTA Section - Update the button to open the popup */}
-        <section className="py-20 px-4 bg-gradient-to-r from-[#1E40AF] to-[#1E3A8A] text-white text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-4xl font-bold mb-6">Ready to Reclaim Hours of Your Week?</h2>
-            <p className="mb-8 text-white/90 max-w-xl mx-auto text-lg leading-relaxed">
-              Join our waitlist today. Designed for high-performing professionals who know the value of their time.
+        {/* CTA Section */}
+        <section className="py-24 px-4 bg-gradient-to-b from-[var(--muted-background)] to-[var(--card-background)]">
+          <div className="max-w-5xl mx-auto text-center">
+            <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+              <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+              Get Started
+            </h3>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+              <span className="text-[var(--foreground)]">Ready to Reclaim </span>
+              <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
+                Hours of Your Week?
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
+              Join our <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">waitlist today</span> and be among the first to experience Gistify
             </p>
-            <div className="bg-white bg-opacity-10 rounded-xl p-6 max-w-md mx-auto mb-6">
+
+            <div className="bg-[var(--card-background)] border border-[var(--border)] rounded-xl p-6 max-w-md mx-auto mb-6 shadow-lg">
               <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-white text-sm font-medium">
+                <span className="inline-flex items-center text-[var(--foreground)] text-sm font-medium bg-gradient-to-r from-blue-500/10 to-indigo-500/10 px-3 py-1 rounded-full">
                   <span className="mr-1">🎁</span> One-Time Offer
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-white text-center mb-5">Get 60% Off at Launch</h3>
+              <h3 className="text-2xl font-bold text-[var(--foreground)] text-center mb-5">Get 60% Off at Launch</h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-white/30 bg-white/15 text-white rounded-lg w-full placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50 focus:border-white/70"
+                    className="pl-10 h-12 border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] rounded-lg w-full placeholder:text-[var(--muted-foreground)] shadow-sm hover:shadow-md focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-blue-500/30 hover:border-blue-300/50 dark:hover:border-blue-500/50 focus:border-blue-500"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -762,34 +787,34 @@ export default function PreLaunchLanding() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Early Access
                 </Button>
 
-                <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
+                <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
                     <span>Cancel anytime</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
                     <span>No credit card needed</span>
                   </div>
                 </div>
               </form>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-white/90 mt-8">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-[var(--muted-foreground)] mt-8">
               <div className="flex items-center">
-                <Sparkles className="h-5 w-5 mr-2" />
+                <Sparkles className="h-5 w-5 mr-2 text-blue-500" />
                 <span>Early access</span>
               </div>
               <div className="flex items-center">
-                <Shield className="h-5 w-5 mr-2" />
+                <Shield className="h-5 w-5 mr-2 text-blue-500" />
                 <span>No spam, ever</span>
               </div>
               <div className="flex items-center">
-                <Users className="h-5 w-5 mr-2" />
+                <Users className="h-5 w-5 mr-2 text-blue-500" />
                 <span>Join 500+ early adopters</span>
               </div>
             </div>
