@@ -709,7 +709,7 @@ export function BeforeAfterSlider() {
               </div>
 
               {/* First batch of newsletters */}
-              {Array.from({ length: 15 }).map((_, i) => {
+              {Array.from({ length: 9 }).map((_, i) => {
                 // Determine which newsletter to show based on index
                 if (i === 0) {
                   // TLDR AI Newsletter
