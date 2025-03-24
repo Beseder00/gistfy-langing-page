@@ -255,17 +255,26 @@ export default function PreLaunchLanding() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-12 pl-12 pr-32 bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm border-2 border-[var(--border)] focus:border-blue-500 dark:focus:border-blue-400 rounded-lg shadow-sm"
+                  className="w-full h-12 pl-12 bg-[var(--background)] border-2 border-[var(--border)] focus:border-blue-500 dark:focus:border-blue-400 rounded-lg shadow-sm"
                 />
                 <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--muted-foreground)]" />
-                <Button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8">
-                  Join Waitlist
+                <Button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 bg-[#3B82F6] hover:bg-[#2563EB] text-white">
+                  Get Product Updates
                 </Button>
               </div>
               <div className="flex items-center gap-6">
-                <p className="text-[var(--muted-foreground)] text-sm">Early access</p>
-                <p className="text-[var(--muted-foreground)] text-sm">No spam, ever</p>
-                <p className="text-[var(--muted-foreground)] text-sm">Join 500+ early adopters</p>
+                <div className="flex items-center">
+                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+                  <span className="text-[var(--muted-foreground)] text-sm">Early access</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+                  <span className="text-[var(--muted-foreground)] text-sm">No spam, ever</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+                  <span className="text-[var(--muted-foreground)] text-sm">Join 500+ early adopters</span>
+                </div>
               </div>
             </form>
           </div>
