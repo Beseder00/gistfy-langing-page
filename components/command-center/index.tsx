@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { ArrowRight, Sparkles } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 import { DashboardMockup } from "./dashboard-mockup"
 import { FeatureCard } from "./feature-card"
 import { styles } from "@/styles/command-center-styles"
@@ -35,7 +36,7 @@ export function CommandCenter() {
 
   return (
     <section className="relative">
-      <div className="py-8 md:py-12 px-4 bg-gradient-to-b from-[#F8FAFC] to-white relative overflow-hidden">
+      <div className="py-8 md:py-12 px-4 bg-gradient-to-b from-[var(--muted-background)] to-[var(--card-background)] relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8">
             <SectionHeader
@@ -75,16 +76,19 @@ export function CommandCenter() {
           {/* CTA Button */}
           <div className="mt-16 flex justify-center">
             <Button
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#4F46E5] hover:from-[#1D4ED8] hover:via-[#2563EB] hover:to-[#4338CA] text-white font-semibold px-8 py-4 rounded-xl text-lg tracking-wide shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:shadow-[0_8px_30px_rgba(37,99,235,0.65)] transition-all duration-500 ease-out transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 active:scale-[0.98] border border-white/10"
-              aria-label="Try Gistify Dashboard - Click to explore our time-saving features"
+              onClick={() => {
+                // Find the waitlist form element by ID and scroll to it
+                const waitlistForm = document.getElementById("waitlist-form");
+                if (waitlistForm) {
+                  waitlistForm.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20"
             >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out -z-10"></div>
-              <Sparkles className="w-5 h-5 text-blue-100 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12" />
-              <span className="relative font-bold">
-                Try Gistify Dashboard
-                <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-transparent via-blue-100 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out" />
-              </span>
-              <ArrowRight className="w-5 h-5 text-blue-100 transition-transform duration-500 ease-out group-hover:translate-x-1.5" />
+              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+              <Sparkles className="w-4 h-4 relative z-10" />
+              <span className="relative z-10">Try Gistify Dashboard</span>
+              <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </div>
         </div>

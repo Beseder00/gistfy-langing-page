@@ -4,13 +4,14 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
+import { ThemeProvider } from "next-themes"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Gist Engine - AI Newsletter Curation",
-  description: "Save hours weekly with AI-powered newsletter curation",
-    generator: 'v0.dev'
+  title: "AI-Powered Daily Briefing AI Robotics | Gistify",
+  description: "Transform your newsletter experience with Gistify. Our AI assistant scans your inbox, analyzes AI and robotics newsletters, and delivers concise, personalized daily briefings. Save time and stay informed with smart summaries from your favorite tech newsletters.",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -19,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google Tag Manager */}
         <Script
@@ -37,17 +38,19 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        {children}
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Google Tag Manager (noscript) */}
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

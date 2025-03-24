@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { CheckCircle2, Mail, ChevronRight, Users, Shield, Sparkles, X } from "lucide-react"
+import { CheckCircle2, Mail, ChevronRight, Users, Shield, Sparkles, X, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -11,6 +11,7 @@ import { BeforeAfterSlider } from "./before-after-slider"
 import { useState, useEffect } from "react"
 import { InteractiveDashboardMockup } from "./interactive-dashboard-mockup"
 import Image from "next/image"
+import { ThemeToggle } from "./theme-toggle"
 
 // Add this after the imports
 const scrollbarHideStyles = `
@@ -84,23 +85,74 @@ export default function PreLaunchLanding() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would submit to a waitlist API
-    fetch("/api/subscribe", {
+    
+    // Basic validation
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address")
+      return
+    }
+
+    try {
+      console.log("Submitting email:", email)
+      
+      // Use the new API endpoint
+      const response = await fetch("/api/subscribe", {
       method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       body: JSON.stringify({ email }),
     })
-      .then((res) => res.json())
-      .then((data) => {
+      
+      console.log("Response status:", response.status)
+      const data = await response.json()
+      console.log("Response data:", data)
+      
+      if (!response.ok) {
+        throw new Error(data.message || "Error submitting email")
+      }
+      
         alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
         setEmail("")
         setShowEmailPopup(false)
-      })
-      .catch((error) => {
+    } catch (error) {
         console.error("Error submitting email:", error)
         alert("There was an error submitting your email. Please try again.")
+    }
+  }
+
+  const handleSubmitTest = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address")
+      return
+    }
+
+    try {
+      console.log("Submitting test email:", email)
+      
+      const response = await fetch("/api/subscribe-test", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
       })
+      
+      console.log("Test response status:", response.status)
+      const data = await response.json()
+      console.log("Test response data:", data)
+      
+      alert(`Test subscription successful with ${email}!`)
+      setEmail("")
+      setShowEmailPopup(false)
+    } catch (error) {
+      console.error("Error in test submission:", error)
+      alert("There was an error in the test. Please check the console.")
+    }
   }
 
   // Modify the CTA section button to open the popup
@@ -114,11 +166,11 @@ export default function PreLaunchLanding() {
       <style jsx global>
         {scrollbarHideStyles}
       </style>
-      <div className="bg-gradient-to-b from-[#F8FAFC] via-white to-[#F1F5F9] min-h-screen">
+      <div className="bg-[var(--background)] min-h-screen">
         {/* Header */}
         <header
           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            scrolled ? "bg-[#0F172A]/95 backdrop-blur-md py-3" : "bg-gradient-to-r from-[#0F172A] to-[#1E293B] py-4"
+            scrolled ? "bg-[var(--header-gradient-start)] dark:bg-[#0F172A] py-3 shadow-md" : "bg-[var(--header-gradient-start)] dark:bg-[#0F172A] py-4"
           }`}
         >
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
@@ -127,71 +179,59 @@ export default function PreLaunchLanding() {
             </div>
             <nav className="flex items-center justify-end flex-1">
               <a
+                href="/blog"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
+              >
+                Blog
+              </a>
+              <a
                 href="#examples"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
               >
                 Examples
               </a>
               <a
                 href="#features"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
+                className="ml-3 md:ml-6 text-xs md:text-sm font-medium text-[var(--header-text)] hover:text-[#60A5FA] transition-colors"
               >
                 Features
               </a>
-              <a
-                href="#contact"
-                className="ml-3 md:ml-6 text-xs md:text-sm hover:text-[#60A5FA] transition-colors font-medium text-white/90"
-              >
-                Contact
-              </a>
+              <div className="ml-4 md:ml-6">
+                <ThemeToggle />
+              </div>
             </nav>
           </div>
         </header>
 
-        {/* Hero Section with Email Overload Background Image */}
-        <section className="pt-24 pb-20 px-4 relative overflow-hidden">
-          {/* Background Image with Overlay */}
+        {/* Hero Section without Background Image */}
+        <section className="pt-24 pb-20 px-4 relative overflow-hidden bg-gradient-to-b from-[var(--background)] to-[var(--card-background)]">
+          {/* Removed Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
-            <Image
-              src="https://p7lrpwrygsvtwfmu.public.blob.vercel-storage.com/DALL%C2%B7E%202025-03-19%2015.22.50%20-%20A%20digital%20illustration%20of%20an%20overwhelming%20email%20inbox%20scene.%20A%20stressed-out%20person%20sits%20at%20a%20cluttered%20desk%2C%20surrounded%20by%20stacks%20of%20unread%20emails%2C%20no-RwzG2XeF571lisqK6GH05Asa0Lq5rW.webp"
-              alt="Overwhelming email inbox"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Gradient overlay to mute the background image */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/90 via-[#F8FAFC]/85 to-[#F8FAFC]/95"></div>
-
             {/* Additional blur effects for depth */}
-            <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#60A5FA]/20 blur-3xl animate-pulse"></div>
+            <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#60A5FA]/20 dark:bg-[#60A5FA]/10 blur-3xl animate-pulse"></div>
             <div
-              className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-[#818CF8]/20 blur-3xl animate-pulse"
+              className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-[#818CF8]/20 dark:bg-[#818CF8]/10 blur-3xl animate-pulse"
               style={{ animationDelay: "1s" }}
             ></div>
           </div>
 
           <div id="waitlist-form" className="relative text-center flex flex-col items-center z-10 max-w-4xl mx-auto">
-            <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 text-[#6366F1] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
-              Coming Soon — Join the Waitlist
+            <span className="inline-block mx-auto bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 dark:from-[#818CF8]/10 dark:to-[#818CF8]/5 text-[#6366F1] dark:text-[#818CF8] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 mt-10 shadow-sm backdrop-blur-sm">
+              Coming Soon
             </span>
             <h1 className="text-center text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-sm">
-              <span className="text-[#1E3A8A]">Drowning in Newsletters?</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#2563EB]">
-                Reclaim
+              <span className="text-[#1E40AF] dark:text-[#DBEAFE]">Drowning in Newsletters?</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#60A5FA] dark:from-[#93C5FD] dark:via-[#60A5FA] dark:to-[#3B82F6]">
+                Be the First
               </span>
-              <span className="text-[#6366F1]"> Your Mornings.</span>
+              <span className="text-[#4F46E5] dark:text-[#E0E7FF]"> to Gistify Your Inbox.</span>
             </h1>
-            <p className="text-[#334155] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-white/70 backdrop-blur-sm rounded-lg px-4 py-2">
-              Our AI analyzes 30+ AI, Product, and Robotics Newsletters in your Inbox, Delivering You{" "}
-              <span className="font-semibold text-[#3B82F6] animate-pulse-subtle relative">
-                <span className="relative z-10">The Gist</span>
-                <span className="absolute inset-0 bg-blue-100/50 rounded blur-sm -z-10"></span>
-              </span>{" "}
-              in Seconds!
+            <p className="text-[#334155] dark:text-[#E2E8F0] text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed font-light bg-[var(--card-background)]/70 dark:bg-[var(--card-background)]/40 backdrop-blur-sm rounded-lg px-4 py-2">
+              Stay on top of 30+ AI, Product, and Robotics newsletters with a daily briefing to empower your decisions—all in one daily briefing.
             </p>
 
             {/* Countdown Timer - Moved Above */}
-            <div className="flex justify-center gap-4 mb-10">
+            <div className="flex justify-center space-x-4 md:space-x-6 mb-10">
               {[
                 { value: countdown.days, label: "Days" },
                 { value: countdown.hours, label: "Hours" },
@@ -199,92 +239,178 @@ export default function PreLaunchLanding() {
                 { value: countdown.seconds, label: "Seconds" },
               ].map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
-                  <div className="bg-[#0F172A] text-white text-2xl font-bold w-14 h-14 rounded-md flex items-center justify-center shadow-lg">
+                  <div className="bg-[var(--header-gradient-start)] text-[var(--header-text)] text-2xl font-bold w-14 h-14 rounded-md flex items-center justify-center shadow-lg">
                     {item.value < 10 ? `0${item.value}` : item.value}
                   </div>
-                  <span className="text-[#64748B] mt-2 text-sm bg-white/80 px-2 rounded">{item.label}</span>
-                  {index < 3 && (
-                    <span className="hidden md:block text-[#0F172A] text-2xl font-bold mx-1 -mt-14">:</span>
-                  )}
+                  <span className="text-[var(--muted-foreground)] mt-2 text-sm bg-[var(--card-background)]/80 dark:bg-[var(--card-background)]/30 px-2 rounded">{item.label}</span>
                 </div>
               ))}
             </div>
 
-            {/* Email Subscription - Larger Version */}
-            <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg p-6 max-w-md w-full mx-auto mb-6 border border-blue-100">
-              <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-[#3B82F6] text-sm font-medium">
-                  <span className="mr-1">🎁</span> One-Time Offer
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0F172A] text-center mb-5">Get 60% Off at Launch</h3>
-
-              <form onSubmit={handleSubmit} className="mb-4">
-                <div className="relative mb-3">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[#94A3B8]" />
+            {/* Email Subscription Form */}
+            <form onSubmit={handleSubmit} className="w-full max-w-xl mx-auto mb-10">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1 group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/10 to-[#6366F1]/10 dark:from-[#60A5FA]/5 dark:to-[#818CF8]/5 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                   <Input
                     type="email"
-                    placeholder="Enter your email"
-                    className="pl-10 h-12 border-[#E2E8F0] rounded-lg w-full bg-white shadow-md focus:shadow-blue-300/50 focus:shadow-lg transition-shadow duration-1000 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 animate-pulse-subtle border-blue-200 hover:border-blue-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
+                    placeholder="Enter your email"
+                    className="relative w-full h-12 px-4 text-base bg-white dark:bg-[#1E293B] border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-[#3B82F6] dark:focus:border-[#60A5FA] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-[#3B82F6] dark:group-hover:border-[#60A5FA]"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
+                  className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20"
                 >
-                  Get Early Access
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+                  <Mail className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">Get Product Updates</span>
                 </Button>
-              </form>
-
-              <div className="flex justify-center gap-x-6 text-xs text-[#64748B]">
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
-                  <span>Cancel anytime</span>
+              </div>
+              <div className="mt-3 flex items-center justify-center gap-4 text-sm">
+                <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
+                  <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
+                  <span>No spam</span>
                 </div>
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
-                  <span>No credit card needed</span>
+                <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-200">
+                  <CheckCircle2 className="h-4 w-4 text-[#3B82F6] dark:text-[#60A5FA]" />
+                  <span>Unsubscribe anytime</span>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </section>
 
         {/* Before & After Slider Section */}
-        <section className="pt-8 md:pt-12 pb-16 px-4 bg-white" id="examples">
+        <section className="pt-8 md:pt-12 pb-16 px-4 bg-[var(--card-background)]" id="examples">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1E3A8A] mt-2 mb-12 max-w-4xl mx-auto leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
-                Increase Your Productivity <span className="font-extrabold text-[#F43F5E]">10x</span> by Delegating Your
-                Newsletter Reading
-              </span>
-            </h2>
+            <div className="text-center mb-12">
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Before and After
+              </h3>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
+                <span className="text-[var(--foreground)]">Escape the </span>
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
+                  Loop. Feed Your Curiosity.
+                </span>
+              </h2>
+            </div>
             {/* New Before/After Slider Component */}
             <BeforeAfterSlider />
           </div>
         </section>
 
-        {/* Command Center Section */}
-        <section className="pt-12 md:pt-16">
+        {/* How to Get Started Section */}
+        <section className="py-24 px-4 bg-gradient-to-b from-[var(--card-background)] via-blue-50/30 dark:via-blue-900/10 to-[var(--card-background)] overflow-hidden relative">
+          {/* Background decorative elements */}
+          <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-blue-100/30 dark:bg-blue-900/20 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-indigo-100/30 dark:bg-indigo-900/20 blur-3xl"></div>
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Plug and Play
+              </h3>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--foreground)] mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-300 dark:to-indigo-300">
+                How Gistify Works
+              </h2>
+              <p className="text-xl text-[var(--muted-foreground)] max-w-2xl mx-auto">
+                Getting started is easy—just link your inbox and let AI become your executive assistant.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
+              {/* Connection lines between steps (visible on desktop only) */}
+              <div className="hidden md:block absolute top-24 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-blue-400 to-indigo-400 dark:from-blue-500 dark:to-indigo-500 z-0">
+                {/* Empty div for the connecting line */}
+              </div>
+              
+              {/* Step 1 */}
+              <div className="bg-[var(--card-background)] rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-100 dark:border-blue-800/30 relative z-10">
+                <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Connect Your Inbox</h3>
+                <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
+                  Gistify picks up the newsletters you already get—like <span className="font-semibold text-blue-700 dark:text-blue-400">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700 dark:text-blue-400">Ben's Bites (9:05 AM)</span>—and runs them through the Gist Engine. Just plug and play.
+                </p>
+              </div>
+
+              {/* Step 2 */}
+              <div className="bg-[var(--card-background)] rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-emerald-100 dark:border-emerald-800/30 relative z-10">
+                <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="4" y="7" width="16" height="12" rx="2" />
+                    <rect x="9" y="3" width="6" height="4" rx="1" />
+                    <circle cx="9" cy="13" r="1.5" fill="currentColor" />
+                    <circle cx="15" cy="13" r="1.5" fill="currentColor" />
+                    <path d="M9 18l3 1.5 3-1.5" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">AI-Powered Scanning</h3>
+                <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
+                  Our engine scans every issue—from <span className="font-semibold text-emerald-700 dark:text-emerald-400">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700 dark:text-emerald-400">Superhuman's robotics update (11:30 AM)</span>—pulling out only what matters most.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="bg-[var(--card-background)] rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-purple-100 dark:border-purple-800/30 relative z-10">
+                <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Get Your Daily Briefing</h3>
+                <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
+                  Start your day with a <span className="font-semibold text-purple-700 dark:text-purple-400">personalized brief</span>—<span className="font-semibold text-purple-700 dark:text-purple-400">must-reads</span>, <span className="font-semibold text-purple-700 dark:text-purple-400">deep links</span>, and <span className="font-semibold text-purple-700 dark:text-purple-400">bookmarking</span>, only possible by using AI to read all your newsletters.
+                </p>
+              </div>
+            </div>
+            
+            {/* Call to action */}
+            <div className="mt-16 text-center">
+              <a
+                href="#waitlist-form"
+                className="h-12 px-6 bg-[#3B82F6] hover:bg-[#2563EB] dark:bg-[#60A5FA] dark:hover:bg-[#3B82F6] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap relative overflow-hidden group border-2 border-transparent hover:border-white/20 inline-flex"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+                <Sparkles className="w-4 h-4 relative z-10" />
+                <span className="relative z-10">Try Gistify Dashboard</span>
+                <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="pt-20 pb-0 bg-[var(--muted-background)]">
           <InteractiveDashboardMockup />
         </section>
 
         {/* Improved Testimonials Section - Carousel */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-[#F8FAFC]" id="testimonials">
+        <section className="pt-0 pb-20 px-4 bg-gradient-to-b from-[var(--card-background)] to-[var(--muted-background)]" id="testimonials">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              {/* Section label */}
-              <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-blue-50 text-blue-600 text-sm font-medium">
-                <span>Real User Experiences</span>
-              </div>
+            <div className="text-center mb-12 pt-12">
+              {/* Enhanced section title with gradient styling */}
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Testimonials
+              </h3>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+                <span className="text-[var(--foreground)]">What Our </span>
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
+                  Users Say
+                </span>
+              </h2>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-6">What Our Users Say</h2>
-
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-                Join professionals who've transformed how they consume newsletter content
+              <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
+                Join <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">professionals</span> who've transformed how they consume newsletter content
               </p>
             </div>
 
@@ -298,10 +424,10 @@ export default function PreLaunchLanding() {
                 >
                   {/* Testimonial 1 */}
                   <div className="w-full flex-shrink-0 px-4 pb-6 snap-center">
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-50 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-[var(--card-background)] rounded-xl shadow-lg p-8 border border-blue-50 dark:border-blue-900/20 hover:shadow-xl transition-shadow duration-300">
                       {/* User info at the top */}
                       <div className="flex items-center mb-6">
-                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100 dark:border-blue-800">
                           <Image
                             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2854%29.jpg-bX6WYUsbXqlDa9orpEa1kBP5Rx7Pla.jpeg"
                             alt="Noa Levi"
@@ -311,8 +437,8 @@ export default function PreLaunchLanding() {
                           />
                         </div>
                         <div>
-                          <p className="font-bold text-[#1E3A8A] text-lg">Noa Levi</p>
-                          <p className="text-blue-600">Marketing Director</p>
+                          <p className="font-bold text-[var(--foreground)] text-lg">Noa Levi</p>
+                          <p className="text-blue-600 dark:text-blue-400">Marketing Director</p>
                         </div>
                       </div>
 
@@ -333,14 +459,14 @@ export default function PreLaunchLanding() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                        "I used to spend <span className="font-semibold text-blue-600">2 hours every morning</span>{" "}
+                      <p className="text-[var(--muted-foreground)] text-lg leading-relaxed mb-6">
+                        "I used to spend <span className="font-semibold text-blue-600 dark:text-blue-400">2 hours every morning</span>{" "}
                         going through newsletters. With Gist Engine, I get all the key insights in just 15 minutes. It's
                         like having a personal research assistant that knows exactly what matters to me."
                       </p>
 
                       {/* Quote decoration */}
-                      <div className="absolute top-8 right-8 text-blue-100 opacity-30">
+                      <div className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/30 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -350,10 +476,10 @@ export default function PreLaunchLanding() {
 
                   {/* Testimonial 2 */}
                   <div className="w-full flex-shrink-0 px-4 pb-6 snap-center">
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-50 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-[var(--card-background)] rounded-xl shadow-lg p-8 border border-blue-50 dark:border-blue-900/20 hover:shadow-xl transition-shadow duration-300">
                       {/* User info at the top */}
                       <div className="flex items-center mb-6">
-                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100 dark:border-blue-800">
                           <Image
                             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2853%29.jpg-fxhapua2NOaUxbr3Dhh4pxG4nyWBD5.jpeg"
                             alt="Avi Cohen"
@@ -363,8 +489,8 @@ export default function PreLaunchLanding() {
                           />
                         </div>
                         <div>
-                          <p className="font-bold text-[#1E3A8A] text-lg">Avi Cohen</p>
-                          <p className="text-blue-600">Product Manager</p>
+                          <p className="font-bold text-[var(--foreground)] text-lg">Avi Cohen</p>
+                          <p className="text-blue-600 dark:text-blue-400">Product Manager</p>
                         </div>
                       </div>
 
@@ -385,14 +511,14 @@ export default function PreLaunchLanding() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                        "The Gist Engine is a <span className="font-semibold text-blue-600">game-changer</span> for
+                      <p className="text-[var(--muted-foreground)] text-lg leading-relaxed mb-6">
+                        "The Gist Engine is a <span className="font-semibold text-blue-600 dark:text-blue-400">game-changer</span> for
                         staying informed. I'm getting better insights in less time, and the AI summaries help me
                         understand complex topics quickly. It's like having a team of analysts working for me 24/7."
                       </p>
 
                       {/* Quote decoration */}
-                      <div className="absolute top-8 right-8 text-blue-100 opacity-30">
+                      <div className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/30 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -402,10 +528,10 @@ export default function PreLaunchLanding() {
 
                   {/* Testimonial 3 (New) */}
                   <div className="w-full flex-shrink-0 px-4 pb-6 snap-center">
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-50 hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-[var(--card-background)] rounded-xl shadow-lg p-8 border border-blue-50 dark:border-blue-900/20 hover:shadow-xl transition-shadow duration-300">
                       {/* User info at the top */}
                       <div className="flex items-center mb-6">
-                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-blue-100 dark:border-blue-800">
                           <Image
                             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%281%29.jpg-BWlPVbWiMOSwyNwcNtUpUW7FcJVaUh.jpeg"
                             alt="Tal Shapira"
@@ -415,8 +541,8 @@ export default function PreLaunchLanding() {
                           />
                         </div>
                         <div>
-                          <p className="font-bold text-[#1E3A8A] text-lg">Tal Shapira</p>
-                          <p className="text-blue-600">Tech Entrepreneur</p>
+                          <p className="font-bold text-[var(--foreground)] text-lg">Tal Shapira</p>
+                          <p className="text-blue-600 dark:text-blue-400">Tech Entrepreneur</p>
                         </div>
                       </div>
 
@@ -437,15 +563,15 @@ export default function PreLaunchLanding() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-slate-700 text-lg leading-relaxed mb-6">
+                      <p className="text-[var(--muted-foreground)] text-lg leading-relaxed mb-6">
                         "As someone who subscribes to over{" "}
-                        <span className="font-semibold text-blue-600">30 newsletters</span>, Gist Engine has been
+                        <span className="font-semibold text-blue-600 dark:text-blue-400">30 newsletters</span>, Gist Engine has been
                         revolutionary. It extracts exactly what I need to know and presents it in a way that saves me
                         hours each week. The ROI is incredible."
                       </p>
 
                       {/* Quote decoration */}
-                      <div className="absolute top-8 right-8 text-blue-100 opacity-30">
+                      <div className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/30 opacity-30">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -458,7 +584,7 @@ export default function PreLaunchLanding() {
               {/* Enhanced navigation buttons */}
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev > 0 ? prev - 1 : 2))}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 md:-translate-x-5 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 group"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 md:-translate-x-5 bg-[var(--card-background)] rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 dark:border-blue-800 group"
                 aria-label="Previous testimonial"
               >
                 <svg
@@ -471,7 +597,7 @@ export default function PreLaunchLanding() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-blue-600 group-hover:text-blue-800 transition-colors"
+                  className="text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors"
                 >
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
@@ -479,7 +605,7 @@ export default function PreLaunchLanding() {
 
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev < 2 ? prev + 1 : 0))}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 md:translate-x-5 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 group"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 md:translate-x-5 bg-[var(--card-background)] rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 z-10 border border-blue-100 dark:border-blue-800 group"
                 aria-label="Next testimonial"
               >
                 <svg
@@ -492,7 +618,7 @@ export default function PreLaunchLanding() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-blue-600 group-hover:text-blue-800 transition-colors"
+                  className="text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors"
                 >
                   <path d="M9 18l6-6-6-6" />
                 </svg>
@@ -505,7 +631,7 @@ export default function PreLaunchLanding() {
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentTestimonial === index ? "bg-blue-600 w-8" : "bg-blue-200 hover:bg-blue-300"
+                      currentTestimonial === index ? "bg-blue-600 dark:bg-blue-500 w-8" : "bg-blue-200 dark:bg-blue-800 hover:bg-blue-300 dark:hover:bg-blue-700"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -513,29 +639,32 @@ export default function PreLaunchLanding() {
               </div>
 
               {/* Testimonial count indicator */}
-              <div className="text-center mt-4 mb-8 text-sm text-slate-500">
-                <span className="font-medium text-blue-600">{currentTestimonial + 1}</span> of <span>3</span>
+              <div className="text-center mt-4 mb-8 text-sm text-[var(--muted-foreground)]">
+                <span className="font-medium text-blue-600 dark:text-blue-400">{currentTestimonial + 1}</span> of <span>3</span>
               </div>
 
               {/* Mobile indicators */}
-              <div className="md:hidden text-xs text-blue-600/80 mt-2 text-center font-medium">Swipe to navigate</div>
+              <div className="md:hidden text-xs text-blue-600/80 dark:text-blue-400/80 mt-2 text-center font-medium">Swipe to navigate</div>
             </div>
 
             {/* Social proof - logos */}
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 px-4 bg-white" id="faq">
-          <div className="max-w-3xl mx-auto">
+        {/* FAQ Section - Updated with better styling */}
+        <section className="py-16 md:py-24 px-4 bg-[var(--muted-background)]" id="faq">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <span className="inline-block bg-gradient-to-r from-[#818CF8]/20 to-[#818CF8]/10 text-[#6366F1] px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
-                FAQ
+              <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+                <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+                Support
+              </h3>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+                <span className="text-[var(--foreground)]">Frequently Asked </span>
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
+                  Questions
                 </span>
-              <h2 className="text-4xl md:text-4xl font-bold text-[#1E3A8A] mb-4">Frequently Asked Questions</h2>
-              <p className="text-[#334155] text-lg max-w-2xl mx-auto">
-                Everything you need to know about our upcoming platform.
-              </p>
+              </h2>
             </div>
 
             <Accordion type="single" collapsible className="space-y-4">
@@ -584,12 +713,12 @@ export default function PreLaunchLanding() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border border-[#E2E8F0] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:border-[#3B82F6]/30"
+                  className="border border-[var(--border)] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:border-[#3B82F6]/30 bg-[var(--background)]"
                 >
-                  <AccordionTrigger className="px-6 py-4 hover:bg-[#F8FAFC]/50 text-[#1E3A8A] font-medium text-left">
+                  <AccordionTrigger className="px-6 py-4 hover:bg-[var(--muted-background)]/50 text-[var(--foreground)] font-medium text-left">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 py-4 text-[#334155] leading-relaxed">
+                  <AccordionContent className="px-6 py-4 text-[var(--muted-foreground)] leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -598,64 +727,67 @@ export default function PreLaunchLanding() {
           </div>
         </section>
 
-        {/* CTA Section - Update the button to open the popup */}
-        <section className="py-20 px-4 bg-gradient-to-r from-[#1E40AF] to-[#1E3A8A] text-white text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-4xl font-bold mb-6">Ready to Reclaim Hours of Your Week?</h2>
-            <p className="mb-8 text-white/90 max-w-xl mx-auto text-lg leading-relaxed">
-              Join our waitlist today. Designed for high-performing professionals who know the value of their time.
+        {/* CTA Section */}
+        <section className="py-24 px-4 bg-gradient-to-b from-[var(--muted-background)] to-[var(--card-background)]">
+          <div className="max-w-5xl mx-auto text-center">
+            <h3 className="uppercase tracking-wider text-xs font-semibold text-[var(--muted-foreground)] mb-3 relative inline-block">
+              <span className="bg-gradient-to-r from-blue-200/10 via-blue-500/10 to-blue-200/10 absolute inset-0 w-full h-full blur-sm -z-10 rounded-full"></span>
+              Get Started
+            </h3>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+              <span className="text-[var(--foreground)]">Break </span>
+              <span className="bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] bg-clip-text text-transparent">
+                Routines. Surface Only What Matters.
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto mb-8">
+              Join our <span className="font-semibold bg-gradient-to-r from-[#3B82F6] to-[#4F46E5] bg-clip-text text-transparent">waitlist today</span> and be among the first to Gistify your Inbox
             </p>
-            <div className="bg-white bg-opacity-10 rounded-xl p-6 max-w-md mx-auto mb-6">
-              <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-white text-sm font-medium">
-                  <span className="mr-1">🎁</span> One-Time Offer
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-white text-center mb-5">Get 60% Off at Launch</h3>
 
-              <form onSubmit={handleSubmit} className="mb-4">
-                <div className="relative mb-3">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white" />
+            <div className="bg-[var(--card-background)] border border-[var(--border)] rounded-xl p-6 max-w-md mx-auto mb-6 shadow-lg">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-white/30 bg-white/15 text-white rounded-lg w-full focus:border-white/70 placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50"
+                    className="pl-10 h-12 border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] rounded-lg w-full placeholder:text-[var(--muted-foreground)] shadow-sm hover:shadow-md focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-blue-500/30 hover:border-blue-300/50 dark:hover:border-blue-500"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
-                <Button
-                  type="button"
-                  onClick={openEmailPopup}
-                  className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Get Early Access
-                </Button>
-              </form>
 
-              <div className="flex justify-center gap-x-6 text-xs text-white/80">
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
-                  <span>Cancel anytime</span>
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Get Product Updates
+                </Button>
+
+                <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
+                  <div className="flex items-center">
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+                    <span>Unsubscribe anytime</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
+                    <span>No credit card needed</span>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
-                  <span>No credit card needed</span>
-                </div>
-              </div>
+              </form>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-white/90 mt-8">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-[var(--muted-foreground)] mt-8">
               <div className="flex items-center">
-                <Sparkles className="h-5 w-5 mr-2" />
+                <Sparkles className="h-5 w-5 mr-2 text-blue-500" />
                 <span>Early access</span>
               </div>
               <div className="flex items-center">
-                <Shield className="h-5 w-5 mr-2" />
+                <Shield className="h-5 w-5 mr-2 text-blue-500" />
                 <span>No spam, ever</span>
               </div>
               <div className="flex items-center">
-                <Users className="h-5 w-5 mr-2" />
+                <Users className="h-5 w-5 mr-2 text-blue-500" />
                 <span>Join 500+ early adopters</span>
               </div>
             </div>
@@ -673,20 +805,13 @@ export default function PreLaunchLanding() {
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="flex items-center justify-center mb-3">
-                <span className="inline-flex items-center text-[#3B82F6] text-sm font-medium">
-                  <span className="mr-1">🎁</span> One-Time Offer
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0F172A] text-center mb-5">Get 60% Off at Launch</h3>
-
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10 h-12 border-gray-300 rounded-lg w-full placeholder:text-gray-500 shadow-md hover:shadow-blue-300/30 focus:shadow-blue-300/60 focus:shadow-lg transition-all duration-1000 focus:border-blue-400 focus:ring-2 focus:ring-blue-200 border-blue-200 hover:border-blue-300 animate-pulse-subtle"
+                    className="pl-10 h-12 border-white/30 bg-white/15 text-white rounded-lg w-full placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50 focus:border-white/70"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -695,18 +820,18 @@ export default function PreLaunchLanding() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-lg font-medium text-base h-12"
+                  className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Get Early Access
+                  Get Product Updates
                 </Button>
 
-                <div className="flex justify-center gap-x-6 text-xs text-gray-500 mt-4">
+                <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
-                    <span>Cancel anytime</span>
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
+                    <span>Unsubscribe anytime</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-[#3B82F6]" />
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
                     <span>No credit card needed</span>
                   </div>
                 </div>
