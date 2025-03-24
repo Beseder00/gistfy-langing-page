@@ -249,20 +249,26 @@ export default function PreLaunchLanding() {
 
             {/* Email Subscription Form */}
             <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto" id="waitlist-form">
-              <div className="relative w-full">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-12 pl-12 bg-[var(--background)] border-2 border-[var(--border)] focus:border-blue-500 dark:focus:border-blue-400 rounded-lg shadow-sm"
-                />
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--muted-foreground)]" />
-                <Button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 bg-[#3B82F6] hover:bg-[#2563EB] text-white">
-                  Get Product Updates
+              <div className="w-full flex flex-col sm:flex-row gap-3">
+                <div className="relative w-full group">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full h-12 pl-12 bg-[var(--background)] border-2 border-[var(--border)] focus:border-blue-500 dark:focus:border-blue-400 rounded-lg shadow-sm group-hover:shadow-md focus:shadow-md transition-all duration-300 pr-4"
+                  />
+                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--muted-foreground)] group-hover:text-blue-500 transition-colors duration-300" />
+                </div>
+                <Button 
+                  type="submit" 
+                  className="h-12 px-6 sm:px-8 bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white font-medium min-w-[180px] whitespace-nowrap rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group border-2 border-transparent hover:border-white/20"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+                  <span className="relative z-10">Get Product Updates</span>
                 </Button>
               </div>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6">
                 <div className="flex items-center">
                   <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
                   <span className="text-[var(--muted-foreground)] text-sm">Early access</span>
