@@ -327,7 +327,7 @@ export default function PreLaunchLanding() {
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
               <span className="inline-block bg-gradient-to-r from-blue-500/20 to-indigo-500/20 dark:from-blue-500/10 dark:to-indigo-500/10 text-blue-700 dark:text-blue-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm">
-                Simple 3-Step Process
+                How It Works
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-[var(--foreground)] mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-400 dark:to-indigo-400">
                 How Gistify Works
@@ -350,9 +350,6 @@ export default function PreLaunchLanding() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
-                  1
-                </div>
                 <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Connect Your Inbox</h3>
                 <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
                   Gistify instantly spots newsletters like <span className="font-semibold text-blue-700 dark:text-blue-400">AI Breakfast (8:32 AM)</span> or <span className="font-semibold text-blue-700 dark:text-blue-400">Ben's Bites (9:05 AM)</span>—no manual picking required.
@@ -370,9 +367,6 @@ export default function PreLaunchLanding() {
                     <path d="M9 18l3 1.5 3-1.5" />
                   </svg>
                 </div>
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
-                  2
-                </div>
                 <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">AI-Powered Scanning</h3>
                 <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
                   Our Gist Engine dives in, scanning and parsing all items from every newsletter—from <span className="font-semibold text-emerald-700 dark:text-emerald-400">The Rundown AI (9:45 AM)</span> to <span className="font-semibold text-emerald-700 dark:text-emerald-400">Superhuman's robotics update (11:30 AM)</span>.
@@ -385,9 +379,6 @@ export default function PreLaunchLanding() {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
-                </div>
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
-                  3
                 </div>
                 <h3 className="text-xl font-bold text-center text-[var(--foreground)] mb-4">Get Your Daily Briefing</h3>
                 <p className="text-[var(--muted-foreground)] text-center leading-relaxed">
