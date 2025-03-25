@@ -327,7 +327,7 @@ export default function PreLaunchLanding() {
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
                 <span className="text-[var(--foreground)]">Escape the </span>
                 <span className="bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
-                  Loop. Feed Your Curiosity.
+                  Loop. Reclaim Your Agency.
                 </span>
               </h2>
             </div>
