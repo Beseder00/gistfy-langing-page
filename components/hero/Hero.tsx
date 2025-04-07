@@ -34,9 +34,9 @@ export const Hero: React.FC<HeroProps> = ({
   title = {
     prefix: 'Track the',
     highlight: 'Vibe Coding',
-    suffix: 'Market.',
+    suffix: 'Market From Anywhere!',
   },
-  description = 'VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions.',
+  description = 'VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!',
   badgeText = 'AI + Robotics Market Intelligence',
   className = '',
 }) => {
@@ -68,11 +68,11 @@ export const Hero: React.FC<HeroProps> = ({
   ];
 
   return (
-    <section className={`pt-28 sm:pt-36 pb-32 px-2 sm:px-4 relative overflow-hidden ${className}`}>
+    <section className={`pt-24 xs:pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-24 md:pb-32 px-3 sm:px-4 relative overflow-hidden ${className}`}>
       <HeroBackground />
 
       <div className="relative text-center flex flex-col items-center z-10 max-w-full sm:max-w-6xl mx-auto">
-        <span className="inline-block mx-auto bg-[#004d41]/40 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-3 sm:mb-4 mt-6 sm:mt-10 shadow-sm backdrop-blur-sm">
+        <span className="inline-block mx-auto bg-[#004d41]/40 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-3 sm:mb-4 mt-4 sm:mt-6 shadow-sm backdrop-blur-sm">
           {badgeText}
         </span>
         
@@ -82,11 +82,11 @@ export const Hero: React.FC<HeroProps> = ({
           suffix={title.suffix}
         />
         
-        <p className="text-[#003a32] text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-[95%] sm:max-w-2xl leading-relaxed font-medium bg-white/95 rounded-lg px-3 sm:px-5 py-3 shadow-lg border border-[#004d41]/5 transform hover:scale-[1.01] transition-all duration-300">
+        <p className="text-[#002a25] text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-[95%] sm:max-w-xl md:max-w-2xl leading-relaxed font-medium bg-gradient-to-b from-white/95 to-white/85 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-lg border border-[#004d41]/10 transform hover:scale-[1.01] transition-all duration-300 tracking-wide">
           {description}
         </p>
 
-        <div className="w-full max-w-xl mx-auto bg-white/10 rounded-xl p-2 sm:p-3 border border-white/30 shadow-lg transition-all duration-300 mb-10 mt-2 relative z-10 overflow-hidden">
+        <div className="w-full max-w-xl mx-auto bg-white/10 rounded-xl p-2 sm:p-3 border border-white/30 shadow-lg transition-all duration-300 mb-8 mt-2 relative z-10 overflow-hidden">
           <EmailSubscription
             email={email}
             setEmail={setEmail}
@@ -94,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({
           />
         </div>
 
-        <div className="mt-8"></div>
+        <div className="mt-6 md:mt-8"></div>
         <FeatureCards features={features} />
       </div>
     </section>
