@@ -118,7 +118,7 @@ export default function Home() {
     @media (max-width: 474px) {
       .hero-title-text {
         font-size: min(3.8rem, 16vw) !important;
-        line-height: 1 !important;
+        line-height: 0.9 !important;
         width: 100% !important;
         padding: 0 !important;
         text-align: center !important;
@@ -129,7 +129,7 @@ export default function Home() {
         text-align: center !important;
       }
       .hero-title-text > div > div {
-        line-height: 1.05 !important;
+        line-height: 0.95 !important;
         margin: 0 auto !important;
         width: 100% !important;
         text-align: center !important;
@@ -147,6 +147,7 @@ export default function Home() {
       .hero-title-text > div > div > span {
         display: inline-block;
         text-align: center !important;
+        line-height: 0.95 !important;
       }
       
       /* Mobile-specific spacing */
@@ -164,7 +165,7 @@ export default function Home() {
     @media (min-width: 475px) and (max-width: 767px) {
       .hero-title-text {
         font-size: min(4.2rem, 14vw) !important;
-        line-height: 1.05 !important;
+        line-height: 0.95 !important;
         width: 100% !important;
         padding: 0 !important;
         text-align: center !important;
@@ -174,12 +175,13 @@ export default function Home() {
       }
       .hero-title-text > div > div {
         text-align: center !important;
+        line-height: 1 !important;
       }
       .hero-title-text > div > div:first-child {
-        margin-bottom: 0.1em !important;
+        margin-bottom: 0 !important;
       }
       .hero-title-text > div > div:last-child {
-        padding-bottom: 0.5em !important;
+        padding-bottom: 0.3em !important;
       }
     }
     
