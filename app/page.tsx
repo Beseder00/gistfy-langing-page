@@ -117,25 +117,69 @@ export default function Home() {
     /* Small screen title adjustments */
     @media (max-width: 474px) {
       .hero-title-text {
-        font-size: min(2.8rem, 11vw) !important;
-        line-height: 1.1 !important;
+        font-size: min(3.8rem, 16vw) !important;
+        line-height: 1 !important;
+        width: 100% !important;
+        padding: 0 !important;
+        text-align: center !important;
+        margin-bottom: 0 !important;
       }
-      .hero-title-text > span {
-        display: block;
-        line-height: 1.15 !important;
-        margin: 0 !important;
-        padding: 0.1em 0 !important;
+      .hero-title-text > div {
+        width: 100% !important;
+        text-align: center !important;
       }
-      .hero-title-text > span:first-child {
-        margin-bottom: 0.2em !important;
+      .hero-title-text > div > div {
+        line-height: 1.05 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+      .hero-title-text > div > div:first-child {
+        margin-bottom: 0 !important;
+      }
+      .hero-title-text > div > div:nth-child(2) {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      .hero-title-text > div > div:last-child {
+        padding-bottom: 0 !important;
+      }
+      .hero-title-text > div > div > span {
+        display: inline-block;
+        text-align: center !important;
+      }
+      
+      /* Mobile-specific spacing */
+      .hero-title-text + div {
+        margin-top: -1rem !important;
+      }
+      
+      /* Space between subtitle and email signup */
+      .hero-title-text ~ div:nth-child(3) {
+        margin-bottom: 2.5rem !important;
       }
     }
     
     /* Medium screen title refinements */
     @media (min-width: 475px) and (max-width: 767px) {
       .hero-title-text {
-        font-size: min(3.5rem, 9vw) !important;
-        line-height: 1.15 !important;
+        font-size: min(4.2rem, 14vw) !important;
+        line-height: 1.05 !important;
+        width: 100% !important;
+        padding: 0 !important;
+        text-align: center !important;
+      }
+      .hero-title-text > div {
+        text-align: center !important;
+      }
+      .hero-title-text > div > div {
+        text-align: center !important;
+      }
+      .hero-title-text > div > div:first-child {
+        margin-bottom: 0.1em !important;
+      }
+      .hero-title-text > div > div:last-child {
+        padding-bottom: 0.5em !important;
       }
     }
     
@@ -143,8 +187,24 @@ export default function Home() {
     @media (min-width: 1024px) {
       .hero-title-text {
         letter-spacing: -0.02em;
+        font-size: 5.5rem !important;
       }
     }
+
+    /* Extra large screen title */
+    @media (min-width: 1280px) {
+      .hero-title-text {
+        font-size: 6rem !important;
+      }
+    }
+
+    /* Animation delay utilities */
+    .animate-delay-100 { animation-delay: 100ms; }
+    .animate-delay-200 { animation-delay: 200ms; }
+    .animate-delay-300 { animation-delay: 300ms; }
+    .animate-delay-500 { animation-delay: 500ms; }
+    .animate-delay-700 { animation-delay: 700ms; }
+    .animate-delay-1000 { animation-delay: 1000ms; }
   `
 
   if (isLoading) {
@@ -181,6 +241,8 @@ export default function Home() {
             --primary-hover: #e67400;
             --text-primary: #004d41;
             --text-secondary: #ffffff;
+            --orange-light: #ffa73d;
+            --orange-bright: #ffb347;
           }
           
           ${scrollbarHideStyles}
@@ -190,35 +252,17 @@ export default function Home() {
         {/* Header - VIBE INDEX */}
         <header
           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            scrolled ? "bg-[var(--header-gradient-start)] py-2 shadow-md" : "bg-[var(--header-gradient-start)] py-3"
+            scrolled ? "bg-[var(--header-gradient-start)] py-2 shadow-md" : "bg-transparent py-3"
           }`}
         >
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
             <div className="flex-1 flex items-center">
-              <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
+              <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm border border-white/20 hover:bg-white/20 transition-all duration-300">
                 <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
                 <span className="text-white tracking-wide">VibeIndex</span>
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">
-              <a
-                href="#insights"
-                className="ml-2 sm:ml-3 md:ml-6 text-xs sm:text-sm font-medium text-[var(--header-text)] hover:text-[#ffb347] transition-colors"
-              >
-                Insights
-              </a>
-              <a
-                href="#sources"
-                className="ml-2 sm:ml-3 md:ml-6 text-xs sm:text-sm font-medium text-[var(--header-text)] hover:text-[#ffb347] transition-colors"
-              >
-                Sources
-              </a>
-              <a
-                href="#features"
-                className="ml-2 sm:ml-3 md:ml-6 text-xs sm:text-sm font-medium text-[var(--header-text)] hover:text-[#ffb347] transition-colors"
-              >
-                Features
-              </a>
               <div className="ml-3 md:ml-6">
                 <ThemeToggle />
               </div>
@@ -232,7 +276,6 @@ export default function Home() {
           setEmail={setEmail}
           onSubmit={handleSubmit}
           isSubmitting={isSubmitting}
-          countdown={countdown}
         />
       </main>
     </>

@@ -197,28 +197,10 @@ export default function PreLaunchLandingDuplicate() {
             <div className="flex-1 flex items-center">
               <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
                 <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
-                <span className="text-white tracking-wide">VibeIndex</span>
+                <span className="text-[#fffadc] tracking-wide">VibeIndex</span>
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">
-              <a
-                href="#insights"
-                className="ml-2 sm:ml-3 md:ml-6 text-xs sm:text-sm font-medium text-[var(--header-text)] hover:text-[#ffb347] transition-colors"
-              >
-                Insights
-              </a>
-              <a
-                href="#sources"
-                className="ml-2 sm:ml-3 md:ml-6 text-xs sm:text-sm font-medium text-[var(--header-text)] hover:text-[#ffb347] transition-colors"
-              >
-                Sources
-              </a>
-              <a
-                href="#features"
-                className="ml-2 sm:ml-3 md:ml-6 text-xs sm:text-sm font-medium text-[var(--header-text)] hover:text-[#ffb347] transition-colors"
-              >
-                Features
-              </a>
               <div className="ml-3 md:ml-6">
                 <ThemeToggle />
               </div>
@@ -231,7 +213,6 @@ export default function PreLaunchLandingDuplicate() {
           email={email}
           setEmail={setEmail}
           onSubmit={openEmailPopup}
-          countdown={countdown}
         />
       </div>
     </>

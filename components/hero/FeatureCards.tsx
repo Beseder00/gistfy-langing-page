@@ -1,13 +1,12 @@
 import React from 'react';
-import { FeatureCard as FeatureCardComponent } from './FeatureCard';
 
 interface FeatureCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   iconColor?: string;
-  bgColor?: string;
-  textColor?: string;
+  className?: string;
+  index?: number;
 }
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({
@@ -15,56 +14,54 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   description,
   icon,
   iconColor = '#00a693',
-  bgColor = '#ffffff',
-  textColor = '#004d41'
+  className = '',
+  index = 0,
 }) => {
   return (
-    <div className="bg-white/95 p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:translate-y-[-2px] border border-[#004d41]/5 relative overflow-hidden group">
-      <div 
-        className="text-[#004d41] font-bold text-lg sm:text-xl mb-3 flex items-center relative z-10"
-        style={{ color: textColor }}
-      >
-        <div className="mr-3 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center bg-white p-1.5 rounded-lg" style={{ color: iconColor }}>
-          {icon}
+    <div 
+      className={`relative group bg-white text-gray-800 p-6 rounded-2xl shadow-lg border border-white/50 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 animate-fade-in-up ${className}`}
+      style={{ animationDelay: `${800 + (index * 100)}ms` }}
+    >
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ffa73d]/20 to-[#00b4a2]/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+      <div className="relative">
+        <div 
+          className="inline-flex items-center justify-center p-3 rounded-xl mb-5 bg-gradient-to-br from-white to-gray-50"
+          style={{ boxShadow: `0 4px 12px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 -2px 3px ${iconColor}30` }}
+        >
+          <div style={{ color: iconColor }}>{icon}</div>
         </div>
-        {title}
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <p className="text-gray-600">{description}</p>
       </div>
-      <p 
-        className="leading-relaxed text-sm sm:text-base relative z-10"
-        style={{ color: textColor }}
-      >
-        {description}
-      </p>
-      <div className="absolute top-0 right-0 h-16 w-16 bg-gradient-to-bl from-[#ffffff]/20 to-transparent transform rotate-12 -translate-y-1/2 translate-x-1/2 rounded-full opacity-50"></div>
     </div>
   );
 };
 
 interface FeatureCardsProps {
-  features: FeatureCardProps[];
-  columns?: {
-    sm?: number;
-    md?: number;
-    lg?: number;
-  };
+  features: Array<{
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+    iconColor?: string;
+  }>;
+  className?: string;
 }
 
 export const FeatureCards: React.FC<FeatureCardsProps> = ({
   features,
-  columns = { sm: 1, md: 2, lg: 2 }
+  className = '',
 }) => {
-  const getGridCols = () => {
-    let classes = 'grid-cols-1';
-    if (columns.sm) classes += ` sm:grid-cols-${columns.sm}`;
-    if (columns.md) classes += ` md:grid-cols-${columns.md}`;
-    if (columns.lg) classes += ` lg:grid-cols-${columns.lg}`;
-    return classes;
-  };
-
   return (
-    <div className={`grid ${getGridCols()} gap-6 max-w-5xl mx-auto mt-8 opacity-100 transition-opacity`}>
+    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ${className}`}>
       {features.map((feature, index) => (
-        <FeatureCardComponent key={index} {...feature} />
+        <FeatureCard
+          key={index}
+          title={feature.title}
+          description={feature.description}
+          icon={feature.icon}
+          iconColor={feature.iconColor}
+          index={index}
+        />
       ))}
     </div>
   );
