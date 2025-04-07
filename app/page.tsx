@@ -7,12 +7,30 @@ import { BarChart } from "lucide-react"
 export default function Home() {
   const [email, setEmail] = useState("")
   const [scrolled, setScrolled] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isHydrated, setIsHydrated] = useState(false)
   const [countdown, setCountdown] = useState({
     days: 21,
     hours: 22,
     minutes: 37,
     seconds: 42,
   })
+
+  // Handle hydration complete
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  // Handle loading state - make the timeout very short
+  useEffect(() => {
+    if (isHydrated) {
+      // Set a minimal timeout to ensure styles are loaded
+      const timer = setTimeout(() => {
+        setIsLoading(false)
+      }, 10);
+      return () => clearTimeout(timer);
+    }
+  }, [isHydrated]);
 
   // Handle scroll effect for header
   useEffect(() => {
@@ -67,11 +85,55 @@ export default function Home() {
     /* Small screen title adjustments */
     @media (max-width: 474px) {
       .hero-title-text {
-        font-size: min(2.5rem, 11vw) !important;
+        font-size: min(2.5rem, 10vw) !important;
         line-height: 1.1 !important;
+      }
+      .hero-title-text > span {
+        display: block;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+        padding: 0.1em 0 !important;
+      }
+      .hero-title-text > span:first-child {
+        margin-bottom: 0.2em !important;
+      }
+    }
+    
+    /* Medium screen title refinements */
+    @media (min-width: 475px) and (max-width: 767px) {
+      .hero-title-text {
+        font-size: min(3.2rem, 8vw) !important;
+        line-height: 1.15 !important;
+      }
+    }
+    
+    /* Large screen title enhancements */
+    @media (min-width: 1024px) {
+      .hero-title-text {
+        letter-spacing: -0.02em;
       }
     }
   `
+
+  if (isLoading) {
+    return (
+      <div className="bg-[#19b8a6] min-h-screen flex items-center justify-center">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(25,160,140,0.95)] py-3">
+          <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
+            <div className="flex-1 flex items-center">
+              <span className="text-white text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
+                <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
+                <span className="text-white tracking-wide">VibeIndex</span>
+              </span>
+            </div>
+          </div>
+        </header>
+        <div className="animate-pulse">
+          <span className="text-white text-2xl font-bold">Loading VibeIndex...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

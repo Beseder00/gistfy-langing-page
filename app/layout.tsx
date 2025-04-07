@@ -64,7 +64,7 @@ export default function RootLayout({
         <style>
           {`
             /* Initial styles to prevent flash */
-            body {
+            html, body {
               background-color: #19b8a6;
               color: #ffffff;
               transition: background-color 0.3s ease;
@@ -72,7 +72,21 @@ export default function RootLayout({
             
             /* Default header styling to prevent flash */
             header {
-              background-color: rgba(25, 160, 140, 0.95);
+              background-color: rgba(25, 160, 140, 0.95) !important;
+              color: white !important;
+            }
+
+            /* Define CSS variables early to prevent color flashing */
+            :root {
+              --background: #19b8a6;
+              --card-background: #ffae44;
+              --header-gradient-start: rgba(25, 160, 140, 0.95);
+              --header-text: #ffffff;
+              --muted-foreground: #004d41;
+              --primary: #ff8a20;
+              --primary-hover: #e67400;
+              --text-primary: #004d41;
+              --text-secondary: #ffffff;
             }
           `}
         </style>
