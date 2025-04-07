@@ -28,7 +28,7 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
       {/* Enhanced background gradient for better contrast */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#004d41]/25 to-[#004d41]/5 blur-xl rounded-full -z-10"></div>
       
-      <h1 className={`hero-title-text text-center text-[2.5rem] xs:text-[3rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-extrabold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] tracking-tight w-full max-w-[100%] px-2 mx-auto relative z-10 ${className}`}>
+      <h1 className={`hero-title-text text-center text-[2.8rem] xs:text-[3.3rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] font-extrabold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] tracking-tight w-full max-w-[100%] px-2 mx-auto relative z-10 ${className}`}>
         {/* Mobile layout: stacked */}
         <div className="sm:hidden flex flex-col items-center justify-center gap-y-1">
           <span 

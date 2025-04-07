@@ -117,7 +117,7 @@ export default function Home() {
     /* Small screen title adjustments */
     @media (max-width: 474px) {
       .hero-title-text {
-        font-size: min(2.5rem, 10vw) !important;
+        font-size: min(2.8rem, 11vw) !important;
         line-height: 1.1 !important;
       }
       .hero-title-text > span {
@@ -134,7 +134,7 @@ export default function Home() {
     /* Medium screen title refinements */
     @media (min-width: 475px) and (max-width: 767px) {
       .hero-title-text {
-        font-size: min(3.2rem, 8vw) !important;
+        font-size: min(3.5rem, 9vw) !important;
         line-height: 1.15 !important;
       }
     }
