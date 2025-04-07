@@ -158,6 +158,40 @@ export default function Home() {
       /* Space between subtitle and email signup */
       .hero-title-text ~ div:nth-child(3) {
         margin-bottom: 2.5rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      /* Subtitle text improvements */
+      .hero-title-text ~ div:nth-child(3) p {
+        font-size: 0.925rem !important;
+        line-height: 1.5 !important;
+        word-break: normal !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+
+      /* Subtitle highlighted spans */
+      .hero-title-text ~ div:nth-child(3) p span.inline-block {
+        margin-left: 0.05rem !important;
+        margin-right: 0.05rem !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+        white-space: normal !important;
+      }
+
+      /* Make container wider */
+      .hero-title-text ~ div:nth-child(3) > div > div {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 0.75rem !important;
+      }
+
+      /* Email form container */
+      .hero-title-text ~ div:nth-child(4) > div {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
       }
     }
     
@@ -207,6 +241,50 @@ export default function Home() {
     .animate-delay-500 { animation-delay: 500ms; }
     .animate-delay-700 { animation-delay: 700ms; }
     .animate-delay-1000 { animation-delay: 1000ms; }
+
+    /* Pulse animation for emphasis spans */
+    @keyframes soft-pulse {
+      0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% { 
+        transform: scale(1.02);
+        opacity: 0.9;
+      }
+    }
+    .animate-soft-pulse {
+      animation: soft-pulse 3s ease-in-out infinite;
+    }
+    .animate-soft-pulse-delayed {
+      animation: soft-pulse 3s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+
+    /* Sparkle animation for emoji */
+    @keyframes sparkle {
+      0%, 100% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 1;
+      }
+      25% { 
+        transform: scale(1.2) rotate(5deg); 
+        opacity: 0.8;
+      }
+      50% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 1;
+      }
+      75% { 
+        transform: scale(1.1) rotate(-5deg); 
+        opacity: 0.9;
+      }
+    }
+    .animate-sparkle {
+      display: inline-block;
+      animation: sparkle 3s ease-in-out infinite;
+      transform-origin: center;
+    }
   `
 
   if (isLoading) {
@@ -216,7 +294,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
             <div className="flex-1 flex items-center">
               <span className="text-white text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
-                <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
+                <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffc06b]" />
                 <span className="text-white tracking-wide">VibeIndex</span>
               </span>
             </div>
@@ -243,8 +321,8 @@ export default function Home() {
             --primary-hover: #e67400;
             --text-primary: #004d41;
             --text-secondary: #ffffff;
-            --orange-light: #ffa73d;
-            --orange-bright: #ffb347;
+            --orange-light: #ffbc60;
+            --orange-bright: #ffc06b;
           }
           
           ${scrollbarHideStyles}
@@ -260,7 +338,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
             <div className="flex-1 flex items-center">
               <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
+                <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffc06b]" />
                 <span className="text-white tracking-wide">VibeIndex</span>
               </span>
             </div>
