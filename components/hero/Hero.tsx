@@ -36,10 +36,10 @@ export const Hero: React.FC<HeroProps> = ({
   title = {
     prefix: 'Track the',
     highlight: 'Vibe Coding',
-    suffix: 'Market From Anywhere!',
+    suffix: 'Market!',
   },
   description = 'VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!',
-  badgeText = 'AI + Robotics Market Intelligence',
+  badgeText = 'From Anywhere',
   className = '',
 }) => {
   const features = [
@@ -74,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({
       <HeroBackground />
 
       <div className="relative text-center flex flex-col items-center z-10 max-w-full sm:max-w-6xl mx-auto">
-        <span className="inline-block mx-auto bg-[#004d41]/40 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-3 sm:mb-4 mt-4 sm:mt-6 shadow-sm backdrop-blur-sm">
+        <span className="inline-block mx-auto bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-3 sm:mb-4 mt-4 sm:mt-6 shadow-sm backdrop-blur-sm border border-white/30">
           {badgeText}
         </span>
         
