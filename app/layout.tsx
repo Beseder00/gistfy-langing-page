@@ -9,21 +9,21 @@ import { ThemeProvider } from "next-themes"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "AI-Powered Daily Briefing AI Robotics | Gistify",
-  description: "Transform your newsletter experience with Gistify. Our AI assistant scans your inbox, analyzes AI and robotics newsletters, and delivers concise, personalized daily briefings. Save time and stay informed with smart summaries from your favorite tech newsletters.",
+  title: "VibeIndex | Track the Vibe Coding Market From Anywhere!",
+  description: "VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!",
   generator: 'v0.dev',
   metadataBase: new URL('https://gistify.io'),
   openGraph: {
-    title: "AI-Powered Daily Briefing AI Robotics | Gistify",
-    description: "Transform your newsletter experience with Gistify. Our AI assistant scans your inbox, analyzes AI and robotics newsletters, and delivers concise, personalized daily briefings.",
+    title: "VibeIndex | Track the Vibe Coding Market From Anywhere!",
+    description: "VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!",
     url: 'https://gistify.io',
-    siteName: 'Gistify',
+    siteName: 'VibeIndex',
     images: [
       {
         url: '/images/Loop.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Gistify - Break the Loop',
+        alt: 'VibeIndex - Track the Vibe Coding Market',
       },
     ],
     locale: 'en_US',
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "AI-Powered Daily Briefing AI Robotics | Gistify",
-    description: "Transform your newsletter experience with Gistify. Our AI assistant scans your inbox, analyzes AI and robotics newsletters, and delivers concise, personalized daily briefings.",
+    title: "VibeIndex | Track the Vibe Coding Market From Anywhere!",
+    description: "VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!",
     images: ['/images/Loop.jpeg'],
-    creator: '@gistify',
+    creator: '@vibeindex',
   },
 }
 
@@ -46,6 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <title>VibeIndex | Track the Vibe Coding Market From Anywhere!</title>
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -60,6 +61,21 @@ export default function RootLayout({
             `,
           }}
         />
+        <style>
+          {`
+            /* Initial styles to prevent flash */
+            body {
+              background-color: #19b8a6;
+              color: #ffffff;
+              transition: background-color 0.3s ease;
+            }
+            
+            /* Default header styling to prevent flash */
+            header {
+              background-color: rgba(25, 160, 140, 0.95);
+            }
+          `}
+        </style>
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -79,7 +95,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
