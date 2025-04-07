@@ -22,7 +22,7 @@ export const Robot = (props: LucideProps) => {
       <path d="M9 18l3 1.5 3-1.5" />
     </svg>
   )
-}
+} 
 
 export const VibeComputer = (props: LucideProps) => {
   return (

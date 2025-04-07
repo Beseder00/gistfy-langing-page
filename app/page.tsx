@@ -69,35 +69,38 @@ export default function Home() {
   }, [])
 
   const handleSubmit = async () => {
+    // Basic validation
     if (!email || !email.includes('@') || !email.includes('.')) {
-      alert("Please enter a valid email address");
-      return;
+      alert("Please enter a valid email address")
+      return
     }
-    
+
+    setIsSubmitting(true)
+
     try {
-      setIsSubmitting(true);
-      
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
+      // Submit to our API endpoint
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
-      });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        alert(`Thanks for joining our waitlist! We'll be in touch soon.`);
-        setEmail("");
-      } else {
-        throw new Error(data.message || 'Error subscribing to the newsletter');
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || "Error subscribing")
       }
+
+      // Success!
+      alert(`Thanks for joining the VibeIndex waitlist with ${email}! We'll be in touch soon.`)
+      setEmail("")
     } catch (error) {
-      console.error('Error submitting email:', error);
-      alert('There was an error subscribing to the newsletter. Please try again later.');
+      console.error("Error subscribing:", error)
+      alert("There was an error subscribing. Please try again later.")
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
   }
 
@@ -228,8 +231,8 @@ export default function Home() {
           email={email}
           setEmail={setEmail}
           onSubmit={handleSubmit}
-          countdownData={countdown}
           isSubmitting={isSubmitting}
+          countdown={countdown}
         />
       </main>
     </>

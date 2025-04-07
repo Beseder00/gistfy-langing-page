@@ -1,53 +1,70 @@
-import { ArrowRight } from "lucide-react"
+import React from 'react';
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Mail, Users } from "lucide-react";
 
 interface EmailSubscriptionProps {
-  email: string
-  setEmail: (email: string) => void
-  onSubmit: () => void
-  isSubmitting?: boolean
-  className?: string
-  inputClassName?: string
-  buttonClassName?: string
+  email: string;
+  setEmail: (email: string) => void;
+  onSubmit: () => void;
+  isSubmitting?: boolean;
+  buttonText?: string;
+  inputPlaceholder?: string;
+  buttonBgColor?: string;
+  buttonHoverColor?: string;
+  inputBgColor?: string;
+  inputTextColor?: string;
 }
 
-export const EmailSubscription = ({
+export const EmailSubscription: React.FC<EmailSubscriptionProps> = ({
   email,
   setEmail,
   onSubmit,
   isSubmitting = false,
-  className = "",
-  inputClassName = "",
-  buttonClassName = "",
-}: EmailSubscriptionProps) => {
+  buttonText = 'Join',
+  inputPlaceholder = 'Enter your email',
+  buttonBgColor = '#ff8a20',
+  buttonHoverColor = '#e67400',
+  inputBgColor = '#ffffff',
+  inputTextColor = '#004d41',
+}) => {
   return (
-    <div className={`flex flex-col md:flex-row w-full max-w-xl gap-2 md:gap-1 bg-white/10 rounded-md shadow-md p-1 ${className}`}>
-      <input
-        type="email"
-        placeholder="example@email.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className={`flex-1 rounded-md px-4 py-2 bg-white/10 text-white placeholder:text-white/80 focus:outline-none ${inputClassName}`}
-        disabled={isSubmitting}
-      />
-      <button
+    <div className="flex flex-col gap-2 w-full max-w-lg px-1 mb-0 relative">
+      {/* Email label */}
+      <div className="text-white text-base font-semibold mb-0.5 px-1 flex items-center">
+        <Mail className="mr-2 h-4 w-4" />
+        Get early access:
+      </div>
+      
+      <div className="relative">
+        <Input
+          type="email"
+          placeholder={inputPlaceholder}
+          className="py-4 px-4 text-base border-2 border-white/30 focus:border-[#ff8a20] rounded-lg shadow-md font-medium focus:outline-none focus:ring-1 focus:ring-[#ff8a20]/30 transition-all duration-300"
+          style={{ backgroundColor: inputBgColor, color: inputTextColor }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      
+      <Button
+        className="py-3 w-full rounded-lg font-bold shadow-md transition-all duration-300 text-base text-white relative overflow-hidden"
+        style={{ 
+          backgroundColor: buttonBgColor
+        }}
         onClick={onSubmit}
         disabled={isSubmitting}
-        className={`flex items-center justify-center rounded-md px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium ${buttonClassName}`}
       >
-        {isSubmitting ? (
-          <span className="flex items-center">
-            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Submitting...
-          </span>
-        ) : (
-          <span className="flex items-center">
-            Join <ArrowRight className="ml-2 h-4 w-4" />
-          </span>
-        )}
-      </button>
+        <span className="relative z-10 flex items-center justify-center">
+          {isSubmitting ? 'Subscribing...' : buttonText}
+          {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
+        </span>
+      </Button>
+      
+      <p className="text-white/80 text-center text-xs mt-1 flex items-center justify-center">
+        <Users className="mr-1 h-3 w-3 opacity-80" />
+        Join over 500 vibe coders and AI builders getting an edge
+      </p>
     </div>
-  )
-} 
+  );
+}; 
