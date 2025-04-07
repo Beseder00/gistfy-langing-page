@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface HeroTitleProps {
   prefix?: string;
@@ -8,6 +8,7 @@ interface HeroTitleProps {
   highlightColor?: string;
   suffixColor?: string;
   className?: string;
+  children?: ReactNode;
 }
 
 export const HeroTitle: React.FC<HeroTitleProps> = ({
@@ -18,7 +19,22 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
   highlightColor = '#ffb347',
   suffixColor = '#ffffff',
   className = '',
+  children,
 }) => {
+  // If children are provided, render those instead of the default title
+  if (children) {
+    return (
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#004d41]/25 to-[#004d41]/5 blur-xl rounded-full -z-10"></div>
+        <h1 className={`hero-title-text text-center text-[2.5rem] xs:text-[3rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-extrabold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] tracking-tight w-full max-w-[100%] px-2 mx-auto relative z-10 ${className}`}>
+          <span className="bg-gradient-to-b from-white to-white/85 bg-clip-text text-transparent" style={{ textShadow: '0 3px 6px rgba(0, 0, 0, 0.4)' }}>
+            {children}
+          </span>
+        </h1>
+      </div>
+    );
+  }
+
   // Split the suffix to make 'From Anywhere!' smaller
   const mainSuffix = suffix.split('From')[0]; // "Market "
   const smallerText = suffix.includes('From') ? `From${suffix.split('From')[1]}` : ''; // "From Anywhere!"

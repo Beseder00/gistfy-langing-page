@@ -3,99 +3,103 @@ import { HeroBackground } from './HeroBackground';
 import { HeroTitle } from './HeroTitle';
 import { EmailSubscription } from './EmailSubscription';
 import { FeatureCards } from './FeatureCards';
-import { Shield, Sparkles, Users } from 'lucide-react';
-import { VibeComputer } from '@/components/custom-icons';
+import { CountdownTimer } from './CountdownTimer';
+import { BadgeCheck, Heart, BarChart, Zap, Users } from 'lucide-react';
 
 interface HeroProps {
+  title?: string;
+  description?: string;
+  badgeText?: string;
   email: string;
   setEmail: (email: string) => void;
   onSubmit: () => void;
-  countdown: {
+  isSubmitting?: boolean;
+  countdownData?: {
     days: number;
     hours: number;
     minutes: number;
     seconds: number;
   };
-  title?: {
-    prefix?: string;
-    highlight?: string;
-    suffix?: string;
-  };
-  description?: string;
-  badgeText?: string;
   className?: string;
 }
 
-export const Hero: React.FC<HeroProps> = ({
+export const Hero = ({
+  title = 'VibeIndex',
+  description = 'VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!',
+  badgeText = 'Coming Soon',
   email,
   setEmail,
   onSubmit,
-  countdown,
-  title = {
-    prefix: 'Track the',
-    highlight: 'Vibe Coding',
-    suffix: 'Market From Anywhere!',
-  },
-  description = 'VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!',
-  badgeText = 'AI + Robotics Market Intelligence',
+  isSubmitting = false,
+  countdownData = { days: 0, hours: 0, minutes: 0, seconds: 0 },
   className = '',
-}) => {
+}: HeroProps) => {
   const features = [
     {
-      title: 'Market Intelligence',
-      description: 'We generate signals by cross-analyzing 40 trusted and insightful sources',
-      icon: <Shield />,
-      iconColor: '#00a693',
+      title: 'Real-time Sentiment',
+      description: 'Track AI market sentiment in real-time across 40+ sources',
+      icon: <Heart className="text-pink-500" />,
+      iconColor: '#ff6b8b',
     },
     {
-      title: 'Tech Trends',
-      description: 'Spot emerging vibe coding patterns before they hit mainstream channels',
-      icon: <Sparkles />,
-      iconColor: '#ff8a20',
+      title: 'Trend Analysis',
+      description: 'Identify emerging trends before they hit mainstream awareness',
+      icon: <BarChart className="text-blue-500" />,
+      iconColor: '#3b82f6',
     },
     {
-      title: 'Vibe Coder Hub',
-      description: 'Discuss market signals and strategies with our elite vibe coding community',
-      icon: <VibeComputer />,
-      iconColor: '#8a4fff',
-    },
-    {
-      title: 'Expert Insights',
-      description: 'Analysis from leading vibe coding leaders, investors and innovators',
-      icon: <Users />,
-      iconColor: '#00a693',
+      title: 'Signal-focused',
+      description: 'Cut through the noise with high-signal, actionable insights',
+      icon: <Zap className="text-yellow-500" />,
+      iconColor: '#eab308',
     },
   ];
 
   return (
-    <section className={`pt-24 xs:pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-24 md:pb-32 px-3 sm:px-4 relative overflow-hidden ${className}`}>
+    <section className={`relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 py-16 md:py-24 ${className}`}>
       <HeroBackground />
-
-      <div className="relative text-center flex flex-col items-center z-10 max-w-full sm:max-w-6xl mx-auto">
-        <span className="inline-block mx-auto bg-[#004d41]/40 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-3 sm:mb-4 mt-4 sm:mt-6 shadow-sm backdrop-blur-sm">
-          {badgeText}
-        </span>
-        
-        <HeroTitle 
-          prefix={title.prefix}
-          highlight={title.highlight}
-          suffix={title.suffix}
-        />
-        
-        <p className="text-[#002a25] text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-[95%] sm:max-w-xl md:max-w-2xl leading-relaxed font-medium bg-gradient-to-b from-white/95 to-white/85 rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-lg border border-[#004d41]/10 transform hover:scale-[1.01] transition-all duration-300 tracking-wide">
+      
+      {/* Badge */}
+      <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-4 text-white">
+        <BadgeCheck className="h-4 w-4 text-indigo-400" />
+        <span className="text-sm font-medium">{badgeText}</span>
+      </div>
+      
+      {/* Title and Description */}
+      <div className="text-center space-y-4 mb-6 relative z-10 max-w-3xl">
+        <HeroTitle>{title}</HeroTitle>
+        <p className="text-white/90 mx-auto max-w-xl text-base sm:text-lg md:text-xl leading-relaxed">
           {description}
         </p>
-
-        <div className="w-full max-w-xl mx-auto bg-white/10 rounded-xl p-2 sm:p-3 border border-white/30 shadow-lg transition-all duration-300 mb-8 mt-2 relative z-10 overflow-hidden">
-          <EmailSubscription
-            email={email}
-            setEmail={setEmail}
-            onSubmit={onSubmit}
-          />
-        </div>
-
-        <div className="mt-6 md:mt-8"></div>
-        <FeatureCards features={features} />
+      </div>
+      
+      {/* Countdown Timer */}
+      <div className="mb-8">
+        <CountdownTimer 
+          days={countdownData.days}
+          hours={countdownData.hours}
+          minutes={countdownData.minutes}
+          seconds={countdownData.seconds}
+        />
+      </div>
+      
+      {/* Email Subscription */}
+      <div className="w-full max-w-xl mb-8 md:mb-10">
+        <EmailSubscription 
+          email={email} 
+          setEmail={setEmail} 
+          onSubmit={onSubmit}
+          isSubmitting={isSubmitting}
+        />
+        <p className="text-white/80 text-center text-xs mt-2 flex items-center justify-center">
+          <Users className="mr-1 h-3 w-3 opacity-80" />
+          Join over 500 vibe coders and AI builders getting an edge
+        </p>
+      </div>
+      
+      {/* Feature Cards */}
+      <div className="w-full max-w-5xl">
+        <FeatureCards features={features} columns={{ sm: 1, md: 3, lg: 3 }} />
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [isHydrated, setIsHydrated] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [countdown, setCountdown] = useState({
     days: 21,
     hours: 22,
@@ -67,9 +68,37 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleSubmit = () => {
-    alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
-    setEmail("")
+  const handleSubmit = async () => {
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address");
+      return;
+    }
+    
+    try {
+      setIsSubmitting(true);
+      
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        alert(`Thanks for joining our waitlist! We'll be in touch soon.`);
+        setEmail("");
+      } else {
+        throw new Error(data.message || 'Error subscribing to the newsletter');
+      }
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      alert('There was an error subscribing to the newsletter. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   // Add scroll hide styles
@@ -199,7 +228,8 @@ export default function Home() {
           email={email}
           setEmail={setEmail}
           onSubmit={handleSubmit}
-          countdown={countdown}
+          countdownData={countdown}
+          isSubmitting={isSubmitting}
         />
       </main>
     </>
