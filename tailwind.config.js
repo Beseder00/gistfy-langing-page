@@ -9,6 +9,14 @@ module.exports = {
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      'xs': '475px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -78,6 +86,29 @@ module.exports = {
           "0%, 100%": { boxShadow: "0 0 8px rgba(59, 130, 246, 0.15)" },
           "50%": { boxShadow: "0 0 12px rgba(59, 130, 246, 0.25)" },
         },
+        "wave-animation": {
+          "0%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "palm-sway": {
+          "0%, 100%": { transform: "rotate(-2deg) scale(-1, 1)" },
+          "50%": { transform: "rotate(2deg) scale(-1, 1)" },
+        },
+        "palm-sway-reverse": {
+          "0%, 100%": { transform: "rotate(2deg)" },
+          "50%": { transform: "rotate(-2deg)" },
+        },
+        "float-particle": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "25%": { transform: "translate(10px, -10px)" },
+          "50%": { transform: "translate(0, -20px)" },
+          "75%": { transform: "translate(-10px, -10px)" },
+        },
+        "shimmer": {
+          "0%": { transform: "translateX(-100%) skewX(-12deg)" },
+          "100%": { transform: "translateX(200%) skewX(-12deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -85,6 +116,13 @@ module.exports = {
         pulse: "pulse 2s infinite",
         float: "float 3s ease-in-out infinite",
         "pulse-subtle": "pulse-subtle 15s infinite ease-in-out",
+        "wave-slow": "wave-animation 13s ease-in-out infinite",
+        "wave-medium": "wave-animation 10s ease-in-out infinite",
+        "wave-fast": "wave-animation 7s ease-in-out infinite",
+        "palm-sway": "palm-sway 6s ease-in-out infinite",
+        "palm-sway-reverse": "palm-sway-reverse 6s ease-in-out infinite",
+        "float-particle": "float-particle 6s ease-in-out infinite",
+        "shimmer": "shimmer 3s infinite",
       },
       scrollSnapType: {
         x: "x mandatory",
