@@ -10,12 +10,12 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "VibeIndex | Daily Market Intelligence for Vibe Coders",
-  description: "VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends and win.",
+  description: "VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends.",
   generator: 'v0.dev',
   metadataBase: new URL('https://gistify.io'),
   openGraph: {
     title: "VibeIndex | Daily Market Intelligence for Vibe Coders",
-    description: "VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends and win.",
+    description: "VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends.",
     url: 'https://gistify.io',
     siteName: 'VibeIndex',
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "VibeIndex | Daily Market Intelligence for Vibe Coders",
-    description: "VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends and win.",
+    description: "VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends.",
     images: ['/images/Loop.jpeg'],
     creator: '@vibeindex',
   },

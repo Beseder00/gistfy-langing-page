@@ -31,14 +31,14 @@ export const Hero: React.FC<HeroProps> = ({
     highlight: 'Vibe Coding',
     suffix: 'Market!',
   },
-  description = 'VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends and win.',
+  description = 'VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends.',
   badgeText = 'From Anywhere',
   className = '',
 }) => {
   const features = [
     {
       title: 'Daily Brief',
-      description: 'Our AI reads 40+ sources overnight so you wake up to a personalized intelligence summary, tailored to your interests',
+      description: 'Get ahead of competitors with our AI that analyzes the top sources, delivering personalized insights before your morning coffee',
       icon: <Newspaper className="h-6 w-6" />,
       iconColor: '#00a693',
     },
@@ -118,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({
                   <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#00a693]/10 to-[#ffc06b]/20 rounded-md animate-soft-pulse-delayed">
                     identify trends
                   </span> 
-                  and win!
+                  .
                 </p>
               </div>
             </div>
