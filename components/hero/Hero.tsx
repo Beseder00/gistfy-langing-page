@@ -3,7 +3,7 @@ import { HeroBackground } from './HeroBackground';
 import { HeroTitle } from './HeroTitle';
 import { EmailSubscription } from './EmailSubscription';
 import { FeatureCards } from './FeatureCards';
-import { Shield, Sparkles, Users } from 'lucide-react';
+import { Newspaper, Sparkles, Users } from 'lucide-react';
 import { VibeComputer } from '@/components/custom-icons';
 
 interface HeroProps {
@@ -37,9 +37,9 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const features = [
     {
-      title: 'Market Intelligence',
-      description: 'We generate a personalized morning brief by cross-analyzing 40 trusted and insightful sources',
-      icon: <Shield className="h-6 w-6" />,
+      title: 'Daily Brief',
+      description: 'Our AI reads 40+ sources overnight so you wake up to a personalized intelligence summary, tailored to your interests',
+      icon: <Newspaper className="h-6 w-6" />,
       iconColor: '#00a693',
     },
     {
