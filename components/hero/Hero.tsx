@@ -31,14 +31,14 @@ export const Hero: React.FC<HeroProps> = ({
     highlight: 'Vibe Coding',
     suffix: 'Market!',
   },
-  description = 'VibeIndex analyses the top 40 AI & robotics sources to generate new market data and personallized daily brief—helping vibe coders get an advantage and win!',
+  description = 'VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends and win.',
   badgeText = 'From Anywhere',
   className = '',
 }) => {
   const features = [
     {
       title: 'Market Intelligence',
-      description: 'We generate signals by cross-analyzing 40 trusted and insightful sources',
+      description: 'We generate a personalized morning brief by cross-analyzing 40 trusted and insightful sources',
       icon: <Shield className="h-6 w-6" />,
       iconColor: '#00a693',
     },
@@ -110,15 +110,15 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <div className="pt-1">
                 <p className="text-base sm:text-lg font-medium leading-relaxed">
-                  <span className="text-[#00a693] font-bold">VibeIndex</span> analyses the top 40 AI & robotics sources to generate 
+                  <span className="text-[#00a693] font-bold">VibeIndex</span> analyzes top information sources and delivers 
                   <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#ffc06b]/20 to-[#00a693]/10 rounded-md animate-soft-pulse">
-                    new market data
+                    personalized market data
                   </span> 
-                  and a
+                  helping vibe coders
                   <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#00a693]/10 to-[#ffc06b]/20 rounded-md animate-soft-pulse-delayed">
-                    personallized daily brief
+                    identify trends
                   </span> 
-                  —helping vibe coders get an advantage and win!
+                  and win!
                 </p>
               </div>
             </div>
