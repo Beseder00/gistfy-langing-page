@@ -17,10 +17,8 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
         <div className="w-full text-center mb-0 md:mb-1">
           <span className="inline-block text-white filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)]">{prefix}</span>
         </div>
-        <div className="w-full text-center pb-0 sm:pb-1">
-          <span className="bg-gradient-to-r from-[#ffc06b] to-[#ffbc60] inline-block text-transparent bg-clip-text filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)] leading-[1.05] pb-0">{highlight}</span>
-        </div>
         <div className="w-full text-center pb-0">
+          <span className="bg-gradient-to-r from-[#ffc06b] to-[#ffbc60] inline-block text-transparent bg-clip-text filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)] leading-[1.05] pb-0">{highlight}</span>{' '}
           <span className="text-white filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)]">{suffix}</span>
         </div>
       </div>

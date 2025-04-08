@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({
     highlight: 'Vibe Coding',
     suffix: 'Market!',
   },
-  description = 'VibeIndex analyses the top 40 AI & robotics sources to generate market data and a personallized daily brief—helping vibe coders make sharper daily decisions and win!',
+  description = 'VibeIndex analyses the top 40 AI & robotics sources to generate new market data and personallized daily brief—helping vibe coders get an advantage and win!',
   badgeText = 'From Anywhere',
   className = '',
 }) => {
@@ -112,13 +112,13 @@ export const Hero: React.FC<HeroProps> = ({
                 <p className="text-base sm:text-lg font-medium leading-relaxed">
                   <span className="text-[#00a693] font-bold">VibeIndex</span> analyses the top 40 AI & robotics sources to generate 
                   <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#ffc06b]/20 to-[#00a693]/10 rounded-md animate-soft-pulse">
-                    market data
+                    new market data
                   </span> 
                   and a
                   <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#00a693]/10 to-[#ffc06b]/20 rounded-md animate-soft-pulse-delayed">
                     personallized daily brief
                   </span> 
-                  —helping vibe coders make sharper daily decisions and win! <span className="animate-sparkle">✨</span>
+                  —helping vibe coders get an advantage and win!
                 </p>
               </div>
             </div>
