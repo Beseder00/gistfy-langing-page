@@ -9,13 +9,13 @@ import { ThemeProvider } from "next-themes"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "VibeIndex | Track the Vibe Coding Market From Anywhere!",
-  description: "VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!",
+  title: "VibeIndex | Daily Market Intelligence for Vibe Coders",
+  description: "Get ahead with curated insights. VibeIndex delivers personalized market data helping vibe coders identify trends and win.",
   generator: 'v0.dev',
   metadataBase: new URL('https://gistify.io'),
   openGraph: {
-    title: "VibeIndex | Track the Vibe Coding Market From Anywhere!",
-    description: "VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!",
+    title: "VibeIndex | Daily Market Intelligence for Vibe Coders",
+    description: "Get ahead with curated insights. VibeIndex delivers personalized market data helping vibe coders identify trends and win.",
     url: 'https://gistify.io',
     siteName: 'VibeIndex',
     images: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: '/images/Loop.jpeg',
         width: 1200,
         height: 630,
-        alt: 'VibeIndex - Track the Vibe Coding Market',
+        alt: 'VibeIndex - Daily Market Intelligence for Vibe Coders',
       },
     ],
     locale: 'en_US',
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "VibeIndex | Track the Vibe Coding Market From Anywhere!",
-    description: "VibeIndex turns the top 40 AI & robotics sources into actionable insights—helping vibe coders make sharper daily decisions and win!",
+    title: "VibeIndex | Daily Market Intelligence for Vibe Coders",
+    description: "Get ahead with curated insights. VibeIndex delivers personalized market data helping vibe coders identify trends and win.",
     images: ['/images/Loop.jpeg'],
     creator: '@vibeindex',
   },
@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>VibeIndex | Track the Vibe Coding Market From Anywhere!</title>
+        <title>VibeIndex | Daily Market Intelligence for Vibe Coders</title>
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
