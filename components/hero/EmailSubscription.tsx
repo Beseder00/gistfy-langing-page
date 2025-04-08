@@ -21,7 +21,7 @@ export const EmailSubscription: React.FC<EmailSubscriptionProps> = ({
       <div className="backdrop-blur-sm bg-white/10 rounded-2xl shadow-xl p-3 sm:p-5 border border-white/20">
         <div className="flex items-center gap-2 mb-3 text-white">
           <Mail className="h-5 w-5" />
-          <span className="font-medium">Get early access:</span>
+          <span className="font-medium">Get Your Competitive Edge:</span>
         </div>
         
         <div className="relative">
