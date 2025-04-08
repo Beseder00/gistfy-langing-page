@@ -343,7 +343,7 @@ export default function Home() {
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">
-              <div className="ml-3 md:ml-6">
+              <div className="hidden">
                 <ThemeToggle />
               </div>
             </nav>
