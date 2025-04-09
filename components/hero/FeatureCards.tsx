@@ -9,10 +9,10 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, icon, iconColor }: FeatureCardProps) {
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-sm">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+    <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 sm:p-5 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4">
         <div 
-          className="shrink-0 p-2.5 rounded-xl shadow-sm ring-1 ring-black/5 mb-2 sm:mb-0"
+          className="shrink-0 p-2 sm:p-2.5 rounded-lg shadow-sm ring-1 ring-black/5"
           style={{ 
             backgroundColor: `${iconColor}15`,
             color: iconColor,
@@ -22,8 +22,8 @@ function FeatureCard({ title, description, icon, iconColor }: FeatureCardProps) 
           {icon}
         </div>
         <div className="text-center sm:text-left">
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">{title}</h3>
-          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{description}</p>
+          <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
+          <p className="text-sm text-gray-600 leading-relaxed max-w-[280px] sm:max-w-none">{description}</p>
         </div>
       </div>
     </div>

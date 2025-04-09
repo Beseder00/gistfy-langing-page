@@ -88,11 +88,11 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
         </div>
         
-        <div className="mt-20">
+        <div className="mt-16">
           <FeatureCards
             features={features}
             columns={{ sm: 1, md: 2, lg: 2 }}
-            className="max-w-5xl mx-auto gap-8"
+            className="max-w-4xl mx-auto gap-4 sm:gap-6"
           />
         </div>
       </div>
