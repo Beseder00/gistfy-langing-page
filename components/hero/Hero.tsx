@@ -3,7 +3,7 @@ import { HeroBackground } from './HeroBackground';
 import { HeroTitle } from './HeroTitle';
 import { EmailSubscription } from './EmailSubscription';
 import { FeatureCards } from './FeatureCards';
-import { Newspaper, Sparkles, Users } from 'lucide-react';
+import { Newspaper, Sparkles, Users, Mail } from 'lucide-react';
 import { VibeComputer } from '@/components/custom-icons';
 
 interface HeroProps {
@@ -16,7 +16,7 @@ interface HeroProps {
     highlight?: string;
     suffix?: string;
   };
-  description?: string;
+  description?: React.ReactNode;
   badgeText?: string;
   className?: string;
 }
@@ -27,11 +27,11 @@ export const Hero: React.FC<HeroProps> = ({
   onSubmit,
   isSubmitting = false,
   title = {
-    prefix: 'Catch the',
+    prefix: 'Spot the',
     highlight: 'Next AI',
-    suffix: 'Breakthrough',
+    suffix: 'Opportunity',
   },
-  description = 'VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends.',
+  description = 'Built for Vibe Coders who think ahead. VibeIndex helps you spot trends early, and apply them to real-world problems.',
   badgeText = 'From Anywhere',
   className = '',
 }) => {
@@ -63,81 +63,37 @@ export const Hero: React.FC<HeroProps> = ({
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#00b4a2] via-[#00b4a2] to-[#ffc06b] relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00b4a2]/10 to-[#ffc06b]/20 animate-pulse-subtle"></div>
-        
-        {/* Floating particles */}
-        <div className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-white/10 animate-float-particle"></div>
-        <div className="absolute top-1/3 right-1/3 w-6 h-6 rounded-full bg-white/10 animate-float-particle [animation-delay:2s]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-5 h-5 rounded-full bg-white/10 animate-float-particle [animation-delay:4s]"></div>
-        
-        {/* Additional light effects */}
-        <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full bg-[#ffc06b]/10 blur-2xl"></div>
-      </div>
-
+    <section className={`relative overflow-hidden min-h-screen bg-gradient-to-b from-[#00b4a2] via-[#00b4a2] to-[#ffc06b] ${className}`}>
       <HeroBackground />
-
-      <div className="relative text-center flex flex-col items-center z-10 pt-20 md:pt-24 px-0 sm:px-2 pb-24 w-full">
-        {/* Badge with enhanced animation */}
-        <div className="relative mb-2">
-          <span className="inline-block mx-auto bg-white/20 text-white px-5 py-2 rounded-full text-sm backdrop-blur-sm animate-fade-in-up hover:bg-white/30 transition-all duration-300 cursor-default shadow-lg border border-white/20">
-            {badgeText}
-          </span>
-          <div className="absolute inset-0 bg-white/5 rounded-full blur-xl animate-pulse-subtle"></div>
-        </div>
-        
-        {/* Title with enhanced animation */}
-        <div className="animate-fade-in-up [animation-delay:200ms] relative mb-2 md:mb-8 w-full">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer"></div>
+      
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <HeroTitle 
-            prefix={title.prefix}
-            highlight={title.highlight}
-            suffix={title.suffix}
+            title={title}
+            badgeText={badgeText}
           />
-        </div>
-        
-        {/* Description with glass effect */}
-        <div className="animate-fade-in-up [animation-delay:400ms] w-full max-w-[98%] sm:max-w-2xl transform hover:scale-[1.02] transition-all duration-500 mb-8 sm:mb-8 md:mb-8">
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/95 to-white/50 rounded-[20px] blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-            <div className="relative text-gray-900 mx-auto bg-white/95 backdrop-blur-sm rounded-[20px] px-3 sm:px-5 py-4 shadow-sm border border-white/50 hover:shadow-lg transition-all duration-500">
-              <div className="absolute -top-2.5 left-3 sm:left-5 px-3 py-1 bg-[#00a693] text-white text-xs font-semibold rounded-full shadow-sm">
-                What we do
-              </div>
-              <div className="pt-1">
-                <p className="text-base sm:text-lg font-medium leading-relaxed">
-                  <span className="text-[#00a693] font-bold">VibeIndex</span> analyzes top information sources and delivers 
-                  <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#ffc06b]/20 to-[#00a693]/10 rounded-md animate-soft-pulse">
-                    personalized market data
-                  </span> 
-                  helping vibe coders
-                  <span className="relative inline-block mx-0.5 sm:mx-1 px-1 sm:px-2 py-0.5 bg-gradient-to-r from-[#00a693]/10 to-[#ffc06b]/20 rounded-md animate-soft-pulse-delayed">
-                    identify trends
-                  </span> 
-                  .
-                </p>
-              </div>
-            </div>
+          <div className="mt-6 mb-8">
+            <p className="text-base sm:text-lg lg:text-xl text-white leading-relaxed font-medium drop-shadow-sm max-w-3xl mx-auto">
+              {description}
+            </p>
+          </div>
+          
+          <div className="flex flex-col items-center gap-2 mt-8">
+            <EmailSubscription
+              email={email}
+              setEmail={setEmail}
+              onSubmit={onSubmit}
+              className="max-w-md w-full"
+            />
           </div>
         </div>
-
-        {/* Email subscription with enhanced animation */}
-        <div className="animate-fade-in-up [animation-delay:600ms] w-full max-w-[98%] sm:max-w-lg transform hover:scale-[1.01] transition-all duration-500">
-          <EmailSubscription
-            email={email}
-            setEmail={setEmail}
-            onSubmit={onSubmit}
-            isSubmitting={isSubmitting}
+        
+        <div className="mt-20">
+          <FeatureCards
+            features={features}
+            columns={{ sm: 1, md: 2, lg: 2 }}
+            className="max-w-5xl mx-auto gap-8"
           />
-        </div>
-
-        {/* Feature cards with enhanced animation */}
-        <div className="mt-12 w-full max-w-6xl mx-auto px-2 sm:px-4 animate-fade-in-up [animation-delay:800ms]">
-          <FeatureCards features={features} />
         </div>
       </div>
     </section>

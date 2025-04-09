@@ -1,27 +1,32 @@
 import React from 'react';
 
 interface HeroTitleProps {
-  prefix?: string;
-  highlight?: string;
-  suffix?: string;
+  title: {
+    prefix?: string;
+    highlight?: string;
+    suffix?: string;
+  };
+  badgeText: string;
 }
 
-export const HeroTitle: React.FC<HeroTitleProps> = ({
-  prefix = 'Track the',
-  highlight = 'Vibe Coding',
-  suffix = 'Market!',
-}) => {
+export function HeroTitle({ title, badgeText }: HeroTitleProps) {
   return (
-    <h1 className="text-center text-[3.5rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6rem] font-extrabold mb-0 sm:mb-2 leading-[0.95] sm:leading-tight tracking-tight w-full mx-auto hero-title-text">
-      <div className="flex flex-col items-center justify-center w-full text-center">
-        <div className="w-full text-center mb-0 md:mb-1">
-          <span className="inline-block text-white filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)]">{prefix}</span>
-        </div>
-        <div className="w-full text-center pb-0">
-          <span className="bg-gradient-to-r from-[#ffc06b] to-[#ffbc60] inline-block text-transparent bg-clip-text filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)] leading-[1.05] pb-0">{highlight}</span>{' '}
-          <span className="text-white filter drop-shadow-[0_2px_20px_rgba(0,0,0,0.15)]">{suffix}</span>
-        </div>
+    <div className="text-center">
+      {/* Badge */}
+      <div className="mt-8 mb-6">
+        <span className="inline-block bg-white/20 text-white px-4 py-1.5 rounded-full text-sm backdrop-blur-sm">
+          {badgeText}
+        </span>
       </div>
-    </h1>
+      
+      {/* Title */}
+      <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.1] tracking-tight">
+        <span className="inline-block mb-2">
+          <span className="text-white drop-shadow-sm">{title.prefix} </span>
+          <span className="text-[#ffc06b] drop-shadow-sm">{title.highlight}</span>
+        </span>
+        <span className="block drop-shadow-sm">{title.suffix}</span>
+      </h1>
+    </div>
   );
-}; 
+} 

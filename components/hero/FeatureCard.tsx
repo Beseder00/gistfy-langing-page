@@ -7,6 +7,7 @@ interface FeatureCardProps {
   iconColor?: string;
   bgColor?: string;
   textColor?: string;
+  className?: string;
 }
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({
@@ -15,12 +16,13 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   icon,
   iconColor = '#00a693',
   bgColor = '#ffffff',
-  textColor = '#004d41'
+  textColor = '#004d41',
+  className
 }) => {
   return (
     <div className="bg-white/95 p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:translate-y-[-2px] border border-[#004d41]/5 relative overflow-hidden group">
       <div 
-        className="text-[#004d41] font-bold text-lg sm:text-xl mb-3 flex items-center relative z-10"
+        className="text-[#004d41] font-bold text-lg sm:text-xl mb-3 flex items-start relative z-10"
         style={{ color: textColor }}
       >
         <div 
@@ -34,10 +36,10 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
         >
           {icon}
         </div>
-        {title}
+        <div className="text-left">{title}</div>
       </div>
       <p 
-        className="leading-relaxed text-sm sm:text-base relative z-10"
+        className="leading-relaxed text-sm sm:text-base relative z-10 text-left"
         style={{ color: textColor }}
       >
         {description}

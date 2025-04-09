@@ -4,55 +4,50 @@ interface FeatureCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  iconColor?: string;
-  className?: string;
-  index?: number;
+  iconColor: string;
 }
 
-export const FeatureCard: React.FC<FeatureCardProps> = ({
-  title,
-  description,
-  icon,
-  iconColor = '#00a693',
-  className = '',
-  index = 0,
-}) => {
+function FeatureCard({ title, description, icon, iconColor }: FeatureCardProps) {
   return (
-    <div 
-      className={`relative group bg-white text-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg border border-white/50 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 animate-fade-in-up ${className}`}
-      style={{ animationDelay: `${800 + (index * 100)}ms` }}
-    >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ffc06b]/20 to-[#00b4a2]/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-      <div className="relative">
+    <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
         <div 
-          className="inline-flex items-center justify-center p-2 sm:p-3 rounded-xl mb-3 sm:mb-5 bg-gradient-to-br from-white to-gray-50"
-          style={{ boxShadow: `0 4px 12px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 -2px 3px ${iconColor}30` }}
+          className="shrink-0 p-2.5 rounded-xl shadow-sm ring-1 ring-black/5 mb-2 sm:mb-0"
+          style={{ 
+            backgroundColor: `${iconColor}15`,
+            color: iconColor,
+            boxShadow: `0 2px 4px ${iconColor}10, inset 0 1px 2px ${iconColor}15`
+          }}
         >
-          <div style={{ color: iconColor }}>{icon}</div>
+          {icon}
         </div>
-        <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">{title}</h3>
-        <p className="text-sm sm:text-base text-gray-600">{description}</p>
+        <div className="text-center sm:text-left">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">{title}</h3>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{description}</p>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 interface FeatureCardsProps {
-  features: Array<{
+  features: {
     title: string;
     description: string;
     icon: React.ReactNode;
-    iconColor?: string;
-  }>;
+    iconColor: string;
+  }[];
+  columns?: {
+    sm?: number;
+    md?: number;
+    lg?: number;
+  };
   className?: string;
 }
 
-export const FeatureCards: React.FC<FeatureCardsProps> = ({
-  features,
-  className = '',
-}) => {
+export function FeatureCards({ features, columns = { sm: 1, md: 2, lg: 2 }, className = '' }: FeatureCardsProps) {
   return (
-    <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 ${className}`}>
+    <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 ${className}`}>
       {features.map((feature, index) => (
         <FeatureCard
           key={index}
@@ -60,9 +55,8 @@ export const FeatureCards: React.FC<FeatureCardsProps> = ({
           description={feature.description}
           icon={feature.icon}
           iconColor={feature.iconColor}
-          index={index}
         />
       ))}
     </div>
   );
-}; 
+} 
