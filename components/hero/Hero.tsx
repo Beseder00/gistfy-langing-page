@@ -27,9 +27,9 @@ export const Hero: React.FC<HeroProps> = ({
   onSubmit,
   isSubmitting = false,
   title = {
-    prefix: 'Track the',
-    highlight: 'Vibe Coding',
-    suffix: 'Market!',
+    prefix: 'Catch the',
+    highlight: 'Next AI',
+    suffix: 'Breakthrough',
   },
   description = 'VibeIndex analyzes top information sources and delivers personalized market data helping vibe coders identify trends.',
   badgeText = 'From Anywhere',
@@ -44,7 +44,7 @@ export const Hero: React.FC<HeroProps> = ({
     },
     {
       title: 'Tech Trends',
-      description: 'Spot emerging vibe coding patterns before they hit mainstream channels',
+      description: 'Spot emerging vibe coding market opportunities before they hit mainstream channels',
       icon: <Sparkles className="h-6 w-6" />,
       iconColor: '#ffbc60',
     },
