@@ -197,7 +197,7 @@ export default function PreLaunchLandingDuplicate() {
             <div className="flex-1 flex items-center">
               <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
                 <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
-                <span className="text-[#fffadc] tracking-wide">VibeIndex</span>
+                <span className="text-[#fffadc] tracking-wide">iVibeIndex</span>
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">

@@ -94,7 +94,7 @@ export default function Home() {
       }
 
       // Success!
-      alert(`Thanks for joining the VibeIndex waitlist with ${email}! We'll be in touch soon.`)
+      alert(`Thanks for joining the iVibeIndex waitlist with ${email}! We'll be in touch soon.`)
       setEmail("")
     } catch (error) {
       console.error("Error subscribing:", error)
@@ -295,13 +295,13 @@ export default function Home() {
             <div className="flex-1 flex items-center">
               <span className="text-white text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
                 <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffc06b]" />
-                <span className="text-white tracking-wide">VibeIndex</span>
+                <span className="text-white tracking-wide">iVibeIndex</span>
               </span>
             </div>
           </div>
         </header>
         <div className="animate-pulse">
-          <span className="text-white text-2xl font-bold">Loading VibeIndex...</span>
+          <span className="text-white text-2xl font-bold">Loading iVibeIndex...</span>
         </div>
       </div>
     );
@@ -339,7 +339,7 @@ export default function Home() {
             <div className="flex-1 flex items-center">
               <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm border border-white/20 hover:bg-white/20 transition-all duration-300">
                 <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffc06b]" />
-                <span className="text-white tracking-wide">VibeIndex</span>
+                <span className="text-white tracking-wide">iVibeIndex</span>
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">

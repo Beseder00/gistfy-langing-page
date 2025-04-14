@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>VibeIndex | Daily Market Intelligence for Vibe Coders</title>
+        <title>iVibeIndex | Daily Market Intelligence for Vibe Coders</title>
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
