@@ -1,7 +1,7 @@
-import { Metadata } from 'next';
+import type { Metadata } from "next";
 
 const metadata: Metadata = {
-  title: 'Spot AI Trends Early – iVibeIndex for Vibe Coders',
+  title: 'Spot AI Trends Early – iVibeIndex for Vibe Coders and Soloentrepreneurs',
   description: 'iVibeIndex helps vibe coders and builders discover AI and robotics trends early—turning insights into real-world opportunities. Get your daily edge.',
   keywords: [
     'AI trend insights',

@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
-import { Analytics } from "@vercel/analytics/react"
 import { ThemeProvider } from "next-themes"
 import metadata from './metadata'
 
@@ -19,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>iVibeIndex | Daily Market Intelligence for Vibe Coders</title>
+        <title>iVibeIndex | Daily Market Intelligence for Vibe Coders and Soloentrepreneurs</title>
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -76,7 +75,6 @@ export default function RootLayout({
             />
           </noscript>
           {children}
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>

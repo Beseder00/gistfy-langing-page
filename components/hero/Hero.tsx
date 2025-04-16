@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({
     highlight: 'Next AI',
     suffix: 'Opportunity',
   },
-  description = 'Built for Vibe Coders who think ahead. iVibeIndex helps you spot trends early, and apply them to real-world problems.',
+  description = 'Built for Vibe Coders and Soloentrepreneurs who think ahead. iVibeIndex helps you spot trends early, and apply them to real-world problems.',
   badgeText = 'From Anywhere',
   className = '',
 }) => {

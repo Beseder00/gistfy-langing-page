@@ -166,7 +166,40 @@ export default function PreLaunchLandingDuplicate() {
     setShowEmailPopup(true)
   }
 
-  // Add this right before the return statement
+  // Create a no-parameter submit handler for the Hero component
+  const submitEmail = () => {
+    // Basic validation
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    console.log("Submitting email:", email);
+    
+    // Use the API endpoint
+    fetch("/api/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Response data:", data);
+      if (data.message) {
+        alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`);
+        setEmail("");
+      } else {
+        throw new Error("Error submitting email");
+      }
+    })
+    .catch(error => {
+      console.error("Error submitting email:", error);
+      alert("There was an error submitting your email. Please try again.");
+    });
+  };
+
   return (
     <>
       <style jsx global>
@@ -212,9 +245,61 @@ export default function PreLaunchLandingDuplicate() {
         <Hero 
           email={email}
           setEmail={setEmail}
-          onSubmit={openEmailPopup}
+          onSubmit={submitEmail}
         />
       </div>
+
+      {/* Email Popup Form */}
+      {showEmailPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+            <button 
+              onClick={() => setShowEmailPopup(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            
+            <h3 className="text-xl font-bold mb-4 text-[#004d41]">Join the iVibeIndex Waitlist</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="popup-email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Email
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <input
+                    id="popup-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full pl-10 py-2 border border-gray-300 rounded-md focus:ring-[#00a693] focus:border-[#00a693] focus:outline-none"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="flex gap-3">
+                <button
+                  type="submit"
+                  className="flex-1 bg-gradient-to-r from-[#00b4a2] to-[#00a693] text-white font-medium py-2 px-4 rounded-md hover:shadow-md transition-all duration-200"
+                >
+                  Join Waitlist
+                </button>
+                
+                <button
+                  type="button"
+                  onClick={handleSubmitTest}
+                  className="flex-1 bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-md hover:bg-gray-200 transition-all duration-200"
+                >
+                  Test Submission
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   )
 } 
