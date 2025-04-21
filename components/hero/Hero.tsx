@@ -9,6 +9,8 @@ import { VibeComputer } from '@/components/custom-icons';
 interface HeroProps {
   email: string;
   setEmail: (email: string) => void;
+  coupon: string;
+  setCoupon: (coupon: string) => void;
   onSubmit: () => void;
   isSubmitting?: boolean;
   title?: {
@@ -24,6 +26,8 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({
   email,
   setEmail,
+  coupon,
+  setCoupon,
   onSubmit,
   isSubmitting = false,
   title = {
@@ -82,6 +86,8 @@ export const Hero: React.FC<HeroProps> = ({
             <EmailSubscription
               email={email}
               setEmail={setEmail}
+              coupon={coupon}
+              setCoupon={setCoupon}
               onSubmit={onSubmit}
               className="max-w-md w-full"
             />

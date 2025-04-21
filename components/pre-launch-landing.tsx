@@ -27,6 +27,7 @@ const scrollbarHideStyles = `
 export default function PreLaunchLanding() {
   // Existing code remains the same
   const [email, setEmail] = useState("")
+  const [coupon, setCoupon] = useState("")
   const [scrolled, setScrolled] = useState(false)
   const [newsletterCount, setNewsletterCount] = useState(5)
   const [countdown, setCountdown] = useState({
@@ -103,7 +104,7 @@ export default function PreLaunchLanding() {
         headers: {
           "Content-Type": "application/json",
         },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, coupon }),
     })
       
       console.log("Response status:", response.status)
@@ -116,6 +117,7 @@ export default function PreLaunchLanding() {
       
         alert(`Thanks for joining our waitlist with ${email}! We'll be in touch soon.`)
         setEmail("")
+        setCoupon("")
         setShowEmailPopup(false)
     } catch (error) {
         console.error("Error submitting email:", error)
@@ -275,6 +277,15 @@ export default function PreLaunchLanding() {
                   />
                   <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--muted-foreground)] group-hover:text-blue-500 transition-colors duration-300" />
                 </div>
+                <div className="relative w-full group">
+                  <Input
+                    type="text"
+                    placeholder="Coupon code (optional)"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="w-full h-12 pl-4 bg-[var(--background)] border-2 border-[var(--border)] focus:border-blue-500 dark:focus:border-blue-400 rounded-lg shadow-sm group-hover:shadow-md focus:shadow-md transition-all duration-300 pr-4"
+                  />
+                </div>
                 <Button 
                   type="submit" 
                   className="h-12 px-6 sm:px-8 bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white font-medium min-w-[180px] whitespace-nowrap rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group border-0 hover:border-0 outline outline-2 outline-transparent hover:outline-white/20"
@@ -282,6 +293,9 @@ export default function PreLaunchLanding() {
                   <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
                   <span className="relative z-10">Get Product Updates</span>
                 </Button>
+              </div>
+              <div className="w-full text-left text-xs text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 rounded px-3 py-2 mb-2">
+                🎉 <b>Special Offer:</b> Enter your coupon code above for lifetime access!
               </div>
               <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6">
                 <div className="flex items-center">
@@ -790,14 +804,24 @@ export default function PreLaunchLanding() {
                     required
                   />
                 </div>
-
+                <div className="relative">
+                  <Input
+                    type="text"
+                    placeholder="Coupon code (optional)"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="h-12 border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] rounded-lg w-full placeholder:text-[var(--muted-foreground)] shadow-sm hover:shadow-md focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-blue-500/30 hover:border-blue-300/50 dark:hover:border-blue-500 pl-4"
+                  />
+                </div>
+                <div className="w-full text-left text-xs text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 rounded px-3 py-2 mb-2">
+                  🎉 <b>Special Offer:</b> Enter your coupon code above for lifetime access!
+                </div>
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#4F46E5] hover:from-[#2563EB] hover:via-[#4F46E5] hover:to-[#4338CA] text-white py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Product Updates
                 </Button>
-
                 <div className="flex justify-center gap-x-6 text-xs text-[var(--muted-foreground)] mt-4">
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-blue-500" />
@@ -850,14 +874,24 @@ export default function PreLaunchLanding() {
                     required
                   />
                 </div>
-
+                <div className="relative">
+                  <Input
+                    type="text"
+                    placeholder="Coupon code (optional)"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="h-12 border-white/30 bg-white/15 text-white rounded-lg w-full placeholder:text-white/80 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] focus:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-1000 focus:ring-2 focus:ring-white/30 hover:border-white/50 focus:border-white/70 pl-4"
+                  />
+                </div>
+                <div className="w-full text-left text-xs text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 rounded px-3 py-2 mb-2">
+                  🎉 <b>Special Offer:</b> Enter your coupon code above for lifetime access!
+                </div>
                 <Button
                   type="submit"
                   className="w-full bg-white hover:bg-white/90 text-[#1E40AF] py-3 rounded-lg font-medium text-base h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Get Product Updates
                 </Button>
-
                 <div className="flex justify-center gap-x-6 text-xs text-white/80 mt-4">
                   <div className="flex items-center">
                     <CheckCircle2 className="h-3.5 w-3.5 mr-1.5 text-white" />
@@ -957,12 +991,24 @@ export default function PreLaunchLanding() {
                 <p className="text-white/80 mb-4 leading-relaxed">
                   Have questions? We're here to help. Contact us via X (Twitter).
                 </p>
-                <form className="flex gap-2" onSubmit={handleSubmit}>
+                <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                   <Input
                     type="email"
                     placeholder="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="border-[#3B82F6] text-sm bg-white/15 focus:bg-white/20 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.1)] focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 focus:ring-1 focus:ring-white/30"
                   />
+                  <Input
+                    type="text"
+                    placeholder="Coupon code (optional)"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="border-[#3B82F6] text-sm bg-white/15 focus:bg-white/20 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.1)] focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 focus:ring-1 focus:ring-white/30 pl-4"
+                  />
+                  <div className="w-full text-left text-xs text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 rounded px-3 py-2 mb-2">
+                    🎉 <b>Special Offer:</b> Enter your coupon code above for lifetime access!
+                  </div>
                   <Button type="submit" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm rounded-full">
                     Subscribe
                   </Button>

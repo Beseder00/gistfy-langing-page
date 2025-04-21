@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     console.log("API Route called, API Key available:", !!MAILER_LITE_API_KEY);
     console.log("API Key starts with:", MAILER_LITE_API_KEY.substring(0, 10) + "...");
     
-    const { email } = await request.json();
+    const { email, coupon } = await request.json();
     
     // Validate email
     if (!email || typeof email !== 'string' || !email.includes('@')) {
@@ -21,6 +21,9 @@ export async function POST(request: Request) {
 
     // Log it for debugging
     console.log(`Subscription request received for: ${email}`);
+    if (coupon) {
+      console.log(`Coupon code provided: ${coupon}`);
+    }
     
     try {
       // Add subscriber to MailerLite
@@ -34,7 +37,8 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           email: email,
-          status: "active"
+          status: "active",
+          fields: coupon ? { coupon } : undefined
         })
       });
       

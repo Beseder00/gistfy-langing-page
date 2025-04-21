@@ -1,0 +1,93 @@
+import React from "react";
+import { Cookie } from "lucide-react";
+
+export default function CookiePolicy() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#e0f7fa] via-[#fffbe6] to-[#f1f5f9] py-0">
+      {/* Hero Section */}
+      <section className="w-full flex flex-col items-center justify-center pt-20 pb-8 px-4">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="inline-flex items-center justify-center rounded-full bg-[#19b8a6]/20 p-4 shadow-md">
+            <Cookie className="h-8 w-8 text-[#19b8a6]" />
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#00332a] tracking-tight text-center drop-shadow-sm">
+            Cookie Policy
+          </h1>
+        </div>
+        <p className="text-base md:text-lg text-[#1a2e2b] text-center max-w-2xl mb-2">
+          How and why we use cookies to improve your experience on Vibe Index.
+        </p>
+        <p className="mb-0 text-xs text-[#64748B] text-center">Last updated: {new Date().toLocaleDateString()}</p>
+      </section>
+
+      {/* Card Content */}
+      <main className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl px-6 py-10 md:px-10 md:py-12 border border-gray-100 text-[#1a2e2b]">
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6] flex items-center gap-2">
+            <Cookie className="h-5 w-5 text-[#19b8a6]" /> 1. What Are Cookies?
+          </h2>
+          <p>
+            Cookies are small text files stored on your device by your browser when you visit websites. They help websites remember your preferences, improve your experience, and analyze site usage.
+          </p>
+        </section>
+        <div className="border-t border-dashed border-gray-200 my-6" />
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">2. How Vibe Index Uses Cookies</h2>
+          <p>We use cookies to:</p>
+          <ul className="list-disc pl-6 space-y-1">
+            <li>Remember your preferences and settings.</li>
+            <li>Enable essential site functionality.</li>
+            <li>Analyze site traffic and usage to improve our service.</li>
+            <li>Support marketing and communication efforts.</li>
+          </ul>
+        </section>
+        <div className="border-t border-dashed border-gray-200 my-6" />
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">3. Types of Cookies We Use</h2>
+          <ul className="list-disc pl-6 space-y-1">
+            <li><b>Essential Cookies:</b> Necessary for the website to function properly.</li>
+            <li><b>Analytics Cookies:</b> Help us understand how visitors interact with Vibe Index.</li>
+            <li><b>Preference Cookies:</b> Remember your choices and settings.</li>
+          </ul>
+        </section>
+        <div className="border-t border-dashed border-gray-200 my-6" />
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">4. Third-Party Cookies</h2>
+          <p>
+            We may use third-party services (such as analytics or email providers) that set their own cookies. We do not control these cookies, and their use is governed by the privacy policies of those third parties.
+          </p>
+        </section>
+        <div className="border-t border-dashed border-gray-200 my-6" />
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">5. Managing Cookies</h2>
+          <p>
+            You can control or delete cookies through your browser settings. Most browsers allow you to refuse or delete cookies. However, disabling cookies may affect your experience on Vibe Index.
+          </p>
+        </section>
+        <div className="border-t border-dashed border-gray-200 my-6" />
+        <section className="mb-4">
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6] flex items-center gap-2">
+            {/* Twitter SVG icon */}
+            <svg className="h-5 w-5 text-[#19b8a6]" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+            6. Contact Us
+          </h2>
+          <p>
+            If you have any questions about our Cookie Policy, please contact us via Twitter:
+          </p>
+          <div className="mt-3 flex items-center gap-2 bg-[#e0f7fa] rounded-lg px-4 py-3 text-[#00332a] shadow-sm">
+            <a
+              href="https://x.com/adamdorfx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-[#19b8a6] hover:text-[#004d41] transition-colors underline"
+              aria-label="Contact on Twitter"
+            >
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+              @adamdorfx
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+} 

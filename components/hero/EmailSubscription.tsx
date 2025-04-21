@@ -4,12 +4,14 @@ import { ArrowRight, Mail, Sparkles } from 'lucide-react';
 interface EmailSubscriptionProps {
   email: string;
   setEmail: (email: string) => void;
+  coupon: string;
+  setCoupon: (coupon: string) => void;
   onSubmit: () => void;
   isSubmitting?: boolean;
   className?: string;
 }
 
-export function EmailSubscription({ email, setEmail, onSubmit, isSubmitting = false, className = '' }: EmailSubscriptionProps) {
+export function EmailSubscription({ email, setEmail, coupon, setCoupon, onSubmit, isSubmitting = false, className = '' }: EmailSubscriptionProps) {
   return (
     <div className={`flex flex-col gap-4 ${className}`}>
       <div className="relative group">
@@ -22,7 +24,18 @@ export function EmailSubscription({ email, setEmail, onSubmit, isSubmitting = fa
           className="w-full pl-10 pr-4 py-3.5 rounded-2xl bg-white/95 backdrop-blur-sm border-2 border-transparent shadow-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#00b4a2]/20 focus:ring-1 focus:ring-[#00b4a2]/20 transition-all duration-200"
         />
       </div>
-      
+      <div className="relative group">
+        <input
+          type="text"
+          value={coupon}
+          onChange={(e) => setCoupon(e.target.value)}
+          placeholder="Coupon code (optional)"
+          className="w-full pl-4 pr-4 py-3.5 rounded-2xl bg-white/95 backdrop-blur-sm border-2 border-transparent shadow-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#00b4a2]/20 focus:ring-1 focus:ring-[#00b4a2]/20 transition-all duration-200 mt-2"
+        />
+      </div>
+      <div className="w-full text-left text-xs text-blue-700 bg-blue-50 rounded px-3 py-2 mb-2">
+        🎉 <b>Special Offer:</b> Enter your coupon code above for lifetime access!
+      </div>
       <div className="space-y-3">
         <button
           onClick={onSubmit}
@@ -35,7 +48,6 @@ export function EmailSubscription({ email, setEmail, onSubmit, isSubmitting = fa
           </span>
           <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 blur-xl transition-opacity" />
         </button>
-        
         <div className="flex items-center gap-2 justify-center text-sm">
           <div className="h-px flex-1 bg-white/10" />
           <p className="text-white/70">
