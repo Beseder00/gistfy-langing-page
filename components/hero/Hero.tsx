@@ -72,22 +72,28 @@ export const Hero: React.FC<HeroProps> = ({
 
   const features = [
     {
-      title: "Share Code Instantly",
-      description: "Create and share beautiful code snippets with just a few clicks. Perfect for documentation and social media.",
-      icon: <FiShare2 className="w-6 h-6" />,
+      title: "Daily Brief",
+      description: "Get ahead of competitors with our AI that analyzes the top sources, delivering personalized insights before your morning coffee",
+      icon: <Mail className="w-6 h-6" />,
       iconColor: "#10B981"
     },
     {
-      title: "GitHub Integration",
-      description: "Seamlessly connect with your GitHub repositories to share and embed code snippets directly from your projects.",
-      icon: <FiGithub className="w-6 h-6" />,
-      iconColor: "#6366F1"
+      title: "Tech Trends",
+      description: "Spot emerging vibe coding market opportunities before they hit mainstream channels",
+      icon: <Sparkles className="w-6 h-6" />,
+      iconColor: "#F59E0B"
     },
     {
-      title: "Syntax Highlighting",
-      description: "Support for over 100 programming languages with beautiful syntax highlighting and customizable themes.",
-      icon: <FiCode className="w-6 h-6" />,
-      iconColor: "#F59E0B"
+      title: "Vibe Coder Hub",
+      description: "Discuss market signals and strategies with our elite vibe coding community",
+      icon: <Users className="w-6 h-6" />,
+      iconColor: "#8B5CF6"
+    },
+    {
+      title: "Expert Insights",
+      description: "Rank content of the day's best analysis from leading vibe coding leaders, investors and innovators",
+      icon: <VibeComputer className="w-6 h-6" />,
+      iconColor: "#06B6D4"
     }
   ];
 
@@ -125,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({
           
           <motion.div
             variants={itemVariants}
-            className="mt-10"
+            className="mt-10 flex justify-center items-center"
           >
             <EmailSubscription
               email={email}
@@ -134,7 +140,7 @@ export const Hero: React.FC<HeroProps> = ({
               setCoupon={setCoupon}
               onSubmit={() => {}}
               isSubmitting={isSubmittingState}
-              className="max-w-md w-full"
+              className="max-w-md w-full mx-auto"
             />
           </motion.div>
         </div>
@@ -145,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({
         >
           <FeatureCards
             features={features}
-            columns={{ sm: 1, md: 2, lg: 3 }}
+            columns={{ sm: 1, md: 2, lg: 2 }}
             className="gap-6 md:gap-8"
           />
         </motion.div>

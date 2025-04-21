@@ -1,12 +1,14 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { FeatureCard } from './FeatureCard';
 
 interface Feature {
   title: string;
   description: string;
   icon: React.ReactNode;
   iconColor?: string;
+  bgColor?: string;
+  textColor?: string;
 }
 
 interface FeatureCardsProps {
@@ -21,70 +23,26 @@ interface FeatureCardsProps {
 
 export const FeatureCards: React.FC<FeatureCardsProps> = ({
   features,
-  columns = { sm: 1, md: 2, lg: 2 },
+  columns = { sm: 1, md: 2, lg: 3 },
   className = '',
 }) => {
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-    hover: {
-      scale: 1.02,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-
-  const iconVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 10,
-      },
-    },
-  };
-
   const getGridCols = () => {
-    const { sm = 1, md = 2, lg = 2 } = columns;
+    const { sm = 1, md = 2, lg = 3 } = columns;
     return `grid grid-cols-1 sm:grid-cols-${sm} md:grid-cols-${md} lg:grid-cols-${lg}`;
   };
 
   return (
-    <div className={cn(getGridCols(), className)}>
+    <div className={cn(getGridCols(), 'gap-6 md:gap-8', className)}>
       {features.map((feature, index) => (
-        <motion.div
+        <FeatureCard
           key={feature.title}
-          className="relative p-6 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-xl"
-          variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          custom={index}
-        >
-          <motion.div
-            className="mb-4 inline-block"
-            variants={iconVariants}
-            style={{ color: feature.iconColor }}
-          >
-            {feature.icon}
-          </motion.div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            {feature.title}
-          </h3>
-          <p className="text-white/80">
-            {feature.description}
-          </p>
-        </motion.div>
+          title={feature.title}
+          description={feature.description}
+          icon={feature.icon}
+          iconColor={feature.iconColor}
+          bgColor={feature.bgColor}
+          textColor={feature.textColor}
+        />
       ))}
     </div>
   );

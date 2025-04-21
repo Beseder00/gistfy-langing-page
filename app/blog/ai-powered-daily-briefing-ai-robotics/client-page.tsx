@@ -7,7 +7,7 @@ import { ArrowLeft, Calendar, Clock, Share2, CheckCircle } from "lucide-react"
 import { TwitterTweet } from "@/components/twitter-tweet"
 import { Logo } from "@/components/logo"
 import { ThemeToggle } from "@/components/theme-toggle"
-import "../[id]/blog-post.css" // Add CSS for better blog formatting
+import "../styles/blog-post.css" // Update CSS import path to new location
 
 type BlogPost = {
   id: number;
