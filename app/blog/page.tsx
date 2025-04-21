@@ -1,49 +1,51 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, Calendar, Clock, ArrowRight } from "lucide-react"
+import { Search, Calendar, Clock, ArrowRight, Eye } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { blogPosts } from "@/data/blog-posts"
+import { BlogPost } from "@/types/blog"
+import { Skeleton } from "@/components/ui/skeleton"
 
-// Sample blog posts data
-const blogPosts = [
-  {
-    id: 1,
-    slug: "ai-powered-daily-briefing-ai-robotics",
-    title: "Meet Gistify: Your AI-Powered Daily Briefing for AI and Robotics",
-    excerpt: "Discover unexpected insights and emerging trends that human readers would miss—Gistify AI connects the dots across dozens of AI and robotics sources, revealing hidden patterns and opportunities.",
-    image: "/images/Meet%20Gistify.png",
-    date: "March 23, 2025",
-    readTime: "8 min read",
-    category: "App Updates"
-  }
-]
-
-export default function BlogPage() {
+export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("")
   const [scrolled, setScrolled] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
+  const [showDrafts, setShowDrafts] = useState(false)
 
-  // Handle scroll effect for header
-  if (typeof window !== 'undefined') {
-    // Only add the event listener on the client side
-    useState(() => {
-      const handleScroll = () => {
-        setScrolled(window.scrollY > 20)
-      }
-      window.addEventListener("scroll", handleScroll)
-      return () => window.removeEventListener("scroll", handleScroll)
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setLoading(false)
+      setFilteredPosts(blogPosts)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    const filtered = blogPosts.filter((post) => {
+      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+      return matchesSearch && (showDrafts || !post.isDraft)
     })
-  }
-
-  const filteredPosts = blogPosts.filter(post =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.category.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+    setFilteredPosts(filtered)
+  }, [searchQuery, showDrafts])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[var(--muted-background)] to-[var(--card-background)]">
@@ -97,58 +99,88 @@ export default function BlogPage() {
 
       {/* Search and Filter Section */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="relative mb-8">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
-          <Input
-            type="text"
-            placeholder="Search articles..."
-            className="pl-10 h-12 w-full max-w-xl"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        <div className={`sticky top-0 z-10 bg-white dark:bg-gray-900 py-4 transition-shadow ${scrolled ? "shadow-md" : ""}`}>
+          <div className="flex items-center gap-4 max-w-md mx-auto">
+            <Input
+              type="text"
+              placeholder="Search blog posts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1"
+            />
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setShowDrafts(!showDrafts)}
+              className={`${showDrafts ? 'bg-blue-100 text-blue-600' : ''}`}
+              title={showDrafts ? "Hide drafts" : "Show drafts"}
+            >
+              <Eye className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
-            <Link href={`/blog/${post.slug}`} key={post.id}>
-              <article className="bg-[var(--card-background)] rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-[var(--border)]">
-                <div className="relative h-48">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {loading ? (
+            // Loading skeletons
+            Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="space-y-4">
+                <Skeleton className="h-48 w-full rounded-lg" />
+                <Skeleton className="h-4 w-3/4" />
+                <Skeleton className="h-4 w-full" />
+                <div className="flex gap-2">
+                  <Skeleton className="h-4 w-20" />
+                  <Skeleton className="h-4 w-20" />
+                </div>
+              </div>
+            ))
+          ) : filteredPosts.length > 0 ? (
+            filteredPosts.map((post) => (
+              <Link 
+                href={`/blog/${post.slug}`} 
+                key={post.id}
+                className={`group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ${
+                  post.isDraft ? 'ring-2 ring-yellow-400' : ''
+                }`}
+              >
+                <div className="relative h-48 w-full">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
                     className="object-cover"
                   />
+                  {post.isDraft && (
+                    <div className="absolute top-2 right-2 px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-semibold rounded">
+                      Draft
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-[var(--muted-foreground)] mb-3">
-                    <span className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {post.readTime}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm text-gray-500">{post.date}</span>
+                    <span className="px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full">
+                      {post.category}
                     </span>
                   </div>
-                  <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-4 shadow-sm hover:shadow-md transition-all duration-300">
-                    {post.category}
-                  </span>
-                  <h2 className="text-xl font-bold text-[var(--foreground)] mb-2 hover:text-blue-600 transition-colors">
+                  <h2 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors duration-300">
                     {post.title}
                   </h2>
-                  <p className="text-[var(--muted-foreground)] mb-4">
+                  <p className="text-gray-600 text-sm mb-4">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center text-blue-600 font-medium">
-                    Read more
-                    <ArrowRight className="h-4 w-4 ml-1" />
+                  <div className="flex items-center text-sm text-gray-500">
+                    <span>{post.readTime}</span>
                   </div>
                 </div>
-              </article>
-            </Link>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-8">
+              <p className="text-gray-500">No blog posts found matching your search.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HeroBackground } from './HeroBackground';
 import { HeroTitle } from './HeroTitle';
 import { EmailSubscription } from './EmailSubscription';
 import { FeatureCards } from './FeatureCards';
 import { Newspaper, Sparkles, Users, Mail } from 'lucide-react';
 import { VibeComputer } from '@/components/custom-icons';
+import { motion, useInView } from 'framer-motion';
+import { FiCode, FiGithub, FiShare2 } from 'react-icons/fi';
 
 interface HeroProps {
   email: string;
@@ -41,69 +43,113 @@ export const Hero: React.FC<HeroProps> = ({
   className = '',
   subtitle,
 }) => {
+  const [isSubmittingState, setIsSubmittingState] = useState(isSubmitting);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   const features = [
     {
-      title: 'Daily Brief',
-      description: 'Get ahead of competitors with our AI that analyzes the top sources, delivering personalized insights before your morning coffee',
-      icon: <Newspaper className="h-6 w-6" />,
-      iconColor: '#00a693',
+      title: "Share Code Instantly",
+      description: "Create and share beautiful code snippets with just a few clicks. Perfect for documentation and social media.",
+      icon: <FiShare2 className="w-6 h-6" />,
+      iconColor: "#10B981"
     },
     {
-      title: 'Tech Trends',
-      description: 'Spot emerging vibe coding market opportunities before they hit mainstream channels',
-      icon: <Sparkles className="h-6 w-6" />,
-      iconColor: '#ffbc60',
+      title: "GitHub Integration",
+      description: "Seamlessly connect with your GitHub repositories to share and embed code snippets directly from your projects.",
+      icon: <FiGithub className="w-6 h-6" />,
+      iconColor: "#6366F1"
     },
     {
-      title: 'Vibe Coder Hub',
-      description: 'Discuss market signals and strategies with our elite vibe coding community',
-      icon: <VibeComputer className="h-6 w-6" />,
-      iconColor: '#8a4fff',
-    },
-    {
-      title: 'Expert Insights',
-      description: 'Rank content of the day\'s best analysis from leading vibe coding leaders, investors and innovators',
-      icon: <Users className="h-6 w-6" />,
-      iconColor: '#00a693',
-    },
+      title: "Syntax Highlighting",
+      description: "Support for over 100 programming languages with beautiful syntax highlighting and customizable themes.",
+      icon: <FiCode className="w-6 h-6" />,
+      iconColor: "#F59E0B"
+    }
   ];
 
   return (
-    <section className={`relative overflow-hidden min-h-screen bg-gradient-to-b from-[#00b4a2] via-[#00b4a2] to-[#ffc06b] ${className}`}>
+    <motion.section
+      ref={ref}
+      className={`relative overflow-hidden min-h-screen bg-gradient-to-b from-[#00b4a2] via-[#00b4a2] to-[#ffc06b] ${className}`}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
       <HeroBackground />
       
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+      <motion.div 
+        className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24"
+        variants={itemVariants}
+      >
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <HeroTitle 
-            title={title}
-            badgeText={badgeText}
-          />
-          <div className="mt-6 mb-8">
+          <motion.div
+            variants={itemVariants}
+          >
+            <HeroTitle 
+              title={title}
+              badgeText={badgeText}
+            />
+          </motion.div>
+          <motion.div 
+            className="mt-6 mb-8"
+            variants={itemVariants}
+          >
             <p className="text-base sm:text-lg lg:text-xl text-white leading-relaxed font-medium drop-shadow-sm max-w-3xl mx-auto">
               {subtitle || description}
             </p>
-          </div>
+          </motion.div>
           
-          <div className="flex flex-col items-center gap-2 mt-8">
+          <motion.div
+            variants={itemVariants}
+            className="mt-10"
+          >
             <EmailSubscription
               email={email}
               setEmail={setEmail}
               coupon={coupon}
               setCoupon={setCoupon}
-              onSubmit={onSubmit}
+              onSubmit={() => {}}
+              isSubmitting={isSubmittingState}
               className="max-w-md w-full"
             />
-          </div>
+          </motion.div>
         </div>
         
-        <div className="mt-16">
+        <motion.div 
+          className="mt-16"
+          variants={itemVariants}
+        >
           <FeatureCards
             features={features}
-            columns={{ sm: 1, md: 2, lg: 2 }}
-            className="max-w-4xl mx-auto gap-4 sm:gap-6"
+            columns={{ sm: 1, md: 2, lg: 3 }}
+            className="gap-6 md:gap-8"
           />
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }; 

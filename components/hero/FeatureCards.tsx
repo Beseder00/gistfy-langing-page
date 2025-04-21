@@ -1,42 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-interface FeatureCardProps {
+interface Feature {
   title: string;
   description: string;
   icon: React.ReactNode;
-  iconColor: string;
-}
-
-function FeatureCard({ title, description, icon, iconColor }: FeatureCardProps) {
-  return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 sm:p-5 shadow-sm">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4">
-        <div 
-          className="shrink-0 p-2 sm:p-2.5 rounded-lg shadow-sm ring-1 ring-black/5"
-          style={{ 
-            backgroundColor: `${iconColor}15`,
-            color: iconColor,
-            boxShadow: `0 2px 4px ${iconColor}10, inset 0 1px 2px ${iconColor}15`
-          }}
-        >
-          {icon}
-        </div>
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
-          <p className="text-sm text-gray-600 leading-relaxed max-w-[280px] sm:max-w-none">{description}</p>
-        </div>
-      </div>
-    </div>
-  );
+  iconColor?: string;
 }
 
 interface FeatureCardsProps {
-  features: {
-    title: string;
-    description: string;
-    icon: React.ReactNode;
-    iconColor: string;
-  }[];
+  features: Feature[];
   columns?: {
     sm?: number;
     md?: number;
@@ -45,18 +19,73 @@ interface FeatureCardsProps {
   className?: string;
 }
 
-export function FeatureCards({ features, columns = { sm: 1, md: 2, lg: 2 }, className = '' }: FeatureCardsProps) {
+export const FeatureCards: React.FC<FeatureCardsProps> = ({
+  features,
+  columns = { sm: 1, md: 2, lg: 2 },
+  className = '',
+}) => {
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    hover: {
+      scale: 1.02,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
+  const iconVariants = {
+    hidden: { scale: 0 },
+    visible: {
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 10,
+      },
+    },
+  };
+
+  const getGridCols = () => {
+    const { sm = 1, md = 2, lg = 2 } = columns;
+    return `grid grid-cols-1 sm:grid-cols-${sm} md:grid-cols-${md} lg:grid-cols-${lg}`;
+  };
+
   return (
-    <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 ${className}`}>
+    <div className={cn(getGridCols(), className)}>
       {features.map((feature, index) => (
-        <FeatureCard
-          key={index}
-          title={feature.title}
-          description={feature.description}
-          icon={feature.icon}
-          iconColor={feature.iconColor}
-        />
+        <motion.div
+          key={feature.title}
+          className="relative p-6 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-xl"
+          variants={cardVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          custom={index}
+        >
+          <motion.div
+            className="mb-4 inline-block"
+            variants={iconVariants}
+            style={{ color: feature.iconColor }}
+          >
+            {feature.icon}
+          </motion.div>
+          <h3 className="text-xl font-semibold text-white mb-2">
+            {feature.title}
+          </h3>
+          <p className="text-white/80">
+            {feature.description}
+          </p>
+        </motion.div>
       ))}
     </div>
   );
-} 
+}; 
