@@ -21,6 +21,7 @@ interface HeroProps {
   description?: React.ReactNode;
   badgeText?: string;
   className?: string;
+  subtitle?: string;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -38,6 +39,7 @@ export const Hero: React.FC<HeroProps> = ({
   description = 'Built for Vibe Coders and Soloentrepreneurs who think ahead. iVibeIndex helps you spot trends early, and apply them to real-world problems.',
   badgeText = 'From Anywhere',
   className = '',
+  subtitle,
 }) => {
   const features = [
     {
@@ -78,7 +80,7 @@ export const Hero: React.FC<HeroProps> = ({
           />
           <div className="mt-6 mb-8">
             <p className="text-base sm:text-lg lg:text-xl text-white leading-relaxed font-medium drop-shadow-sm max-w-3xl mx-auto">
-              {description}
+              {subtitle || description}
             </p>
           </div>
           

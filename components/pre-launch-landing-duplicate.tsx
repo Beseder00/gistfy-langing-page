@@ -220,9 +220,12 @@ export default function PreLaunchLandingDuplicate() {
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">
-              <div className="ml-3 md:ml-6">
-                <ThemeToggle />
-              </div>
+              <a
+                href="/about"
+                className="ml-3 md:ml-6 px-4 py-2 rounded-lg bg-white/10 text-white font-semibold hover:bg-[#ffae44] hover:text-[#004d41] transition-colors duration-200"
+              >
+                About Us
+              </a>
             </nav>
           </div>
         </header>
@@ -234,6 +237,7 @@ export default function PreLaunchLandingDuplicate() {
           coupon={coupon}
           setCoupon={setCoupon}
           onSubmit={submitEmail}
+          subtitle="Built for Vibe Coders, Marketers, and Solo Entrepreneurs building AI-first products. iVibe Index surfaces early trends and helps you turn them into real-world solutions."
         />
       </div>
 
@@ -368,7 +372,7 @@ export default function PreLaunchLandingDuplicate() {
                     href="/about"
                     className="text-white/80 hover:text-[#ffae44] transition-colors flex items-center group"
                   >
-                    <ChevronRight className="h-4 w-4 mr-1 group-hover:translate-x-1 transition-transform" /> About
+                    <ChevronRight className="h-4 w-4 mr-1 group-hover:translate-x-1 transition-transform" /> About Us
                   </a>
                 </li>
               </ul>
