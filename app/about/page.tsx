@@ -9,10 +9,10 @@ export default function AboutPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "iVibe Index",
-          "url": "https://vibeindex.vercel.app",
-          "logo": "https://vibeindex.vercel.app/logo.jpeg",
-          "description": "iVibe Index helps builders think sharper, decide faster, and build smarter by delivering personalized trend insights, strategic mental models, and execution-ready product ideas.",
+          "name": "iVibe Trends",
+          "url": "https://vibetrends.vercel.app",
+          "logo": "https://vibetrends.vercel.app/logo.svg",
+          "description": "iVibe Trends helps builders think sharper, decide faster, and build smarter by delivering personalized trend insights, strategic mental models, and execution-ready product ideas.",
           "founder": {
             "@type": "Person",
             "name": "Adam Dorfman"
@@ -30,7 +30,7 @@ export default function AboutPage() {
             <User className="h-7 w-7 text-[#19b8a6]" />
           </span>
           <h1 className="text-2xl md:text-3xl font-bold text-[#00332a] tracking-tight text-center font-sans leading-tight mb-1">
-            About Me & iVibe Index
+            About Me & iVibe Trends
           </h1>
           <p className="text-sm md:text-base text-[#1a2e2b] text-center max-w-2xl font-normal leading-snug">
             Iterative building. Strong feedback loops. Relentless focus on real-world problem solving.
@@ -57,7 +57,7 @@ export default function AboutPage() {
               <span className="font-semibold text-[#19b8a6]">What if I could build a dashboard that gave every Vibe Coder that same advantage?</span>
             </blockquote>
             <p className="mt-3">
-              That's how <span className="font-bold text-[#00332a]">iVibe Index</span> was born.
+              That's how <span className="font-bold text-[#00332a]">iVibe Trends</span> was born.
             </p>
           </div>
           <div className="md:w-1/3 flex-shrink-0 flex flex-col justify-center items-center mt-6 md:mt-0">
@@ -71,14 +71,14 @@ export default function AboutPage() {
           </div>
         </section>
         <hr className="my-6 border-[#e0f7fa]" />
-        {/* What is iVibe Index */}
+        {/* What is iVibe Trends */}
         <section className="mb-8">
           <h2 className="text-lg font-semibold mb-2 text-[#19b8a6] flex items-center gap-2 font-sans">
-            <Rocket className="h-5 w-5 text-[#19b8a6]" /> What is iVibe Index?
+            <Rocket className="h-5 w-5 text-[#19b8a6]" /> What is iVibe Trends?
           </h2>
           <div className="bg-[#f6fcfd] rounded-lg p-4 mb-2">
             <p>
-              iVibe Index is your daily strategic edge.<br />
+              iVibe Trends is your daily strategic edge.<br />
               It's not a newsletter. It's a system — built to help you <b>think sharper, decide faster, and build smarter</b>.
             </p>
             <p className="mt-3">
@@ -136,7 +136,7 @@ export default function AboutPage() {
           <h2 className="text-lg font-semibold mb-2 text-[#19b8a6] font-sans">Built for Vibe Coders, Marketers & Solo Entrepreneurs</h2>
           <div className="bg-[#e6f6fa] rounded-lg p-4 mb-2">
             <p>
-              Whether you're launching a new AI-first tool, crafting GTM, or chasing your next breakthrough — <b>iVibe Index helps you move with clarity and ship with momentum.</b>
+              Whether you're launching a new AI-first tool, crafting GTM, or chasing your next breakthrough — <b>iVibe Trends helps you move with clarity and ship with momentum.</b>
             </p>
           </div>
         </section>
@@ -159,7 +159,7 @@ export default function AboutPage() {
                 Sign up for early access here →
               </a>
             </div>
-            <span className="text-xs text-[#64748B]">Let's build smarter — and iterate like it matters. Welcome to iVibe Index.</span>
+            <span className="text-xs text-[#64748B]">Let's build smarter — and iterate like it matters. Welcome to iVibe Trends.</span>
             <span className="block mt-4 text-[#19b8a6] text-lg font-signature">— Adam Dorfman</span>
           </div>
         </section>

@@ -14,7 +14,7 @@ export default function CookiePolicy() {
       </section>
 
       <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">2. How Vibe Index Uses Cookies</h2>
+        <h2 className="text-2xl font-semibold mb-2">2. How Vibe Trends Uses Cookies</h2>
         <p>
           We use cookies to:
         </p>
@@ -30,7 +30,7 @@ export default function CookiePolicy() {
         <h2 className="text-2xl font-semibold mb-2">3. Types of Cookies We Use</h2>
         <ul className="list-disc pl-6">
           <li><b>Essential Cookies:</b> Necessary for the website to function properly.</li>
-          <li><b>Analytics Cookies:</b> Help us understand how visitors interact with Vibe Index.</li>
+          <li><b>Analytics Cookies:</b> Help us understand how visitors interact with Vibe Trends.</li>
           <li><b>Preference Cookies:</b> Remember your choices and settings.</li>
         </ul>
       </section>
@@ -45,7 +45,7 @@ export default function CookiePolicy() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">5. Managing Cookies</h2>
         <p>
-          You can control or delete cookies through your browser settings. Most browsers allow you to refuse or delete cookies. However, disabling cookies may affect your experience on Vibe Index.
+          You can control or delete cookies through your browser settings. Most browsers allow you to refuse or delete cookies. However, disabling cookies may affect your experience on Vibe Trends.
         </p>
       </section>
 

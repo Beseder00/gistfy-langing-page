@@ -18,7 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>iVibeIndex | Daily Market Intelligence for Vibe Coders and Soloentrepreneurs</title>
+        <title>iVibeTrends | Daily Market Intelligence for Vibe Coders and Soloentrepreneurs</title>
+        <meta name="apple-mobile-web-app-title" content="VT" />
+        <meta name="application-name" content="VT" />
+        <meta name="msapplication-TileColor" content="#00a693" />
+        <meta name="theme-color" content="#00a693" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"

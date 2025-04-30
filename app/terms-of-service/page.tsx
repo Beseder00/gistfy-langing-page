@@ -15,7 +15,7 @@ export default function TermsOfService() {
           </h1>
         </div>
         <p className="text-base md:text-lg text-[#1a2e2b] text-center max-w-2xl mb-2">
-          Please read these terms carefully before using Vibe Index.
+          Please read these terms carefully before using Vibe Trends.
         </p>
         <p className="mb-0 text-xs text-[#64748B] text-center">Last updated: {new Date().toLocaleDateString()}</p>
       </section>
@@ -27,14 +27,14 @@ export default function TermsOfService() {
             <FileText className="h-5 w-5 text-[#19b8a6]" /> 1. Acceptance of Terms
           </h2>
           <p>
-            By accessing or using Vibe Index, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.
+            By accessing or using Vibe Trends, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">2. Service Description</h2>
           <p>
-            Vibe Index is an AI-powered newsletter and insights platform designed for coders, marketers, and solo entrepreneurs. We provide curated content, analytics, and tools to help you stay ahead.
+            Vibe Trends is an AI-powered newsletter and insights platform designed for coders, marketers, and solo entrepreneurs. We provide curated content, analytics, and tools to help you stay ahead.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
@@ -50,28 +50,28 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">4. Intellectual Property</h2>
           <p>
-            All content, trademarks, and intellectual property on Vibe Index are owned by us or our licensors. You may not reproduce, distribute, or create derivative works without our permission.
+            All content, trademarks, and intellectual property on Vibe Trends are owned by us or our licensors. You may not reproduce, distribute, or create derivative works without our permission.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">5. Disclaimers</h2>
           <p>
-            Vibe Index is provided "as is" without warranties of any kind. We do not guarantee the accuracy, completeness, or reliability of any content or service.
+            Vibe Trends is provided "as is" without warranties of any kind. We do not guarantee the accuracy, completeness, or reliability of any content or service.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">6. Limitation of Liability</h2>
           <p>
-            To the fullest extent permitted by law, Vibe Index and its team shall not be liable for any indirect, incidental, or consequential damages arising from your use of the service.
+            To the fullest extent permitted by law, Vibe Trends and its team shall not be liable for any indirect, incidental, or consequential damages arising from your use of the service.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">7. Changes to Terms</h2>
           <p>
-            We may update these Terms of Service from time to time. Continued use of Vibe Index after changes constitutes acceptance of the new terms.
+            We may update these Terms of Service from time to time. Continued use of Vibe Trends after changes constitutes acceptance of the new terms.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />

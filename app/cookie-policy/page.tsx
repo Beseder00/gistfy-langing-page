@@ -15,7 +15,7 @@ export default function CookiePolicy() {
           </h1>
         </div>
         <p className="text-base md:text-lg text-[#1a2e2b] text-center max-w-2xl mb-2">
-          How and why we use cookies to improve your experience on Vibe Index.
+          How and why we use cookies to improve your experience on Vibe Trends.
         </p>
         <p className="mb-0 text-xs text-[#64748B] text-center">Last updated: {new Date().toLocaleDateString()}</p>
       </section>
@@ -32,7 +32,7 @@ export default function CookiePolicy() {
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">2. How Vibe Index Uses Cookies</h2>
+          <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">2. How Vibe Trends Uses Cookies</h2>
           <p>We use cookies to:</p>
           <ul className="list-disc pl-6 space-y-1">
             <li>Remember your preferences and settings.</li>
@@ -46,7 +46,7 @@ export default function CookiePolicy() {
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">3. Types of Cookies We Use</h2>
           <ul className="list-disc pl-6 space-y-1">
             <li><b>Essential Cookies:</b> Necessary for the website to function properly.</li>
-            <li><b>Analytics Cookies:</b> Help us understand how visitors interact with Vibe Index.</li>
+            <li><b>Analytics Cookies:</b> Help us understand how visitors interact with Vibe Trends.</li>
             <li><b>Preference Cookies:</b> Remember your choices and settings.</li>
           </ul>
         </section>
@@ -61,7 +61,7 @@ export default function CookiePolicy() {
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">5. Managing Cookies</h2>
           <p>
-            You can control or delete cookies through your browser settings. Most browsers allow you to refuse or delete cookies. However, disabling cookies may affect your experience on Vibe Index.
+            You can control or delete cookies through your browser settings. Most browsers allow you to refuse or delete cookies. However, disabling cookies may affect your experience on Vibe Trends.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />

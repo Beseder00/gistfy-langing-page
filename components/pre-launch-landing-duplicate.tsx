@@ -9,7 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Logo } from "./logo"
 import { useState, useEffect } from "react"
 import { ThemeToggle } from "./theme-toggle"
-import { Hero } from "./hero"
+import { Hero } from "./hero/Hero"
 
 // Add this after the imports
 const scrollbarHideStyles = `
@@ -206,7 +206,7 @@ export default function PreLaunchLandingDuplicate() {
         `}
       </style>
       <div className="bg-[var(--background)] min-h-screen">
-        {/* Header - VIBE INDEX */}
+        {/* Header - VIBE TRENDS */}
         <header
           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
             scrolled ? "bg-[var(--header-gradient-start)] py-2 shadow-md" : "bg-[var(--header-gradient-start)] py-3"
@@ -216,7 +216,7 @@ export default function PreLaunchLandingDuplicate() {
             <div className="flex-1 flex items-center">
               <span className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2 bg-[#004d41]/30 px-3 py-1 rounded-lg shadow-sm">
                 <BarChart className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-[#ffb347]" />
-                <span className="text-[#fffadc] tracking-wide">iVibeIndex</span>
+                <span className="text-[#fffadc] tracking-wide">iVibeTrends</span>
               </span>
             </div>
             <nav className="flex items-center justify-end flex-1">
@@ -237,7 +237,7 @@ export default function PreLaunchLandingDuplicate() {
           coupon={coupon}
           setCoupon={setCoupon}
           onSubmit={submitEmail}
-          subtitle="Built for Vibe Coders, Marketers, and Solo Entrepreneurs building AI-first products. iVibe Index surfaces early trends and helps you turn them into real-world solutions."
+          subtitle="Built for Vibe Coders, Marketers, and Solo Entrepreneurs building AI-first products. iVibe Trends surfaces early trends and helps you turn them into real-world solutions."
         />
       </div>
 
@@ -252,7 +252,7 @@ export default function PreLaunchLandingDuplicate() {
               <X className="h-5 w-5" />
             </button>
             
-            <h3 className="text-xl font-bold mb-4 text-[#004d41]">Join the iVibeIndex Waitlist</h3>
+            <h3 className="text-xl font-bold mb-4 text-[#004d41]">Join the iVibeTrends Waitlist</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="popup-email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -315,10 +315,10 @@ export default function PreLaunchLandingDuplicate() {
             <div>
               <span className="text-2xl font-bold flex items-center gap-2">
                 <BarChart className="h-7 w-7 text-[#ffae44]" />
-                <span className="tracking-wide">Vibe Index</span>
+                <span className="tracking-wide">Vibe Trends</span>
               </span>
               <p className="text-sm mb-6 text-white/80 mt-4 max-w-xs leading-relaxed">
-                Built for Vibe Coders, Marketers & Solo Entrepreneurs. Vibe Index accelerates how you think, decide, and build—by surfacing what actually matters.
+                Built for Vibe Coders, Marketers & Solo Entrepreneurs. Vibe Trends accelerates how you think, decide, and build—by surfacing what actually matters.
               </p>
               <div className="flex gap-4">
                 <a
@@ -420,7 +420,7 @@ export default function PreLaunchLandingDuplicate() {
                 Cookie Policy
               </a>
             </div>
-            <p className="text-white/60 text-sm">&copy; {new Date().getFullYear()} Vibe Index. All rights reserved.</p>
+            <p className="text-white/60 text-sm">&copy; {new Date().getFullYear()} Vibe Trends. All rights reserved.</p>
           </div>
         </div>
       </footer>

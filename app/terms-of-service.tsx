@@ -9,14 +9,14 @@ export default function TermsOfService() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">1. Acceptance of Terms</h2>
         <p>
-          By accessing or using Vibe Index, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree, please do not use our service.
+          By accessing or using Vibe Trends, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree, please do not use our service.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">2. Service Description</h2>
         <p>
-          Vibe Index is a platform that curates, summarizes, and delivers newsletter content and insights for professionals. We may update, modify, or discontinue features at any time.
+          Vibe Trends is a platform that curates, summarizes, and delivers newsletter content and insights for professionals. We may update, modify, or discontinue features at any time.
         </p>
       </section>
 
@@ -32,28 +32,28 @@ export default function TermsOfService() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">4. Intellectual Property</h2>
         <p>
-          All content, branding, and technology on Vibe Index are the property of Vibe Index or its licensors. You may not copy, reproduce, or distribute any part of the service without permission.
+          All content, branding, and technology on Vibe Trends are the property of Vibe Trends or its licensors. You may not copy, reproduce, or distribute any part of the service without permission.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">5. Disclaimers</h2>
         <p>
-          Vibe Index is provided "as is" and "as available" without warranties of any kind. We do not guarantee the accuracy, completeness, or reliability of any content or service.
+          Vibe Trends is provided "as is" and "as available" without warranties of any kind. We do not guarantee the accuracy, completeness, or reliability of any content or service.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">6. Limitation of Liability</h2>
         <p>
-          To the fullest extent permitted by law, Vibe Index and its affiliates are not liable for any indirect, incidental, or consequential damages arising from your use of the service.
+          To the fullest extent permitted by law, Vibe Trends and its affiliates are not liable for any indirect, incidental, or consequential damages arising from your use of the service.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">7. Changes to Terms</h2>
         <p>
-          We may update these Terms of Service from time to time. Continued use of Vibe Index after changes constitutes acceptance of the new terms.
+          We may update these Terms of Service from time to time. Continued use of Vibe Trends after changes constitutes acceptance of the new terms.
         </p>
       </section>
 

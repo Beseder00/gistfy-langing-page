@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
           </h1>
         </div>
         <p className="text-base md:text-lg text-[#1a2e2b] text-center max-w-2xl mb-2">
-          Your privacy is our top priority. Learn how we protect and use your data at Vibe Index.
+          Your privacy is our top priority. Learn how we protect and use your data at Vibe Trends.
         </p>
         <p className="mb-0 text-xs text-[#64748B] text-center">Last updated: {new Date().toLocaleDateString()}</p>
       </section>
@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
             <Shield className="h-5 w-5 text-[#19b8a6]" /> 1. Introduction
           </h2>
           <p>
-            Welcome to Vibe Index. We are committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your information. This Privacy Policy explains what data we collect, how we use it, and your rights as a user of our platform.
+            Welcome to Vibe Trends. We are committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your information. This Privacy Policy explains what data we collect, how we use it, and your rights as a user of our platform.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
           <ul className="list-disc pl-6 space-y-1">
             <li><b>Email Address:</b> Collected when you join our waitlist, subscribe, or contact us.</li>
             <li><b>Coupon Codes:</b> If you claim a special offer, we collect the code you provide.</li>
-            <li><b>Usage Data:</b> We may collect anonymized analytics about how you use Vibe Index to improve our service.</li>
+            <li><b>Usage Data:</b> We may collect anonymized analytics about how you use Vibe Trends to improve our service.</li>
             <li><b>Communication Data:</b> If you contact us, we may keep records of your correspondence.</li>
           </ul>
         </section>
@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">3. How We Use Your Information</h2>
           <ul className="list-disc pl-6 space-y-1">
-            <li>To provide and improve the Vibe Index service.</li>
+            <li>To provide and improve the Vibe Trends service.</li>
             <li>To send you product updates, newsletters, and relevant communications.</li>
             <li>To process special offers and coupon claims.</li>
             <li>To respond to your inquiries and provide support.</li>
@@ -55,7 +55,7 @@ export default function PrivacyPolicy() {
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-2 text-[#19b8a6]">4. Third-Party Services</h2>
           <p>
-            We use trusted third-party services (such as email delivery and analytics providers) to operate Vibe Index. These providers may process your data on our behalf, but only as necessary to provide their services and in compliance with this policy.
+            We use trusted third-party services (such as email delivery and analytics providers) to operate Vibe Trends. These providers may process your data on our behalf, but only as necessary to provide their services and in compliance with this policy.
           </p>
         </section>
         <div className="border-t border-dashed border-gray-200 my-6" />
